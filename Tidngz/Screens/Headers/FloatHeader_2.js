@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
           alignItems:'center',
           borderBottomWidth:1,
           borderColor:'rgba(23,23,23,.1)',
-          overflow:'hidden', 
-        // backgroundColor:'red',
+          overflow:'hidden',
+        backgroundColor:'red',
 
         // marginTop : getStatusBarHeight(),
     },
