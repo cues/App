@@ -140,8 +140,8 @@ class HomeTitle extends Component {
         // const containerWeather = !isEmpty ? {marginTop:55} : null;
 
         return (
-            <View>
-                <View style={[styles.container , style.paddingBackgroundTop, stylesProps]}>
+            <View style={stylesProps}>
+                <View style={[styles.container , style.paddingBackgroundTop]}>
                     <View style={styles.icons}>
                         {/* <TouchableOpacity style={styles.iconContainer} onPress={() => this.props.navigation.navigate('Trending',{name:'TRENDING'})}>
                             <MaterialIcons style={styles.icon} name='trending-up' size={26} color={weatherDesc}/>
@@ -156,7 +156,7 @@ class HomeTitle extends Component {
                     </View>
                 </View>
                 
-                <ArticleOptions/>
+                <ArticleOptions routeName='home'/>
             </View>
         )
     }

@@ -17,6 +17,7 @@ const state = state => {
       user_id            :  state.main.user.user_id,
       apiKey             :  state.main.apiKey,
       allArticles        :  state.articles.allArticles,
+      allArticlesProfile :  state.profileArticles.allArticles,
       allComments        :  state.comments.allComments,
       newComment         :  state.comments.newComment,
       initial            :  state.comments.initial,
@@ -229,7 +230,13 @@ renderItem = ({item}) => {
 
 renderFooter = () => {
     const article = this.props.navigation.getParam('article')
-    const thisArticle = this.props.allArticles.find(item => item.article.articles_id === article.articles_id)
+    const type   = this.props.navigation.getParam('type')
+
+    const allArticles = type == 'profile' ? this.props.allArticlesProfile :
+                        type == 'home' ? this.props.allArticlesProfile : null
+          
+
+    const thisArticle = allArticles.find(item => item.article.articles_id === article.articles_id)
     const total_records = thisArticle.article.articles_comments_data.total_records;
    
   const loader = total_records > 0 ? <Loader style={{marginTop: 35}}/> : <Text>Nothing Found</Text>

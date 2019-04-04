@@ -173,13 +173,13 @@ export default StyleSheet.create({
 
 
     tidngz_color : {
-    color: 'rgba(15,101,141,1)'
+        color: 'rgba(15,101,141,1)'
     },
     tidngz_color_light : {
-    color: 'rgba(15,101,141,.8)'
+        color: 'rgba(15,101,141,.8)'
     },
     gamengz_color : {
-    color: 'rgba(15,101,141,.9)'
+        color: 'rgba(15,101,141,.9)'
     },
     facebook_color : {
         color: 'rgba(59,89,152,1)'

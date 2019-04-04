@@ -1,13 +1,33 @@
-// ARTICLE
-export const REFRESH_ARTICLES =  'REFRESH_ARTICLES';
-export const ADD_ARTICLE      =  'ADD_ARTICLE';
-export const SELECTED_ARTICLE =  'SELECTED_ARTICLE';
-export const IMAGE_SELECTED_ARTICLE =  'IMAGE_SELECTED_ARTICLE';
-export const LOADER           =  'LOADER';
-export const ALL_ARTICLES     =  'ALL_ARTICLES';
-export const LOAD_ARTICLES    =  'LOAD_ARTICLES';
-export const ARTICLE_TABLET   =  'ARTICLE_TABLET';
-export const UPDATE_ARTICLES  =  'UPDATE_ARTICLES';
+// ARTICLE 
+export const REFRESH_ARTICLES           =  'REFRESH_ARTICLES';
+export const ADD_ARTICLE                =  'ADD_ARTICLE';
+export const SELECTED_ARTICLE           =  'SELECTED_ARTICLE';
+export const IMAGE_SELECTED_ARTICLE     =  'IMAGE_SELECTED_ARTICLE';
+export const LOADER                     =  'LOADER';
+export const ALL_ARTICLES               =  'ALL_ARTICLES';
+export const LOAD_ARTICLES              =  'LOAD_ARTICLES';
+export const ARTICLE_TABLET             =  'ARTICLE_TABLET';
+export const UPDATE_ARTICLES            =  'UPDATE_ARTICLES';
+
+
+// ARTICLE HOME
+export const HOME_REFRESH_ARTICLES           =  'HOME_REFRESH_ARTICLES';
+export const HOME_ADD_ARTICLE                =  'HOME_ADD_ARTICLE';
+export const HOME_SELECTED_ARTICLE           =  'HOME_SELECTED_ARTICLE';
+export const HOME_IMAGE_SELECTED_ARTICLE     =  'HOME_IMAGE_SELECTED_ARTICLE';
+export const HOME_LOADER                     =  'HOME_LOADER';
+export const HOME_ALL_ARTICLES               =  'HOME_ALL_ARTICLES';
+export const HOME_LOAD_ARTICLES              =  'HOME_LOAD_ARTICLES';
+export const HOME_ARTICLE_TABLET             =  'HOME_ARTICLE_TABLET';
+export const HOME_UPDATE_ARTICLES            =  'HOME_UPDATE_ARTICLES';
+
+// ARTICLE PROFILE
+export const PROFILE_REFRESH_ARTICLES           =  'PROFILE_REFRESH_ARTICLES';
+export const PROFILE_ADD_ARTICLE                =  'PROFILE_ADD_ARTICLE';
+export const PROFILE_LOADER                     =  'PROFILE_LOADER';
+export const PROFILE_ALL_ARTICLES               =  'PROFILE_ALL_ARTICLES';
+export const PROFILE_LOAD_ARTICLES              =  'PROFILE_LOAD_ARTICLES';
+export const PROFILE_UPDATE_ARTICLES            =  'PROFILE_UPDATE_ARTICLES';
 
 
 // COMMENTS

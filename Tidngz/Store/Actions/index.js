@@ -1,4 +1,5 @@
-export { refresh_articles, add_article, selected_article, image_selected_article, loader, all_articles , load_articles, articleTablet, update_article } from './articles';
+export { refresh_articles, add_article, selected_article, image_selected_article, loader, all_articles , load_articles, articleTablet, update_article } from './Articles/articlesHome';
+export { profile_refresh_articles, profile_add_article, profile_selected_article, profile_image_selected_article, profile_loader, profile_all_articles , profile_load_articles, profile_articleTablet, profile_update_article } from './Articles/articlesProfile';
 export { get_comments, post_comments, refresh_comments, load_comments, report_modal_comment, update_comment } from './comments';
 export { add_theme_white, add_theme_black } from './themes';
 export { add_weather , home_weather_call} from './weather';

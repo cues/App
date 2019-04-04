@@ -4,6 +4,7 @@ import Header from '../Headers/FloatHeader';
 import CommentList from '../../Functions/Comment/Comment_List'
 import Write from '../../Functions/Comment/Write';
 import { tabBarType_Article } from '../../Components/TabBar/TabBar'
+import Theme from '../../Components/Themes/Themes';
 
 import { connect } from 'react-redux';
 import { tabBarType, selected_article } from '../../Store/Actions/index';
@@ -12,6 +13,7 @@ const state = state => {
   return {
       backgroundMain         :   state.themes.backgroundMain,
       allArticles            :   state.articles.allArticles,
+      allArticlesProfile     :   state.profileArticles.allArticles,
     };
 };
 
@@ -41,7 +43,13 @@ class Comments extends Component {
   componentDidMount(){
 
     const article = this.props.navigation.getParam('article')
-    const thisArticle = this.props.allArticles.find(item => item.article.articles_id === article.articles_id)
+    const type   = this.props.navigation.getParam('type')
+
+    const allArticles = type == 'profile' ? this.props.allArticlesProfile :
+                        type == 'home' ? this.props.allArticlesProfile : null
+          
+
+    const thisArticle = allArticles.find(item => item.article.articles_id === article.articles_id)
 
     this.userComment(thisArticle.article.this_commented);
 
@@ -80,6 +88,8 @@ class Comments extends Component {
   
       <View style={[styles.container, {backgroundColor: backgroundMain}]}>
         
+        <Theme/>
+
           <CommentList write = {this.write} userComment={this.state.userComment} this_comment={this.userComment}/>
           <Write write = {this.write}  writeComment = {this.state.writeComment} this_comment={this.userComment}/>
           <Header/>

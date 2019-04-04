@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {StyleSheet, Platform, Animated, Image, View, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Platform, Animated, Image, View, Text, TouchableOpacity, Dimensions} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import BlurView from '../../Components/BlurVIew/BlurVIew';
 import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';
 import { withNavigation } from 'react-navigation'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import style from '../../Styles/Styles'
+import ArticleOptions from '../../Functions/Options/Article_Options/Article_Options';
 
 import { connect } from 'react-redux';
 
@@ -17,8 +18,11 @@ const state = state => {
     }
 }
 
-FLOAT_HEADER_MAX_HEIGHT = models.includes(model) ? 88 : brand === 'Apple' ? 44 : 50 
-FLOAT_HEADER_MIN_HEIGHT = models.includes(model) ? 70 : brand === 'Apple' ? 26 : 40
+// FLOAT_HEADER_MAX_HEIGHT = models.includes(model) ? 88 : brand === 'Apple' ? 44 : 50 
+// FLOAT_HEADER_MIN_HEIGHT = models.includes(model) ? 70 : brand === 'Apple' ? 26 : 40
+
+
+const WIDTH = Dimensions.get('window').width;
 
 class Header extends Component {
 
@@ -30,17 +34,31 @@ class Header extends Component {
 
         const name = navigation.getParam('name')
 
-        const type = navigation.getParam('type' , 0)
+        const routeName = navigation.getParam('routeName' , 0)
 
+        const headerText = navigation.getParam('headerText' , 0)
+
+
+
+
+        const headerTitle = (
+                routeName  == 'home' ? 
+                    <Image style={styles.headerTitleLogo} resizeMode={'cover'} source = {{uri : 'https://www.wedngz.com/Tidngz/User_Images/tidngz.png'}}/>
+                :
+                    <View style={styles.headerTitle}>
+                            <Text style={[style.ca,styles.headerTitleText]}>{headerText}</Text>
+                    </View> 
+            
+        )
         
         const translateY = Animated.add(scrollAnim, offsetAnim).interpolate({
-        inputRange: [0, HOME_HEADER_MAX_HEIGHT],
-        outputRange: [0, -HOME_HEADER_MIN_HEIGHT],
-        extrapolate: 'clamp'
+            inputRange: [0, FLOAT_HEADER_MAX_HEIGHT],
+            outputRange: [0, -FLOAT_HEADER_MIN_HEIGHT],
+            extrapolate: 'clamp'
         });
 
         const headerIconsOpacity = Animated.add(scrollAnim, offsetAnim).interpolate({
-            inputRange : [1,HOME_HEADER_MAX_HEIGHT],
+            inputRange : [1,FLOAT_HEADER_MAX_HEIGHT],
             outputRange : [1,0],
             extrapolate:'clamp'
         })
@@ -49,23 +67,31 @@ class Header extends Component {
           const AnimatedMaterialIcons = Animatable.createAnimatableComponent(MaterialIcons)
 
         return (
-            <Animated.View style= {[styles.header , {transform: [{translateY}]  , backgroundColor:Platform.select({android:headerColor})}]}>
-                    <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} />  
+            // <View styles={styles.header}>
+                   
+                    <Animated.View style= {[styles.header , {transform: [{translateY}]  , backgroundColor:Platform.select({android:headerColor})}]}>
+                            <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} />  
 
-                    <Animated.View style={[styles.headerIcons, {opacity: headerIconsOpacity}]}>
+                            <Animated.View style={[styles.headerIcons, {opacity: headerIconsOpacity}]}>
 
-                        <TouchableOpacity style={[styles.headerLeft]} onPress = {() => navigation.goBack()}>
-                                <MaterialIcons style={{textAlign:'center', lineHeight:47}} name="keyboard-arrow-left"  color={headerIcons} size={25}/>
-                        </TouchableOpacity>
+                                <TouchableOpacity style={[styles.headerLeft]} onPress = {() => navigation.goBack()}>
+                                        <MaterialIcons style={{textAlign:'center', lineHeight:47}} name="keyboard-arrow-left"  color={headerIcons} size={25}/>
+                                </TouchableOpacity>
 
-                        <Animatable.View animation="lightSpeedIn" duration={1000} style={[styles.headerTitle]}>
-                            <Text style={[style.mo,styles.headerTitleText]}>{name}</Text>
-                        </Animatable.View>
+                            {headerTitle}
 
+                                <View style={styles.headerRight}/>
+
+                            </Animated.View>
+
+                            <Animated.View style={[styles.headerOptions, {opacity: headerIconsOpacity}]}>
+                                 <ArticleOptions type={1}/>
+                            </Animated.View>
+        
                     </Animated.View>
-     
-  
-            </Animated.View>
+
+
+        // </View>
         )
     }
 }
@@ -81,16 +107,33 @@ const styles = StyleSheet.create({
           borderBottomWidth:1,
           borderColor:'rgba(23,23,23,.1)',
           overflow:'hidden',
-        backgroundColor:'red',
+        // backgroundColor:'red',
 
         // marginTop : getStatusBarHeight(),
     },
+    headerOptions : {
+        width:WIDTH + 20,
+        justifyContent:'center',
+    },
+
+
     headerIcons : {
         marginTop: models.includes(model) ? 40 : brand === 'Apple' ? 16 : 7,
         width:'100%',
         flexDirection : 'row',
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        // backgroundColor:'red',
     },
+    
+    headerTitleLogo : {
+        height: '100%',
+        width: 55,
+        alignSelf: "center", 
+        marginLeft: "auto", 
+        marginRight: "auto",
+        // backgroundColor:'blue'
+    },
+
     headerTitle : {
         position:'absolute',
         top:0,
@@ -103,8 +146,8 @@ const styles = StyleSheet.create({
         height:'100%',
         width:'100%',
         color:'rgba(15,101,141,1)',
-        fontSize:18,
-        letterSpacing:1.4,
+        fontSize:15,
+        letterSpacing:1,
         lineHeight:44, 
         // minWidth:240,
         textShadowColor: 'rgba(0,0,0, .4)',
@@ -113,10 +156,17 @@ const styles = StyleSheet.create({
         fontWeight:Platform.select({android:'200', ios:'bold'}),
         textAlign:'center',
         alignSelf: "center", 
+        textTransform : 'uppercase'
     },
     headerLeft:{
         width: 40,
         marginLeft: 5,
+        lineHeight : 47
+        // backgroundColor:'red'
+    },
+    headerRight:{
+        width: 40,
+        marginRight: 5,
         lineHeight : 47
         // backgroundColor:'red'
     },

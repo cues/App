@@ -49,7 +49,7 @@ class footer extends Component {
             setTimeout(() => {
                 showStatusBar()
             },300)
-            this.props.navigation.navigate('Comments',{name:'COMMENTS',  article:this.props.article, onNavigationBack: this.navBack})
+            this.props.navigation.navigate('Comments',{name:'COMMENTS', type:this.props.container , article:this.props.article, onNavigationBack: this.navBack})
         // }
     }
 
@@ -69,8 +69,8 @@ class footer extends Component {
         }
     }
 
-    const this_commented = article.this_commented == 1 ? 'rgba(15, 101, 141, 1)' : type == 'all' ? footerColor : tabIcons
-    const this_liked     = article.this_liked == 1 ? 'rgba(255,0,0,1)' : type == 'all' ? footerColor : tabIcons
+    const this_commented = article.this_commented == 1 ? 'rgba(15, 101, 141, 1)' :  tabIcons
+    const this_liked     = article.this_liked == 1 ? 'rgba(255,0,0,1)' :  tabIcons
 
     return(
          <View style={[styles.articleFooter, styleAb]}>

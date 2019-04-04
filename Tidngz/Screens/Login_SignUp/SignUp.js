@@ -33,7 +33,7 @@ const state = state => {
 
 const dispatch = dispatch => {
     return {
-        this_login               :  userData    =>   dispatch(login(userData)),
+        this_login               :  response    =>   dispatch(login(response)),
         this_login_route         :  route       =>   dispatch(loginRoute(route)),
         this_loginError          :  error       =>   dispatch(loginError(error))
     }
@@ -182,23 +182,10 @@ class SignUp extends Component {
                 }
                 else if(response.data.success){
 
-                    const userData = {
-                        user_id           : response.data.user.user_id,
-                        user_name         : response.data.user.user_name,
-                        user_name_initial : response.data.user.user_name_initial,
-                        user_username     : response.data.user.username,
-                        user_sex          : response.data.user.user_sex,
-                        user_verified     : response.data.user.user_verified,
-                        user_image        : response.data.user.user_image,
-                        user_image_2      : response.data.user.user_image_2,
-                        user_image_3      : response.data.user.user_image_3,
-                        user_active       : response.data.user.user_active
-                    }
-
-
                     accessToken = response.data.user.token
                     this.storeToken(accessToken)
-                    this.props.this_login(userData)
+                    this.props.this_login(response);
+                    
                 }
             
             })

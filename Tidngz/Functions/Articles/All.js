@@ -3,15 +3,12 @@ import {Platform, Dimensions, FlatList, SectionList, View, TouchableOpacity, Ima
 import {OptimizedFlatList} from 'react-native-optimized-flatlist'
 import { connect } from 'react-redux';
 import {refresh_articles, add_article, loader, all_articles, load_articles, articleTablet} from '../../Store/Actions/index';
-import Article from './Article';
+import Article from '../Articles/Article';
 import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';
-import HomeTitle from '../Home/HomeTitle';
 import style from '../../Styles/Styles'; 
-import ArticleTablet from '../../Screens/Article';
 import Loader from '../../Components/UI/Loader/Loader';
 
-const height = Dimensions.get('window').height;
-const width = Dimensions.get('window').width;
+const WIDTH = Dimensions.get('window').width;
 
 
   const state = state => {
@@ -19,8 +16,8 @@ const width = Dimensions.get('window').width;
         api                 :   state.main.api,
         user_id             :   state.main.user.user_id,
         apiKey              :   state.main.apiKey,
+        menuIconColor       :   state.themes.menuIconColor,
         allArticles         :   state.articles.allArticles,
-        home                :   state.main.home,
         loader              :   state.articles.loader,
         start               :   state.articles.start,
         records_per_page    :   state.articles.records_per_page,
@@ -45,24 +42,32 @@ const width = Dimensions.get('window').width;
 
 
 
-class ArticleList extends Component {
+class All extends Component {
 
     state = {
-        width :Dimensions.get('window').width,
-        height : Dimensions.get('window').height,
+        home:[
+                {
+                    key :'0',
+                    type : 'all',
+                }
+        ],
         refreshing : false,
     }
     
     componentWillMount()  {
+        this.props.this_refresh_articles()
         this.allArticles();
     }
     
+    componentWillUnmount(){
+        this.props.this_refresh_articles()
+    }
 
-   
 
     allArticles = async () => {
 
-        const {source, api, user_id, apiKey} = this.props
+        const { api, user_id, apiKey} = this.props
+        const source = 11;
 
       const url = `${api}/Articles/articles.php?key=${apiKey}&user_id=${user_id}&type=1&article_source=${source}`;
 
@@ -76,8 +81,9 @@ class ArticleList extends Component {
             number_of_pages   =  Math.ceil(total_records / this.props.records_per_page);
 
             this.props.this_all_articles(total_records, last_articles_id, number_of_pages)
-         
+
             this.loadArticles();            
+               
       })
 
     }
@@ -86,7 +92,8 @@ class ArticleList extends Component {
     
     loadArticles = async () => {
 
-      let {source, this_articleTablet, this_load_articles, api, user_id, apiKey, start, records_per_page, number_of_pages, current_page, last_articles_id} = this.props
+      let {this_articleTablet, this_load_articles, api, user_id, apiKey, start, records_per_page, number_of_pages, current_page, last_articles_id} = this.props
+      const source = 11;
       
       const url = `${api}/Articles/articles.php?key=${apiKey}&user_id=${user_id}&type=2&last_articles_id=${last_articles_id}&article_source=${source}&records_per_page=${records_per_page}&start=${start}`;
     
@@ -110,6 +117,9 @@ class ArticleList extends Component {
                 })
 
             }
+
+
+     
        
       })
       .catch((error) =>{
@@ -119,11 +129,11 @@ class ArticleList extends Component {
       });
     
       
+
       current_page++;
       start = start + records_per_page;
         
       this_load_articles(current_page, start)
-
 
     
     }
@@ -156,23 +166,23 @@ class ArticleList extends Component {
     renderItem = ({item, index}) => {
         const dis = this.state.refreshing ? style.opacity0 : style.opacity1;
 
+
         if(item.type){
-            return <HomeTitle  item = {item} stylesProps={dis}/>
+            return (
+                <View style={[style.paddingBackgroundTop,  dis]}>
+                    <View style={{height : 75, width : '100%'}}/>
+                </View>
+            );
         }else{
             if(item.key != 1){
-                return(
-                    <Article
-                        article = {item.article}
-                        // key = {item.articles_id}
-                    />
-                )
+                return <Article article = {item.article} container='home'/>
             }
             
         }
       
     }
 
-    _keyExtractor = (item, index) => item.key;
+    _keyExtractor = (item, index) => item.key + 1;
     
    
 
@@ -190,10 +200,9 @@ class ArticleList extends Component {
 
 
     render (){
-        const {allArticles, home, onMomentumScrollBegin, handleScroll} = this.props;
+        const {allArticles, onMomentumScrollBegin, handleScroll} = this.props;
         const {onScroll, renderFooter} = this;
         const {flatlist} = styles;
-        const {width, height} = this.state
 
         
 
@@ -204,7 +213,7 @@ class ArticleList extends Component {
      
                     <OptimizedFlatList 
                         style={[styles.flatlist, flatlistMargin]}
-                        data = {home.concat(allArticles)}
+                        data = {this.state.home.concat(allArticles)}
                         maxToRenderPerBatch={3}
                         updateCellsBatchingPeriod={100}
                         windowSize={3}
@@ -226,9 +235,10 @@ class ArticleList extends Component {
                         onMomentumScrollBegin={onMomentumScrollBegin}
                         refreshControl = {
                             <RefreshControl 
+                                tintColor = {this.props.menuIconColor}
                                 refreshing = {this.state.refreshing}
                                 onRefresh = {this.handleRefresh.bind(this)}
-                                title = 'Refreshing...'
+                                // title = 'Refreshing...'
                             />
                         }
                         
@@ -245,12 +255,12 @@ class ArticleList extends Component {
 const styles = StyleSheet.create({
     
     flatlist:{
-        width:width + 20,
+        width:WIDTH + 20,
         // backgroundColor:'red'
     },
     flatlistMargin : {
         zIndex:500,
-        marginTop:100,
+        marginTop:150,
     },
     articleReader : {
         // height: height - 121,
@@ -283,4 +293,4 @@ const styles = StyleSheet.create({
 
 
 
-  export default connect(state, dispatch)(ArticleList);
+  export default connect(state, dispatch)(All);

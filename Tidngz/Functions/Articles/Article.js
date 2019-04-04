@@ -87,7 +87,7 @@ class Article extends Component {
 
     render (){
 
-    const {article , articleItem} = this.props;
+    const {article , articleItem, container} = this.props;
     const { viewWidth , ImagesActive} = this.state;
     const { layout } = this;
 
@@ -156,7 +156,7 @@ class Article extends Component {
 
                                         <View style={styles.articleLine}></View>
 
-                                        <Footer article = {article} type='all' from='all'/>
+                                        <Footer article = {article} type='all' from='all' container={container}/>
 
                                 </View>
 

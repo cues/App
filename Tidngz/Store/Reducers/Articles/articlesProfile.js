@@ -1,13 +1,7 @@
-import { REFRESH_ARTICLES, ADD_ARTICLE, SELECTED_ARTICLE, IMAGE_SELECTED_ARTICLE, LOADER, ALL_ARTICLES, LOAD_ARTICLES, ARTICLE_TABLET, UPDATE_ARTICLES } from "../Actions/action_types";
+import { PROFILE_REFRESH_ARTICLES, PROFILE_ADD_ARTICLE, PROFILE_LOADER, PROFILE_ALL_ARTICLES, PROFILE_LOAD_ARTICLES,  PROFILE_UPDATE_ARTICLES } from "../../Actions/action_types";
 
 const initialState = {
-    allArticles : [{
-        key : 1,
-        article : {
-            articles_id: 1,
-            type:'inital'
-        }
-    }],
+    allArticles : [],
     selectedArticle : null,
     articleTablet:1,
     loader:false,
@@ -27,16 +21,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 
     switch (action.type){  
-        case REFRESH_ARTICLES : 
+        case PROFILE_REFRESH_ARTICLES : 
             return {
                 ...state, 
-                allArticles : [{
-                    key : 1,
-                    article : {
-                        articles_id: 1,
-                        type:'inital'
-                    }
-                }],
+                allArticles : [],
                 selectedArticle : null,
                 articleTablet:1,
                 loader:true,
@@ -47,7 +35,7 @@ const reducer = (state = initialState, action) => {
                 total_records:null,
                 last_articles_id:null,
             };
-        case ADD_ARTICLE :
+        case PROFILE_ADD_ARTICLE :
             return {
                 ...state,
                 allArticles : state.allArticles.concat({ 
@@ -56,22 +44,12 @@ const reducer = (state = initialState, action) => {
                 }),
                 loader:false
             };
-        case SELECTED_ARTICLE :
-            return {
-                ...state,
-                selectedArticle : action.article,
-            }
-        case IMAGE_SELECTED_ARTICLE :
-            return {
-                ...state,
-                imageSelectedArticle : action.article,
-            }
-        case LOADER :
+        case PROFILE_LOADER :
             return {
                 ...state,
                 loader:true
             }
-        case ALL_ARTICLES : 
+        case PROFILE_ALL_ARTICLES : 
             return {
                 ...state,
                 total_records      :   action.total_records,
@@ -79,18 +57,13 @@ const reducer = (state = initialState, action) => {
                 number_of_pages    :   action.number_of_pages
             }
        
-        case LOAD_ARTICLES :
+        case PROFILE_LOAD_ARTICLES :
             return {
                 ...state,
                 current_page : action.current_page,
                 start        : action.start
             }
-        case ARTICLE_TABLET :
-            return {
-                ...state,
-                articleTablet : action.article,
-            }
-        case UPDATE_ARTICLES :
+        case PROFILE_UPDATE_ARTICLES :
             return {
                 ...state,
                 allArticles : action.allArticles,

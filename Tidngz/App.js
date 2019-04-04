@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Dimensions, Platform, ImageBackground, StatusBar , TextInput, AsyncStorage} from 'react-native';
 import {SafeAreaView,createSwitchNavigator, createDrawerNavigator, createStackNavigator, createAppContainer , createBottomTabNavigator, createMaterialTopTabNavigator} from "react-navigation";
+import SplashScreen from 'react-native-splash-screen'
 import Activate from './Screens/Login_SignUp/Activate';
 import Home from './Screens/Home';
 import SearchHeader from './Screens/Headers/Search/Header';
@@ -83,7 +84,8 @@ const HomeStack = createStackNavigator({
   Replies       :   Replies,
   Calender      :   Calender,
   Options       :   Options,
-  Articles      :   Articles,
+  OptionArticles      :   Articles,
+  CalenderArticles      :   Articles,
   Menu          :   Menu,
   Bookmark      :   Bookmark,
   Setting       :   Setting,
@@ -277,10 +279,26 @@ const PlacesStack = createStackNavigator({
 
 
 const ProfileStack = createStackNavigator({
-  Profile   :   Profile,
-  Article   :   Article,
-  Notifications :   Notifications
+  Profile       :   Profile,
+  Comments      :   Comments,
+  Replies       :   Replies,
+  Calender      :   Calender,
+  Options       :   Options,
+  OptionArticles      :   Articles,
+  CalenderArticles      :   Articles,
+  Article       :   Article,
+},{
+  cardStyle:{
+    backgroundColor:'transparent'
+  },
+  headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false,
+  },
+    
+  cardShadowEnabled : false,
 });
+
 
 
 
@@ -301,7 +319,7 @@ const Tab = createBottomTabNavigator({
   },
   {
     tabBarComponent:props => <TabBar {...props}/>,
-    initialRouteName:'Home',            
+    initialRouteName:'Profile',            
     animationEnabled : true,
     tabBarOptions:{
       activeBackgroundColor : 'transparent',
@@ -384,7 +402,7 @@ const state = state => {
 
 const dispatch = dispatch => {
   return {
-    this_login               :  userData    =>  dispatch(login(userData)),
+    this_login               :  response    =>  dispatch(login(response)),
     this_add_theme_white     :  ()          =>  dispatch(add_theme_white()),
     this_add_theme_black     :  ()          =>  dispatch(add_theme_black()),
   }
@@ -425,10 +443,14 @@ class App extends Component {
 
   }
 
+  // componentDidMount() {
+  //   this.getToken();
+  // }
+
   getToken = async () => {
     try {
        let token =  await AsyncStorage.getItem(ACCESS_TOKEN);
-        console.log(token)
+
         if(token){
 
           const { api, apiKey } = this.props;
@@ -439,26 +461,16 @@ class App extends Component {
 
             if(!response.data.error){
 
-                const userData = {
-                    user_id           : response.data.user.user_id,
-                    user_name         : response.data.user.user_name,
-                    user_name_initial : response.data.user.user_name_initial,
-                    user_username     : response.data.user.username,
-                    user_sex          : response.data.user.user_sex,
-                    user_verified     : response.data.user.user_verified,
-                    user_image        : response.data.user.user_image,
-                    user_image_2      : response.data.user.user_image_2,
-                    user_image_3      : response.data.user.user_image_3,
-                    user_active       : response.data.user.user_active
-                  }
-
-
                 response.data.user.user_dark_mode || !response.data.user.user_active ? this.props.this_add_theme_black() : this.props.this_add_theme_white()
-                this.props.this_login(userData)
+                this.props.this_login(response);
+                SplashScreen.hide();
+
             }
         
           })
 
+       }else{
+        SplashScreen.hide();
        }
       } 
       catch (error) {
@@ -473,14 +485,15 @@ class App extends Component {
 
     const {LoggedIn, user} = this.props
 
-    let newApp ;
 
 
     value = this.props.theme == 'white' ? 1 : 0
     this.statusBar(value)
 
     
-    newApp =  LoggedIn ? user.user_active ? <AppContainer /> : <ActivateContainer/> : <LoginContainer />
+    let newApp ;
+    newApp = LoggedIn ? user.user_active ? <AppContainer /> : <ActivateContainer/> : <LoginContainer />
+    // newApp =  LoggedIn ? <AppContainer /> : null
   
       return (
         // <ImageBackground  style={styles.container} source={{uri:'http://www.wedngz.com/Tidngz/Images/tidngz-106.png'}} style={{flex: 1, width: '100%', height:'100%'}}>

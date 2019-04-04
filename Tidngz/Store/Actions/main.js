@@ -1,10 +1,10 @@
 import {LOGIN, LOGOUT, TABBAR_VISIBLE, TABBAR_ANIMATION, TABBAR_TYPE} from './action_types';
 
 
-export const login = userData => {
+export const login = response => { 
     return {
         type : LOGIN,
-        userData : userData,
+        response : response,
     }
 } 
 

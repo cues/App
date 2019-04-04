@@ -8,13 +8,7 @@ const initialState = {
     api : "https://www.wedngz.com/Tidngz/API",
     apiKey : 1707,
     LoggedIn : false,
-    home:[
-            {
-                key :'0',
-                type : 'home',
-                user : 'Erroll',
-            }
-    ],
+   
     user : ''
     // user : {
     //     user_id : 120,
@@ -36,16 +30,27 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 LoggedIn : true,
                 user : {
-                    user_id             :  action.userData.user_id,
-                    username            :  action.userData.username,
-                    user_name           :  action.userData.user_name,
-                    user_name_initial   :  action.userData.user_name_initial,
-                    user_sex            :  action.userData.user_sex,
-                    user_verified       :  action.userData.user_verified,
-                    user_image          :  action.userData.user_image,
-                    user_image_2        :  action.userData.user_image_2,
-                    user_image_3        :  action.userData.user_image_3,
-                    user_active         :  action.userData.user_active
+                    user_id            :  action.response.data.user.user_id,
+                    user_name          :  action.response.data.user.user_name,
+                    user_name_initial  :  action.response.data.user.user_name_initial,
+                    username           :  action.response.data.user.username,
+                    user_sex           :  action.response.data.user.user_sex,
+                    user_verified      :  action.response.data.user.user_verified,
+                    user_image         :  action.response.data.user.user_image,
+                    user_image_2       :  action.response.data.user.user_image_2,
+                    user_image_3       :  action.response.data.user.user_image_3,
+                    user_active        :  action.response.data.user.user_active,
+                    user_place_id      :  action.response.data.user.user_place_id,
+                    user_place         :  action.response.data.user.user_place,
+                    user_bio           :  action.response.data.user.user_bio,
+                    user_website       :  action.response.data.user.user_website,
+                    user_facebook      :  action.response.data.user.user_facebook,
+                    user_instagram     :  action.response.data.user.user_instagram,
+                    user_twitter       :  action.response.data.user.user_twitter,
+                    user_youtube       :  action.response.data.user.user_youtube,
+                    user_posts         :  action.response.data.user.user_posts,
+                    user_following     :  action.response.data.user.user_following,
+                    user_followers     :  action.response.data.user.user_followers,
                 }
             }
         case LOGOUT : {

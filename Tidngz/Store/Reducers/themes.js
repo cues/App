@@ -81,7 +81,7 @@ const reducer = (state = initialState, action) => {
                 menuText                :   'rgba(221, 221, 221, 0.7)',
                 articleItem             :   'rgba(23,23,23,1)',
                 articleTitle            :   'rgba(240,240,240,.9)',
-                articleContent          :   'rgba(230,230,230, 0.8)',
+                articleContent          :   'rgba(230,230,230, 0.9)',
                 commentViewMore         :   'rgba(230,230,230, 0.5)',
                 commentWrite            :   'rgba(230,230,230, 1)',
                 footerColor             :   'rgba(230,230,230, 0.8)',

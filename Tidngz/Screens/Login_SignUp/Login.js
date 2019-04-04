@@ -7,7 +7,6 @@ import LoginButton from '../../Components/Button/Button';
 import Input from '../../Components/TextInput/Login';
 import FontAwesome from  'react-native-vector-icons/FontAwesome';
 import BlurView from '../../Components/BlurVIew/BlurVIew';
-
 import style from '../../Styles/Styles';
 import { withNavigation } from 'react-navigation';
 
@@ -87,23 +86,10 @@ class Login extends Component {
             }
             else{
 
-                const userData = {
-                    user_id           : response.data.user.user_id,
-                    user_name         : response.data.user.user_name,
-                    user_name_initial : response.data.user.user_name_initial,
-                    user_username     : response.data.user.username,
-                    user_sex          : response.data.user.user_sex,
-                    user_verified     : response.data.user.user_verified,
-                    user_image        : response.data.user.user_image,
-                    user_image_2      : response.data.user.user_image_2,
-                    user_image_3      : response.data.user.user_image_3,
-                    user_active       : response.data.user.user_active
-                }
-
                 accessToken = response.data.user.token
                 this.storeToken(accessToken)
                 response.data.user.user_dark_mode || !response.data.user.user_active ? this.props.this_add_theme_black() : this.props.this_add_theme_white()
-                this.props.this_login(userData)
+                this.props.this_login(response);
             }
         
           })

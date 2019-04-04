@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import Header from '../Headers/FloatHeader'
 import style from '../../Styles/Styles'
 import BlurView from '../../Components/BlurVIew/BlurVIew';
+import Theme from '../../Components/Themes/Themes';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import DatePicker from 'react-native-datepicker'
 import moment from 'moment';
-
 const state = state => {
   return {
       backgroundMain   :   state.themes.backgroundMain,
@@ -134,116 +134,131 @@ class Calender extends Component {
     date_2_text = date_2 == null ? date_2 : `${day_2} ${month_2} ${year_2}`
 
 
+    const optionName = navigation.getParam('optionName' , '')
+    const optionNumber = navigation.getParam('option' , 1)
+    const routeName = navigation.getParam('routeName' , '')
+    const headerText = navigation.getParam('headerText' , '')
+
+
+    const date1Route = moment(date_1_com).isAfter(date_2_com) ? date_2_text : date_1_text
+    const date2Route = moment(date_1_com).isAfter(date_2_com) ? date_1_text : date_2_text
+
+
+
     return (
-      <View style={[styles.container, style.paddingBackgroundTop, style.paddingBackgroundBottom_2 ,{backgroundColor:backgroundMain}]}>
+      <View style={[styles.container, {backgroundColor : backgroundMain}]}>
+
+      <Theme/>
+
+            <View style={[styles.container, style.paddingBackgroundTop, style.paddingBackgroundBottom_2]}>
+
+                  <Text style={[style.bt, styles.calenderSummary, {color:menuIconColor, marginTop:0}]}>
+                      Get top news for the last 24 hours, 48 hours, 1 week or 1 month.
+                  </Text>
+
+                  <View style={styles.calenderOptions}>
+                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : '24 Hours', optionName : optionName, option : optionNumber, type:'top'})}>
+                        <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
+                        <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>24H</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : '48 Hours', optionName : optionName, option : optionNumber, type:'top'})}>
+                        <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
+                        <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>48H</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : '1 Week', optionName : optionName, option : optionNumber, type:'top'})}>
+                        <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
+                        <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>1W</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : '1 Day', optionName : optionName, option : optionNumber, type:'top'})}>
+                        <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
+                        <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>1M</Text>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View style={[styles.line, style.line]}></View>
+
+                  <Text style={[style.bt, styles.calenderSummary, {color:menuIconColor}]}>
+                      Select a date or a date range below to get articles from our archieved library. Please Note, our archive library stores news according to GMT+0.
+                  </Text>
+
+                  <View style={[styles.datesHeader, {display:dis}]}>
+                      <View style={styles.datesHeaderSection}>
+                        <Text style={[style.ci, styles.datesHeaderSectionText, {color:menuIconColor}]}>{selectedDates}</Text>
+                      </View>
+                      <View style={[styles.datesHeaderSection, {display:selectedDatesDis}]}>
+                        <Text style={[style.ci, styles.datesHeaderSectionText2, {color:menuIconColor2}]}>Start Date</Text>
+                        <Text style={[style.ci, styles.datesHeaderSectionText2, {color:menuIconColor2}]}>End Date</Text>
+                      </View>
+                  </View>
+
+                  <View style={[styles.calenderOptions2, {flexDirection:flexDirection}]}>
+
+                        <DatePicker
+                              style={{width: '50%'}}
+                              date={date_1}
+                              dateText={date_1_text}
+                              mode="date"
+                              format="DD-MM-YYYY"
+                              placeholder="Select a date"
+                              blurType={tabBlur}
+                              minDate={minDate}
+                              maxDate={maxDate}
+                              confirmBtnText="CONFIRM"
+                              cancelBtnText="CANCEL"
+                              TouchableComponent = {TouchableOpacity}
+                              showIcon = {false}
+                              customStyles={{
+                                dateInput: style.ca,
+                                dateText: [style.ca, styles.dateText, {color : menuIconColor}],
+                                placeholderText: [style.ca, styles.dateText, {color : menuIconColor}],
+                                btnTextConfirm : [style.ca, styles.confirmTextStyle],
+                                btnTextCancel : [style.ca, styles.confirmTextStyle],
+
+                              }}
+                              onDateChange={(date) => {this.addDate1(date)}}
+                          />
 
 
-            <Text style={[style.bt, styles.calenderSummary, {color:menuIconColor, marginTop:0}]}>
-                Get top news for the last 24 hours, 48 hours, 1 week or 1 month.
-            </Text>
 
-            <View style={styles.calenderOptions}>
-              <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]}>
-                  <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
-                  <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>24H</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]}>
-                  <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
-                  <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>48H</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]}>
-                  <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
-                  <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>1W</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]}>
-                  <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
-                  <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>1M</Text>
-              </TouchableOpacity>
-            </View>
+                          <DatePicker
+                              style={{width: '50%', display:dis}}
+                              date={date_2}
+                              dateText={date_2_text}
+                              mode="date"
+                              format="DD-MM-YYYY"
+                              placeholder="Select another date"
+                              blurType={tabBlur}
+                              minDate={minDate}
+                              maxDate={maxDate}
+                              confirmBtnText="CONFIRM"
+                              cancelBtnText="CANCEL"
+                              TouchableComponent = {TouchableOpacity}
+                              showIcon = {false}
+                              customStyles={{
+                                dateInput: style.ca,
+                                dateText: [style.ca, styles.dateText, {color : menuIconColor}],
+                                placeholderText: [style.ca, styles.dateText, {color : menuIconColor}],
+                                btnTextConfirm : [style.ca, styles.confirmTextStyle],
+                                btnTextCancel : [style.ca, styles.confirmTextStyle],
 
-            <View style={[styles.line, style.line]}></View>
-
-            <Text style={[style.bt, styles.calenderSummary, {color:menuIconColor}]}>
-                Select a date or a date range below to get articles from our archieved library. Please Note, our archive library stores news according to GMT+0.
-            </Text>
-
-            <View style={[styles.datesHeader, {display:dis}]}>
-                <View style={styles.datesHeaderSection}>
-                  <Text style={[style.ci, styles.datesHeaderSectionText, {color:menuIconColor}]}>{selectedDates}</Text>
-                </View>
-                <View style={[styles.datesHeaderSection, {display:selectedDatesDis}]}>
-                  <Text style={[style.ci, styles.datesHeaderSectionText2, {color:menuIconColor2}]}>Start Date</Text>
-                  <Text style={[style.ci, styles.datesHeaderSectionText2, {color:menuIconColor2}]}>End Date</Text>
-                </View>
-            </View>
-
-            <View style={[styles.calenderOptions2, {flexDirection:flexDirection}]}>
-
-                  <DatePicker
-                        style={{width: '50%'}}
-                        date={date_1}
-                        dateText={date_1_text}
-                        mode="date"
-                        format="DD-MM-YYYY"
-                        placeholder="select date"
-                        blurType={tabBlur}
-                        minDate={minDate}
-                        maxDate={maxDate}
-                        confirmBtnText="CONFIRM"
-                        cancelBtnText="CANCEL"
-                        TouchableComponent = {TouchableOpacity}
-                        showIcon = {false}
-                        customStyles={{
-                          dateInput: style.ci,
-                          dateText: [style.ci, styles.dateText, {color : menuIconColor}],
-                          placeholderText: [style.ci, styles.dateText, {color : menuIconColor}],
-                          btnTextConfirm : [style.ca, styles.confirmTextStyle],
-                          btnTextCancel : [style.ca, styles.confirmTextStyle],
-
-                        }}
-                        onDateChange={(date) => {this.addDate1(date)}}
-                    />
+                              }}
+                              onDateChange={(date) => {this.addDate2(date)}}
+                          />
 
 
+                            
+                  </View>          
 
-                    <DatePicker
-                        style={{width: '50%', display:dis}}
-                        date={date_2}
-                        dateText={date_2_text}
-                        mode="date"
-                        format="DD-MM-YYYY"
-                        placeholder="select date"
-                        blurType={tabBlur}
-                        minDate={minDate}
-                        maxDate={maxDate}
-                        confirmBtnText="CONFIRM"
-                        cancelBtnText="CANCEL"
-                        TouchableComponent = {TouchableOpacity}
-                        showIcon = {false}
-                        customStyles={{
-                          dateInput: style.ci,
-                          dateText: [style.ci, styles.dateText, {color : menuIconColor}],
-                          placeholderText: [style.ci, styles.dateText, {color : menuIconColor}],
-                          btnTextConfirm : [style.ca, styles.confirmTextStyle],
-                          btnTextCancel : [style.ca, styles.confirmTextStyle],
+                  <TouchableOpacity style={[styles.viewArticles, {display:dis}]}  onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, date_1 : date1Route, date_2 : date2Route, optionName : optionName, option : optionNumber, type:'calender'})}>
+                              <Text style={[style.ci, styles.viewArticlesText]}>View Articles</Text>
+                  </TouchableOpacity>  
+        
+            
+                  <Header/>
 
-                        }}
-                        onDateChange={(date) => {this.addDate2(date)}}
-                    />
+                
 
-
-                      
-            </View>          
-
-            <TouchableOpacity style={[styles.viewArticles, {display:dis}]}>
-                        <Text style={[style.ci, styles.viewArticlesText]}>View Articles</Text>
-            </TouchableOpacity>  
-   
-      
-            <Header/>
-
-          
-
+            </View> 
        </View> 
     );
   }
@@ -295,9 +310,10 @@ const styles = StyleSheet.create({
     },
 
     calenderOptions2:{
-      height : 70,
+      height : 40,
+      marginBottom : 30,
       width:'100%',
-      justifyContent:'center'
+      justifyContent:'flex-start',
       // backgroundColor:'red'
     },
     datePicker: {
@@ -311,10 +327,10 @@ const styles = StyleSheet.create({
     dateText : {
       color:'rgba(15,101,141,1)',
       fontWeight:'400',
-      textShadowColor: 'rgba(0,0,0, .8)',
-      textShadowOffset: {width: 1, height: -0},
-      textShadowRadius: 1,
-      letterSpacing:1,
+      // textShadowColor: 'rgba(0,0,0, .8)',
+      // textShadowOffset: {width: 1, height: -0},
+      // textShadowRadius: 1,
+      letterSpacing:.7,
       fontSize:17
     },
     datesHeader : {
@@ -324,20 +340,21 @@ const styles = StyleSheet.create({
     datesHeaderSection : {
       width:'100%',
       height: 25,
-      marginBottom:7,
+      marginBottom:10,
       flexDirection:'row',
       justifyContent:'center',
     },
     datesHeaderSectionText:{
       width:'100%',
       lineHeight:25,
+      height:25,
       textAlign:'center',
       letterSpacing:1,
       fontSize:15,
     },
     datesHeaderSectionText2:{
       width:'50%',
-      lineHeight:35,
+      lineHeight:40,
       textAlign:'center',
       letterSpacing:.8,
       fontSize:13,

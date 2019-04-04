@@ -2,10 +2,10 @@ import { Animated } from 'react-native'
 
 
  
-export const _handleScroll = (previous, current, HOME_HEADER_MAX_HEIGHT, offsetAnim) => {
+export const _handleScroll = (previous, current, HEIGHT, offsetAnim) => {
         
 
-    if (previous > current && current > HOME_HEADER_MAX_HEIGHT) { 
+    if (previous > current && current > HEIGHT) { 
       Animated.spring(offsetAnim, {
         toValue: -current,
         tension: 300,

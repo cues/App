@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {StyleSheet, View, TextInput, Text, Animated} from 'react-native';
 import { connect } from 'react-redux';
 import float from '../Headers/Float';
-import ArticleList from '../../Functions/Articles/Article_List'
+import ArticlesContainer from '../../Functions/Articles/All'
 import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';
 import Header from '../Headers/FloatHeader_2';
 import { _handleScroll } from '../../Components/HeaderScroll/HeaderScroll'
+import Theme from '../../Components/Themes/Themes';
 
 const state = state => {
     return {
@@ -18,6 +19,10 @@ const dispatch = dispatch => {
         
     }
 }
+
+
+FLOAT_HEADER_MAX_HEIGHT = models.includes(model) ? 130 : brand === 'Apple' ? 120 : 50 
+FLOAT_HEADER_MIN_HEIGHT = models.includes(model) ? 100 : brand === 'Apple' ? 97 : 50
 
 
 
@@ -49,7 +54,7 @@ class Articles extends Component {
     
             this._currentScrollValue = event.nativeEvent.contentOffset.y;
     
-            _handleScroll(this._previousScrollvalue, this._currentScrollValue, HOME_HEADER_MAX_HEIGHT, this.state.offsetAnim)
+            _handleScroll(this._previousScrollvalue, this._currentScrollValue, FLOAT_HEADER_MAX_HEIGHT, this.state.offsetAnim)
     
         };
     
@@ -61,14 +66,13 @@ class Articles extends Component {
         const option = navigation.getParam('option')
         return (
             <View style={[styles.container, {backgroundColor: backgroundMain}]}>
-      
-{/* 
-                <ArticleList 
-                    source = {12}
-                    scrollAnim = {this.state.scrollAnim}
-                    _handleScroll = {this.handleScroll}
-                    onMomentumScrollBegin = {this.handleMomentumScrollBegin}
-                /> */}
+                <Theme/>
+                
+                <ArticlesContainer 
+                        scrollAnim = {this.state.scrollAnim}
+                        handleScroll = {this.handleScroll}
+                        onMomentumScrollBegin = {this.handleMomentumScrollBegin}
+                    />
 
                 <Header scrollAnim={this.state.scrollAnim} 
                     offsetAnim={this.state.offsetAnim}

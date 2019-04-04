@@ -46,7 +46,7 @@ class Header extends Component {
 
 
         return (
-            <Animated.View style= {[styles.header , { transform: [{translateY}] ,backgroundColor:Platform.select({android:headerColor}) }]}>
+            <Animated.View style= {[styles.header , { transform: [{translateY}] ,  backgroundColor:Platform.select({android:headerColor}) }]}>
                     <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} />  
 
                     <Animated.View style={[styles.headerIcons, {opacity: headerIconsOpacity}]}>

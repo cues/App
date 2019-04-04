@@ -1,20 +1,22 @@
 import { createStore , combineReducers , compose } from 'redux';
 import mainReducer from './Reducers/main';
 import loginReducer from './Reducers/login';
-import articlesReducer from './Reducers/articles';
+import articlesReducer from './Reducers/Articles/articlesHome';
+import profileArticlesReducer from './Reducers/Articles/articlesProfile';
 import searchReducer from './Reducers/search';
 import commentsReducer from './Reducers/comments';
 import themesReducer from './Reducers/themes';
 import weatherReducer from './Reducers/weather';
 
 const reducers = combineReducers({
-    main     : mainReducer,
-    login     : loginReducer,
-    articles : articlesReducer,
-    search   : searchReducer,
-    comments : commentsReducer,
-    themes   : themesReducer,
-    weather  : weatherReducer
+    main             : mainReducer,
+    login            : loginReducer,
+    articles         : articlesReducer,
+    profileArticles  : profileArticlesReducer,
+    search           : searchReducer,
+    comments         : commentsReducer,
+    themes           : themesReducer,
+    weather          : weatherReducer
 });
 
 let composeEnhancers = compose;

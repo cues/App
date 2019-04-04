@@ -17,15 +17,16 @@ const themes = props => {
 
     tabBlur = tabBlur == 'xlight' ? 'light' : 'extraDark'
 
-    const display = Platform.OS == 'ios' ? 'flex' : 'none'
-
-     return (
-        <View style={{width: '100%', height:'100%', position:'absolute', display:display}}>
-            <ImageBackground source={{uri:'http://www.wedngz.com/Tidngz/Images/tidngz-107.png'}} style={{width: '100%', height:'100%', position:'absolute'}}></ImageBackground>
-            <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} />  
-        </View>
-
+    const display = ( 
+        Platform.OS == 'ios' ? 
+            <View style={{width: '100%', height:'100%', position:'absolute', display:'none'}}>
+                <ImageBackground source={{uri:'http://www.wedngz.com/Tidngz/Images/tidngz-135.png'}} style={{width: '100%', height:'100%', position:'absolute'}}></ImageBackground>
+                <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} />  
+            </View>
+        : null 
     )
+
+     return display
 }
 
 export default connect(state)(themes);

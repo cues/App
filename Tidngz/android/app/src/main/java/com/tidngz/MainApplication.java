@@ -3,6 +3,7 @@ package com.tidngz;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.bhavan.RNNavBarColor.RNNavBarColor;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.cmcewen.blurview.BlurViewPackage;
@@ -33,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SplashScreenReactPackage(),
             new RNNavBarColor(),
             new RNCWebViewPackage(),
             new BlurViewPackage(),

@@ -44,6 +44,7 @@
     "react-native-render-html": "^4.1.1",
     "react-native-sideswipe": "^1.4.2",
     "react-native-slideshow": "^1.0.1",
+    "react-native-splash-screen": "^3.2.0",
     "react-native-status-bar-height": "^2.2.0",
     "react-native-swiper": "^1.5.14",
     "react-native-swiper-flatlist": "^1.0.9",
