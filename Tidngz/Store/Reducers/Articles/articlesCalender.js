@@ -1,7 +1,13 @@
-import { PROFILE_REFRESH_ARTICLES, PROFILE_ADD_ARTICLE, PROFILE_SELECTED_ARTICLE, PROFILE_IMAGE_SELECTED_ARTICLE, PROFILE_LOADER, PROFILE_ALL_ARTICLES, PROFILE_LOAD_ARTICLES,  PROFILE_UPDATE_ARTICLES } from "../../Actions/action_types";
+import {CALENDER_REFRESH_ARTICLES, CALENDER_ADD_ARTICLE, CALENDER_SELECTED_ARTICLE, CALENDER_IMAGE_SELECTED_ARTICLE, CALENDER_LOADER, CALENDER_CALENDER_ARTICLES, CALENDER_LOAD_ARTICLES, CALENDER_ARTICLE_TABLET, CALENDER_UPDATE_ARTICLES} from "../../Actions/action_types";
 
 const initialState = {
-    allArticles : [],
+    allArticles : [{
+        key : 1,
+        article : {
+            articles_id: 1,
+            type:'inital'
+        }
+    }],
     selectedArticle : null,
     articleTablet:1,
     loader:false,
@@ -21,10 +27,16 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 
     switch (action.type){  
-        case PROFILE_REFRESH_ARTICLES : 
+        case CALENDER_REFRESH_ARTICLES : 
             return {
                 ...state, 
-                allArticles : [],
+                allArticles : [{
+                    key : 1,
+                    article : {
+                        articles_id: 1,
+                        type:'inital'
+                    }
+                }],
                 selectedArticle : null,
                 articleTablet:1,
                 loader:true,
@@ -35,7 +47,7 @@ const reducer = (state = initialState, action) => {
                 total_records:null,
                 last_articles_id:null,
             };
-        case PROFILE_ADD_ARTICLE :
+        case CALENDER_ADD_ARTICLE :
             return {
                 ...state,
                 allArticles : state.allArticles.concat({ 
@@ -44,22 +56,22 @@ const reducer = (state = initialState, action) => {
                 }),
                 loader:false
             };
-        case PROFILE_SELECTED_ARTICLE :
+        case CALENDER_SELECTED_ARTICLE :
             return {
                 ...state,
                 selectedArticle : action.article,
             }
-        case PROFILE_IMAGE_SELECTED_ARTICLE :
+        case CALENDER_IMAGE_SELECTED_ARTICLE :
             return {
                 ...state,
                 imageSelectedArticle : action.article,
             }
-        case PROFILE_LOADER :
+        case CALENDER_LOADER :
             return {
                 ...state,
                 loader:true
             }
-        case PROFILE_ALL_ARTICLES : 
+        case CALENDER_ALL_ARTICLES : 
             return {
                 ...state,
                 total_records      :   action.total_records,
@@ -67,13 +79,18 @@ const reducer = (state = initialState, action) => {
                 number_of_pages    :   action.number_of_pages
             }
        
-        case PROFILE_LOAD_ARTICLES :
+        case CALENDER_LOAD_ARTICLES :
             return {
                 ...state,
                 current_page : action.current_page,
                 start        : action.start
             }
-        case PROFILE_UPDATE_ARTICLES :
+        case CALENDER_ARTICLE_TABLET :
+            return {
+                ...state,
+                articleTablet : action.article,
+            }
+        case CALENDER_UPDATE_ARTICLES :
             return {
                 ...state,
                 allArticles : action.allArticles,

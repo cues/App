@@ -9,6 +9,7 @@ import FontAwesome from  'react-native-vector-icons/FontAwesome';
 import BlurView from '../../Components/BlurVIew/BlurVIew';
 import style from '../../Styles/Styles';
 import { withNavigation } from 'react-navigation';
+import {timezone} from '../../Components/Timezone/Timezone';
 
 import {connect} from 'react-redux'
 import { login , add_theme_white, add_theme_black, loginRoute, loginError } from '../../Store/Actions/index'
@@ -73,26 +74,35 @@ class Login extends Component {
 
     login = async () => {
 
-         const { api, apiKey } = this.props;
-         const { username, password } = this.state;
+        await fetch('https://api.ipify.org/?format=json')
+        .then((response) => response.json())
+        .then((response) => {
 
-          const url = `${api}/LoginSignUp/Login/login.php?key=${apiKey}&type=login&username=${username}&password=${password}`;
-          await fetch(url)
-          .then((response) => response.json())
-          .then((response) => {
 
-            if(response.data.error){
-                this.props.this_loginError('Please check your username or password')
-            }
-            else{
-
-                accessToken = response.data.user.token
-                this.storeToken(accessToken)
-                response.data.user.user_dark_mode || !response.data.user.user_active ? this.props.this_add_theme_black() : this.props.this_add_theme_white()
-                this.props.this_login(response);
-            }
         
-          })
+                const { api, apiKey } = this.props;
+                const { username, password } = this.state;
+
+                const url = `${api}/LoginSignUp/Login/login.php?key=${apiKey}&type=login&username=${username}&password=${password}&ip=${response.ip}&timezone=${timezone()}`;
+                fetch(url)
+                .then((response) => response.json())
+                .then((response) => {
+
+                    if(response.data.error){
+                        this.props.this_loginError('Please check your username or password')
+                    }
+                    else{
+
+                        accessToken = response.data.user.token
+                        this.storeToken(accessToken)
+                        response.data.user.user_dark_mode || !response.data.user.user_active ? this.props.this_add_theme_black() : this.props.this_add_theme_white()
+                        this.props.this_login(response);
+                    }
+                
+                })
+
+        })
+
 
 
     }

@@ -115,10 +115,12 @@ class HomeTitle extends Component {
         const date = new Date();
         const hour = parseInt(date.getHours());
 
-        const welcolm = hour >= 2 && hour < 12 ? `GOOD MORNING ${item.user}`
-                    : hour >= 12 && hour < 17 ? `GOOD AFTERNOON ${item.user}`
-                    : hour >= 17 && hour < 22 ? `GOOD EVENING ${item.user}`
-                    : `Hello ${item.user}`
+        const user = item.user.split(' ')[0];
+
+        const welcolm = hour >= 2 && hour < 12 ? `GOOD MORNING ${user}`
+                    : hour >= 12 && hour < 17 ? `GOOD AFTERNOON ${user}`
+                    : hour >= 17 && hour < 22 ? `GOOD EVENING ${user}`
+                    : `Hello ${user}`
 
         const getWeather = (
             isEmpty && !weatherLoader ? 

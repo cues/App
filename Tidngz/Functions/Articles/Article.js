@@ -12,7 +12,7 @@ import * as Animatable from 'react-native-animatable';
 
 
 import { connect } from 'react-redux';
-import {articleTablet, selected_article, tabBarType} from '../../Store/Actions/index';
+import {selected_article} from '../../Store/Actions/index';
 
 const state = state => {
   return {
@@ -22,7 +22,6 @@ const state = state => {
 
 const dispatch = dispatch => {
     return {
-        this_articleTablet     :  article   =>  dispatch(articleTablet(article)),
         this_selectedArticle   :  article   =>  dispatch(selected_article(article)),       
     }
 }
@@ -87,7 +86,7 @@ class Article extends Component {
 
     render (){
 
-    const {article , articleItem, container} = this.props;
+    const {article , articleItem, container, fullDate} = this.props;
     const { viewWidth , ImagesActive} = this.state;
     const { layout } = this;
 
@@ -148,7 +147,7 @@ class Article extends Component {
 
                                             <Linked article = {article} type='all'/>
 
-                                            <User user = {article.user} dates = {article.dates}/>
+                                            <User user = {article.user} dates = {article.dates} fullDate={fullDate}/>
 
                                         </View>
 

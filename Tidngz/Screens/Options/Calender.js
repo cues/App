@@ -77,8 +77,7 @@ class Calender extends Component {
 
     date_1_com = moment(date_1, ["DD-MM-YYYY", "YYYY-MM-DD"]);
     date_2_com = moment(date_2, ["DD-MM-YYYY", "YYYY-MM-DD"]);
-
-
+    
     // const date2Dis        =   date_1 != null && moment(date_1_com).isSame(date_2_com) == false ? 'flex' : 'none';
     const dis = date_1 != null ? 'flex' : 'none';
 
@@ -143,6 +142,8 @@ class Calender extends Component {
     const date1Route = moment(date_1_com).isAfter(date_2_com) ? date_2_text : date_1_text
     const date2Route = moment(date_1_com).isAfter(date_2_com) ? date_1_text : date_2_text
 
+    const date_1_query =  moment(date_1_com).isAfter(date_2_com) ? date_2_com : date_1_com
+    const date_2_query =  moment(date_1_com).isAfter(date_2_com) ? date_1_com : date_2_com
 
 
     return (
@@ -157,19 +158,19 @@ class Calender extends Component {
                   </Text>
 
                   <View style={styles.calenderOptions}>
-                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : '24 Hours', optionName : optionName, option : optionNumber, type:'top'})}>
+                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : 1, optionName : optionName, option : optionNumber, type:'top'})}>
                         <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
                         <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>24H</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : '48 Hours', optionName : optionName, option : optionNumber, type:'top'})}>
+                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : 2, optionName : optionName, option : optionNumber, type:'top'})}>
                         <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
                         <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>48H</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : '1 Week', optionName : optionName, option : optionNumber, type:'top'})}>
+                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : 3, optionName : optionName, option : optionNumber, type:'top'})}>
                         <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
                         <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>1W</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : '1 Day', optionName : optionName, option : optionNumber, type:'top'})}>
+                    <TouchableOpacity style={[styles.calenderOptionsEach, {backgroundColor:Platform.select({android:headerColor})}]} onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, top : 4, optionName : optionName, option : optionNumber, type:'top'})}>
                         <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
                         <Text style={[style.ca, styles.calenderOptionsText, {color:menuIconColor}]}>1M</Text>
                     </TouchableOpacity>
@@ -249,7 +250,7 @@ class Calender extends Component {
                             
                   </View>          
 
-                  <TouchableOpacity style={[styles.viewArticles, {display:dis}]}  onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName, date_1 : date1Route, date_2 : date2Route, optionName : optionName, option : optionNumber, type:'calender'})}>
+                  <TouchableOpacity style={[styles.viewArticles, {display:dis}]}  onPress={() => navigation.navigate('CalenderArticles', {routeName: routeName, headerText:headerText, name : optionName,  date_1 : date_1_query, date_2 : date_2_query, date_1_name : date1Route, date_2_name : date2Route, optionName : optionName, option : optionNumber, type:'calender'})}>
                               <Text style={[style.ci, styles.viewArticlesText]}>View Articles</Text>
                   </TouchableOpacity>  
         

@@ -1,4 +1,4 @@
-import {PROFILE_REFRESH_ARTICLES, PROFILE_ADD_ARTICLE,  PROFILE_LOADER, PROFILE_ALL_ARTICLES, PROFILE_LOAD_ARTICLES,  PROFILE_UPDATE_ARTICLES} from '../action_types';
+import {PROFILE_REFRESH_ARTICLES, PROFILE_ADD_ARTICLE, PROFILE_SELECTED_ARTICLE,  PROFILE_IMAGE_SELECTED_ARTICLE,  PROFILE_LOADER, PROFILE_ALL_ARTICLES, PROFILE_LOAD_ARTICLES,  PROFILE_UPDATE_ARTICLES} from '../action_types';
 
 export const profile_refresh_articles = () => {
     return {
@@ -14,7 +14,19 @@ export const profile_add_article = article => {
 };
 
 
+export const profile_selected_article = article => {
+    return {
+        type            :   PROFILE_SELECTED_ARTICLE,
+        article         :   article
+    }
+}
 
+export const profile_image_selected_article = article => {
+    return {
+        type    : PROFILE_IMAGE_SELECTED_ARTICLE,
+        article : article
+    }
+}
 
 
 export const profile_loader = () => {

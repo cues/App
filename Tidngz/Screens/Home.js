@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, View, TouchableOpacity, Image, Text, ImageBackground, Button, Animated} from 'react-native';
-import HomeContainer from '../Functions/Home/Home'
+import Articles from '../Functions/Articles/ArticleList';
 import style from '../Styles/Styles'; 
 import Theme from '../Components/Themes/Themes';
 import {brand, model, models} from '../Components/DeviceInfo/DeviceInfo';
@@ -81,7 +81,8 @@ class Home extends Component {
       <View style={[styles.container, {backgroundColor: backgroundMain}]}>
         <Theme/>
        
-        <HomeContainer 
+        <Articles 
+            type = 'home'
             scrollAnim = {this.state.scrollAnim}
             handleScroll = {this.handleScroll}
             onMomentumScrollBegin = {this.handleMomentumScrollBegin}

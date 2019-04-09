@@ -9,25 +9,37 @@ import ProfilePic from '../User/ProfilePic';
 class User extends Component {
 
     state = {
-        time :  moment(this.props.dates.timestamp).fromNow()
+        time :  null
     }
 
  
 
     componentWillMount() {
+
+        this.update_date()
+
        this.intervalId =  setInterval(() => {
             this.update_date()
            }, 1000);
     }
 
-    componentWillMount() {
+    componentWillUnmount() {
         clearInterval(this.intervalId);
     }
 
     update_date = () => {
-            this.setState({
-                time  : moment(this.props.dates.timestamp).fromNow()
-            })
+
+        const {fullDate, dates} = this.props;
+            if(fullDate){
+                this.setState({
+                    time  : `on ${dates.fullDate}`
+                })
+            }else{
+                this.setState({
+                    time  : moment(dates.timestamp).fromNow()
+                })
+            }
+        
      }
    
     render(){

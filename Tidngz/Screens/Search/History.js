@@ -10,19 +10,27 @@ import SearchTags from './Content/Tags';
 const WIDTH = Dimensions.get('window').width;
 
 import { connect } from 'react-redux';
+import { search_history } from '../../Store/Actions/index'
 
 const state = state => {
     return {
-        api                     :   state.main.api,
-        user_id                 :   state.main.user.user_id,
-        apiKey                  :   state.main.apiKey,
-        tabBlur             :   state.themes.tabBlur,
-        backgroundMain      :   state.themes.backgroundMain,
-        menuIconColor       :   state.themes.menuIconColor,
-        search_places_count :   state.search.search_places_count,
-        search_places       :   state.search.search_places
+        api                   :   state.main.api,
+        user_id               :   state.main.user.user_id,
+        apiKey                :   state.main.apiKey,
+        tabBlur               :   state.themes.tabBlur,
+        backgroundMain        :   state.themes.backgroundMain,
+        menuIconColor         :   state.themes.menuIconColor,
+        search_history_count  :   state.search.search_history_count,
+        search_history        :   state.search.search_history
     }
 }
+
+const dispatch = dispatch => {
+  return {
+      this_search_history  : (count, result) => dispatch(search_history(count, result)),
+  }
+}
+
 
 class History extends Component {
 
@@ -31,13 +39,8 @@ class History extends Component {
   constructor(props){
     super(props)
 
-    this.state = {
-      history_count : 0,
-      history : []
-    }
 
-
-    const { api, apiKey, user_id } = this.props;
+    const { api, apiKey, user_id , this_search_history} = this.props;
 
     const url = `${api}/Search/search.php?key=${apiKey}&user_id=${user_id}&type=history`;
       
@@ -45,10 +48,7 @@ class History extends Component {
     .then((response) => response.json())
     .then((response) => {
       
-        this.setState({
-          history_count : response.data.count,
-          history : response.data.items
-        })
+      this_search_history(response.data.count, response.data.items)
 
     })
 
@@ -58,12 +58,11 @@ class History extends Component {
 
   render() {
 
-    const { history_count, history } = this.state
 
-    const {backgroundMain, search_places_count, search_places, menuIconColor, tabBlur} = this.props
+    const {backgroundMain, search_history_count, search_history, menuIconColor, tabBlur} = this.props
 
 
-    const historyAll = history.map((search, index) => (
+    const historyAll = search_history.map((search, index) => (
            
         search.item.key != null ? 
                 <View key={search.item.key}>
@@ -73,7 +72,7 @@ class History extends Component {
                             search.type == 'TAG' ? <SearchTags tag={search.item}/> : null
                 }
             
-                    <View style={[style.line, index + 1 == history_count || search.item.key == null ? style.none : null]}/>
+                    <View style={[style.line, index + 1 == search_history_count || search.item.key == null ? style.none : null]}/>
                 </View>
             : null
   
@@ -84,7 +83,7 @@ class History extends Component {
 
 
     const search = (
-        history_count == 0 ? 
+        search_history_count == 0 ? 
          <Text style={[style.noSearch, {color:menuIconColor}]}>No history found</Text>
       :
         <View>
@@ -122,4 +121,4 @@ const styles = StyleSheet.create({
   });
   
 
-  export default connect(state)(History);
+  export default connect(state, dispatch)(History);

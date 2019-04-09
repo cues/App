@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Dimensions, Platform, ImageBackground, StatusBar , TextInput, AsyncStorage} from 'react-native';
 import {SafeAreaView,createSwitchNavigator, createDrawerNavigator, createStackNavigator, createAppContainer , createBottomTabNavigator, createMaterialTopTabNavigator} from "react-navigation";
+import {timezone} from './Components/Timezone/Timezone';
 import SplashScreen from 'react-native-splash-screen'
 import Activate from './Screens/Login_SignUp/Activate';
 import Home from './Screens/Home';
@@ -15,7 +16,8 @@ import AddClassified from './Screens/Add/Classified';
 import AddVideo from './Screens/Add/Video';
 import Options from './Screens/Options/Options';
 import Calender from './Screens/Options/Calender';
-import Articles from './Screens/Options/Articles';
+import OptionsArticles from './Screens/Options/OptionsArticles';
+import CalenderArticles from './Screens/Options/CalenderArticles';
 import Places from './Screens/Places';
 import PlacesTitle from './Screens/Places/Title';
 import UsersTitle from './Screens/Users/Title';
@@ -82,10 +84,10 @@ const HomeStack = createStackNavigator({
   Home          :   Home,
   Comments      :   Comments,
   Replies       :   Replies,
-  Calender      :   Calender,
   Options       :   Options,
-  OptionArticles      :   Articles,
-  CalenderArticles      :   Articles,
+  OptionsArticles      :   OptionsArticles,
+  Calender      :   Calender,
+  CalenderArticles    :   CalenderArticles,
   Menu          :   Menu,
   Bookmark      :   Bookmark,
   Setting       :   Setting,
@@ -282,10 +284,10 @@ const ProfileStack = createStackNavigator({
   Profile       :   Profile,
   Comments      :   Comments,
   Replies       :   Replies,
-  Calender      :   Calender,
   Options       :   Options,
-  OptionArticles      :   Articles,
-  CalenderArticles      :   Articles,
+  OptionsArticles      :   OptionsArticles,
+  Calender      :   Calender,
+  CalenderArticles    :   CalenderArticles,
   Article       :   Article,
 },{
   cardStyle:{
@@ -319,7 +321,7 @@ const Tab = createBottomTabNavigator({
   },
   {
     tabBarComponent:props => <TabBar {...props}/>,
-    initialRouteName:'Profile',            
+    initialRouteName:'Home',            
     animationEnabled : true,
     tabBarOptions:{
       activeBackgroundColor : 'transparent',
@@ -417,7 +419,6 @@ class App extends Component {
 
     this.props.LoggedIn ? this.props.this_add_theme_white() : this.props.this_add_theme_black()
     
-
 }
 
 
@@ -453,20 +454,25 @@ class App extends Component {
 
         if(token){
 
-          const { api, apiKey } = this.props;
-          const url = `${api}/LoginSignUp/Login/login.php?key=${apiKey}&type=relogin&token=${token}`;
-          await fetch(url)
-          .then((response) => response.json())
-          .then((response) => {
+          await fetch('https://api.ipify.org/?format=json')
+            .then((response) => response.json())
+            .then((response) => {
 
-            if(!response.data.error){
+                const { api, apiKey } = this.props;
+                const url = `${api}/LoginSignUp/Login/login.php?key=${apiKey}&type=relogin&token=${token}&ip=${response.ip}&timezone=${timezone()}`;
+                fetch(url)
+                .then((response) => response.json())
+                .then((response) => {
 
-                response.data.user.user_dark_mode || !response.data.user.user_active ? this.props.this_add_theme_black() : this.props.this_add_theme_white()
-                this.props.this_login(response);
-                SplashScreen.hide();
+                  if(!response.data.error){
 
-            }
-        
+                      response.data.user.user_dark_mode || !response.data.user.user_active ? this.props.this_add_theme_black() : this.props.this_add_theme_white()
+                      this.props.this_login(response);
+                      SplashScreen.hide();
+
+                  }
+              
+                })
           })
 
        }else{

@@ -8,17 +8,42 @@ import { withNavigation } from 'react-navigation';
 const WIDTH = Dimensions.get('window').width;
 
 import { connect } from 'react-redux';
+import { search_history } from '../../../Store/Actions/index'
 
 const state = state => {
     return {
+        api                 :   state.main.api,
+        user_id             :   state.main.user.user_id,
+        apiKey              :   state.main.apiKey,
         tabBlur             :   state.themes.tabBlur,
         menuIconColor       :   state.themes.menuIconColor,
     }
 }
 
+const dispatch = dispatch => {
+    return {
+        this_search_history  : (count, result) => dispatch(search_history(count, result)),
+    }
+  }
+
 class SearchUsers extends Component {
 
+    navigate = users_id => {
 
+        const { api, apiKey, user_id , navigation, this_search_history} = this.props;
+
+        navigation.navigate('UsersTitle')
+    
+        const url = `${api}/Search/search.php?key=${apiKey}&user_id=${user_id}&type=add&item_id=${users_id}&item_type=USER`;
+          
+        fetch(url)
+        .then((response) => response.json())
+        .then((response) => {
+     
+            this_search_history(response.data.count, response.data.items)
+        })
+    }
+    
 
   render() {
     const {user, menuIconColor, tabBlur, navigation} = this.props
@@ -28,7 +53,7 @@ class SearchUsers extends Component {
     return (
         <View style={styles.eachSearch} >
 
-                <TouchableOpacity style={styles.eachSearch} onPress={() => navigation.navigate('UsersTitle')}>
+                <TouchableOpacity style={styles.eachSearch} onPress={() => this.navigate(user.user_id)}>
 
                         <ProfilePic styleImage={styles.image} image={user.user_image} styleInitial={styles.imageInitial} styleInitialText={styles.imageInitialText} initial={user.user_name_initial}/>
 
@@ -111,4 +136,4 @@ const styles = StyleSheet.create({
   });
   
 
-  export default withNavigation(connect(state)(SearchUsers));
+  export default withNavigation(connect(state, dispatch)(SearchUsers));

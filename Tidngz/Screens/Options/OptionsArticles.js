@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, View, TextInput, Text, Animated} from 'react-native';
 import { connect } from 'react-redux';
 import float from '../Headers/Float';
-import ArticlesContainer from '../../Functions/Articles/All'
+import Articles from '../../Functions/Articles/ArticleList';
 import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';
 import Header from '../Headers/FloatHeader_2';
 import { _handleScroll } from '../../Components/HeaderScroll/HeaderScroll'
@@ -26,7 +26,7 @@ FLOAT_HEADER_MIN_HEIGHT = models.includes(model) ? 100 : brand === 'Apple' ? 97 
 
 
 
-class Articles extends Component {
+class Options extends Component {
 
 
 
@@ -63,12 +63,13 @@ class Articles extends Component {
     render (){
         const  { backgroundMain, navigation } = this.props
 
-        const option = navigation.getParam('option')
+
         return (
             <View style={[styles.container, {backgroundColor: backgroundMain}]}>
                 <Theme/>
                 
-                <ArticlesContainer 
+                <Articles 
+                        type = 'options'
                         scrollAnim = {this.state.scrollAnim}
                         handleScroll = {this.handleScroll}
                         onMomentumScrollBegin = {this.handleMomentumScrollBegin}
@@ -96,4 +97,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default connect(state)(Articles);
+export default connect(state)(Options);

@@ -1,8 +1,7 @@
 import { createStore , combineReducers , compose } from 'redux';
 import mainReducer from './Reducers/main';
 import loginReducer from './Reducers/login';
-import articlesReducer from './Reducers/Articles/articlesHome';
-import profileArticlesReducer from './Reducers/Articles/articlesProfile';
+import articlesReducer from './Reducers/articles';
 import searchReducer from './Reducers/search';
 import commentsReducer from './Reducers/comments';
 import themesReducer from './Reducers/themes';
@@ -12,7 +11,6 @@ const reducers = combineReducers({
     main             : mainReducer,
     login            : loginReducer,
     articles         : articlesReducer,
-    profileArticles  : profileArticlesReducer,
     search           : searchReducer,
     comments         : commentsReducer,
     themes           : themesReducer,

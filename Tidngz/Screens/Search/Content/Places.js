@@ -8,15 +8,44 @@ import { withNavigation } from 'react-navigation';
 const WIDTH = Dimensions.get('window').width;
 
 import { connect } from 'react-redux';
+import { search_history } from '../../../Store/Actions/index'
 
 const state = state => {
     return {
+        api                 :   state.main.api,
+        user_id             :   state.main.user.user_id,
+        apiKey              :   state.main.apiKey,
         tabBlur             :   state.themes.tabBlur,
         menuIconColor       :   state.themes.menuIconColor,
     }
 }
 
+const dispatch = dispatch => {
+  return {
+      this_search_history  : (count, result) => dispatch(search_history(count, result)),
+  }
+}
+
+
+
 class SearchPlaces extends Component {
+
+
+  navigate = place_id => {
+
+    const { api, apiKey, user_id , navigation, this_search_history} = this.props;
+
+    navigation.navigate('PlacesTitle')
+
+    const url = `${api}/Search/search.php?key=${apiKey}&user_id=${user_id}&type=add&item_id=${place_id}&item_type=PLACE`;
+      
+    fetch(url)
+    .then((response) => response.json())
+    .then((response) => {
+ 
+        this_search_history(response.data.count, response.data.items)
+    })
+  }
 
 
 
@@ -28,7 +57,7 @@ class SearchPlaces extends Component {
     return (
         <View style={styles.eachSearch} >
 
-        <TouchableOpacity style={styles.eachSearch} onPress={() => navigation.navigate('PlacesTitle')}>
+        <TouchableOpacity style={styles.eachSearch} onPress={() => this.navigate(place.place_id)}>
             <Image style={styles.placeFlag} source={{uri : place.place_flag}}/>
 
             <View style={styles.placeNameContainer}>
@@ -120,4 +149,4 @@ const styles = StyleSheet.create({
   });
   
 
-  export default withNavigation(connect(state)(SearchPlaces));
+  export default withNavigation(connect(state, dispatch)(SearchPlaces));

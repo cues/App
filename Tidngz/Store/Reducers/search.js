@@ -1,4 +1,4 @@
-import { SEARCH_VALUE, SEARCH_SUGGESTIONS, SEARCH_PLACES_1 , SEARCH_PLACES_2 , SEARCH_PLACES_3 , 
+import { SEARCH_VALUE, SEARCH_HISTORY, SEARCH_SUGGESTIONS, SEARCH_PLACES_1 , SEARCH_PLACES_2 , SEARCH_PLACES_3 , 
     SEARCH_USERS_1 , SEARCH_USERS_2 , SEARCH_USERS_3 ,
     SEARCH_TAGS_1 , SEARCH_TAGS_2 , SEARCH_TAGS_3 ,
     SEARCH_PLACES , SEARCH_USERS , SEARCH_TAGS } from '../Actions/action_types';
@@ -6,6 +6,8 @@ import { SEARCH_VALUE, SEARCH_SUGGESTIONS, SEARCH_PLACES_1 , SEARCH_PLACES_2 , S
 
 const initialState = {
     search_value : '',
+    search_history_count : 0,
+    search_history : [],
     search_suggestions_count : 0,
     search_suggestions      : [],
     search_places_1_count  : 0,
@@ -42,6 +44,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 search_value : action.search_value
+            }
+        case SEARCH_HISTORY :
+            return {
+                ...state,
+                search_history_count : action.count,
+                search_history : action.result
             }
         case SEARCH_SUGGESTIONS :
             return {

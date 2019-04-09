@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, View, Text, Animated, Dimensions} from 'react-native';
 import style from '../../../Styles/Styles';
 import BlurView from '../../../Components/BlurVIew/BlurVIew';
-import ProfileContainer from '../../../Functions/Profile/Profile';
+// import ProfileContainer from '../../../Functions/Profile/Profile';
+import Articles from '../../../Functions/Articles/ArticleList';
 
 import {brand, model, models} from '../../../Components/DeviceInfo/DeviceInfo';
 
@@ -74,13 +75,29 @@ class Header extends Component {
             var {x, y, width, height} = event.nativeEvent.layout;
 
             this.setState({
-                viewWidthNew : width,
+                viewWidthNew : width + 23,
                 viewWidthOld : WIDTH - 20,
                 viewActive : true
             })
         }
        
     }
+
+
+    handleMomentumScrollBegin = (event) => {
+      
+        this._previousScrollvalue = event.nativeEvent.contentOffset.y;
+
+    };
+        
+  
+    handleScroll = (event) => {
+
+        this._currentScrollValue = event.nativeEvent.contentOffset.y;
+
+    };
+
+
 
     render (){
 
@@ -136,14 +153,43 @@ class Header extends Component {
 
         const imageDimensions = scrollY.interpolate({
             inputRange : [0,HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT,
-                HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT+2+PROFILE_IMAGE_MIN_HEIGHT+40, 
+                HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT+2+PROFILE_IMAGE_MIN_HEIGHT+40 , 
                 HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT+2+PROFILE_IMAGE_MIN_HEIGHT+100],
-            outputRange : [0,0,0,20],
+            outputRange : [0,0,0,16],
+            extrapolate:'clamp'
+        })
+
+        const imageTop = scrollY.interpolate({
+            inputRange : [0,HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT,
+                HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT+2+PROFILE_IMAGE_MIN_HEIGHT+40 , 
+                HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT+2+PROFILE_IMAGE_MIN_HEIGHT+100],
+            outputRange : [15,15,15,7],
+            extrapolate:'clamp'
+        })
+
+        const imageRight = scrollY.interpolate({
+            inputRange : [0,HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT,
+                HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT+2+PROFILE_IMAGE_MIN_HEIGHT+40 , 
+                HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT+2+PROFILE_IMAGE_MIN_HEIGHT+100],
+            outputRange : [0,0,0,7],
+            extrapolate:'clamp'
+        })
+
+        const imageRadius = scrollY.interpolate({
+            inputRange : [0,HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT,
+                HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT+2+PROFILE_IMAGE_MIN_HEIGHT+40 , 
+                HEADER_MAX_HEIGHT-HEADER_MIN_HEIGHT+2+PROFILE_IMAGE_MIN_HEIGHT+100],
+            outputRange : [0,0,0,8],
             extrapolate:'clamp'
         })
 
 
         const userInfo = this.userInfo();
+
+
+        
+        
+ 
                   
 
         return (
@@ -156,14 +202,20 @@ class Header extends Component {
                 </Animated.View>
 
 
-                <ProfileContainer scrollY={scrollY}/>
+                <Articles 
+                    type = 'profile'
+                    scrollAnim = {scrollY}
+                    handleScroll = {this.handleScroll}
+                    onMomentumScrollBegin = {this.handleMomentumScrollBegin}
+                />
+
 
                 <Animated.View style= {[styles.headerBlur , { height:headerHeight, opacity:header1 , backgroundColor:Platform.select({android:headerColor})}]}>
                     <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} />   
 
                     <Animated.View onLayout = {this.layout} style={[styles.headerUser_nameContainer, {width:headerMove, bottom:headerTitle}]}>
 
-                        <Animated.Image source={{uri:user.user_image}} style={[styles.headerUser_Image, {height:imageDimensions, width:imageDimensions}]}/>
+                        <Animated.Image source={{uri:user.user_image}} style={[styles.headerUser_Image, {height:imageDimensions, width:imageDimensions, marginTop:imageTop, marginRight:imageRight, borderRadius: imageRadius}]}/>
 
                         <Animated.Text style={[style.ca, styles.headerUser_Name, {fontSize :headerFont, color:menuIconColor}]}>
                             {user.user_name} 
@@ -219,10 +271,8 @@ const styles = StyleSheet.create({
     headerUser_Image : {
         // height : 20,
         // width : 20,
-        borderRadius: 10,
-        position:'absolute',
-        top:5,
-        left: -30
+        // position:'absolute',
+        // left: -20
     },
     headerUser_Name : {
         height: 30,

@@ -1,4 +1,4 @@
-import { SEARCH_VALUE, SEARCH_SUGGESTIONS, SEARCH_PLACES_1 , SEARCH_PLACES_2 , SEARCH_PLACES_3 , 
+import { SEARCH_VALUE, SEARCH_HISTORY, SEARCH_SUGGESTIONS, SEARCH_PLACES_1 , SEARCH_PLACES_2 , SEARCH_PLACES_3 , 
         SEARCH_USERS_1 , SEARCH_USERS_2 , SEARCH_USERS_3 ,
         SEARCH_TAGS_1 , SEARCH_TAGS_2 , SEARCH_TAGS_3 ,
         SEARCH_PLACES , SEARCH_USERS , SEARCH_TAGS } from './action_types';
@@ -8,6 +8,14 @@ export const search_value = (value) => {
     return {
         type : SEARCH_VALUE,
         search_value : value
+    }
+} 
+
+export const search_history = (count, result) => {
+    return {
+        type : SEARCH_HISTORY,
+        count : count, 
+        result : result
     }
 } 
 

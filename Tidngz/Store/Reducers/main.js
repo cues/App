@@ -8,7 +8,11 @@ const initialState = {
     api : "https://www.wedngz.com/Tidngz/API",
     apiKey : 1707,
     LoggedIn : false,
-   
+    selectedUser : '',
+    selectedPlace : '',
+    selectedPlaceLocal : '',
+    selectedHashtag : '',
+    selectedLinked : '',
     user : ''
     // user : {
     //     user_id : 120,

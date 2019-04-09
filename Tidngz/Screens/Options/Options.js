@@ -58,7 +58,7 @@ class Options extends Component {
 
                 <ScrollView contentContainerStyle={[style.paddingBackgroundTop, style.paddingBackgroundBottom_2]}>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'ACCIDENT', optionName : 'ACCIDENT', option : 2, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'ACCIDENT', optionName : 'ACCIDENT', option : 2, type:'options'})}>
                             <FontAwesome5 style={styles.eachOptionIcon} size={icon1} name='ambulance' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Accident</Text>
                             {iconRight}
@@ -66,7 +66,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'BUSINESS', optionName : 'BUSINESS', option : 3, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'BUSINESS', optionName : 'BUSINESS', option : 3, type:'options'})}>
                             <MaterialIcons style={styles.eachOptionIcon} size={icon3} name='business-center' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Business</Text>
                             {iconRight}
@@ -74,7 +74,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'CELEBRITY', optionName : 'CELEBRITY', option : 4, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'CELEBRITY', optionName : 'CELEBRITY', option : 4, type:'options'})}>
                             {/* <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  */}
                             <MaterialIcons style={styles.eachOptionIcon} size={icon3} name='face' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Celebrity</Text> 
@@ -83,7 +83,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'CRIME', optionName : 'CRIME', option : 5, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'CRIME', optionName : 'CRIME', option : 5, type:'options'})}>
                             <FontAwesome5 style={styles.eachOptionIcon} size={icon2} name='bomb' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Crime</Text>
                             {iconRight}
@@ -91,7 +91,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'EDUCATION', optionName : 'EDUCATION', option : 6, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'EDUCATION', optionName : 'EDUCATION', option : 6, type:'options'})}>
                             <MaterialIcons style={styles.eachOptionIcon} size={icon3} name='school' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Education</Text> 
                             {iconRight}
@@ -99,7 +99,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'ENTERTAINMENT', optionName : 'ENVIRONMENT', option : 7, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'ENTERTAINMENT', optionName : 'ENVIRONMENT', option : 7, type:'options'})}>
                             {/* <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} /> */}
                             <MaterialIcons style={styles.eachOptionIcon} size={icon3} name='speaker' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Entertainment</Text> 
@@ -108,7 +108,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'ENVIRONMENT', optionName : 'ENVIRONMENT', option : 8, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'ENVIRONMENT', optionName : 'ENVIRONMENT', option : 8, type:'options'})}>
                             {/* <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  */}
                             <FontAwesome style={styles.eachOptionIcon} size={icon2} name='tree' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Environment</Text>
@@ -117,7 +117,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'FILMS & THEATRE', optionName : 'FILMS & THEATRE', option : 9, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'FILMS & THEATRE', optionName : 'FILMS & THEATRE', option : 9, type:'options'})}>
                             {/* <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  */}
                             <FontAwesome style={styles.eachOptionIcon} size={icon2} name='film' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Films & Theatre</Text>
@@ -126,7 +126,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'FOOD & CULINARY', optionName : 'FOOD & CULINARY', option : 10, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'FOOD & CULINARY', optionName : 'FOOD & CULINARY', option : 10, type:'options'})}>
                             {/* <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  */}
                             <FontAwesome5 style={styles.eachOptionIcon} size={icon2} name='utensils' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Food & Culinary</Text>
@@ -135,7 +135,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'GAMING', optionName : 'GAMING', option : 11, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'GAMING', optionName : 'GAMING', option : 11, type:'options'})}>
                             <MaterialIcons style={styles.eachOptionIcon} size={icon3} name='games' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Gaming</Text> 
                             {iconRight}  
@@ -143,7 +143,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'HEALTH', optionName : 'HEALTH', option : 12, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'HEALTH', optionName : 'HEALTH', option : 12, type:'options'})}>
                             <FontAwesome5 style={styles.eachOptionIcon} size={icon2} name='heartbeat' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Health</Text>
                             {iconRight}
@@ -151,7 +151,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'MUSIC', optionName : 'MUSIC', option : 13, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'MUSIC', optionName : 'MUSIC', option : 13, type:'options'})}>
                             <FontAwesome5 style={styles.eachOptionIcon} size={icon2} name='music' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Music</Text>
                             {iconRight}
@@ -159,7 +159,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'NATURAL DISASTER', optionName : 'NATURAL DISASTER', option : 14, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'NATURAL DISASTER', optionName : 'NATURAL DISASTER', option : 14, type:'options'})}>
                             <FontAwesome5 style={styles.eachOptionIcon} size={icon2} name='bolt' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Natural Disaster</Text>
                             {iconRight}
@@ -167,7 +167,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'POLITICS', optionName : 'POLITICS', option : 15, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'POLITICS', optionName : 'POLITICS', option : 15, type:'options'})}>
                             <MaterialIcons style={styles.eachOptionIcon} size={icon3} name='account-balance' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Politics</Text> 
                             {iconRight}  
@@ -175,7 +175,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'RELIGION', optionName : 'RELIGION', option : 16, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'RELIGION', optionName : 'RELIGION', option : 16, type:'options'})}>
                             <FontAwesome5 style={styles.eachOptionIcon} size={icon2} name='cross' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Religion</Text>
                             {iconRight}
@@ -183,7 +183,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'SCIENCE', optionName : 'SCIENCE', option : 17, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'SCIENCE', optionName : 'SCIENCE', option : 17, type:'options'})}>
                             <FontAwesome5 style={styles.eachOptionIcon} size={icon2} name='flask' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Science</Text>
                             {iconRight}
@@ -191,7 +191,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'SPORTS', optionName : 'SPORTS', option : 18, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'SPORTS', optionName : 'SPORTS', option : 18, type:'options'})}>
                             <FontAwesome style={styles.eachOptionIcon} size={icon2} name='soccer-ball-o' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Sports</Text>
                             {iconRight}
@@ -199,7 +199,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'TECHNOLOGY', optionName : 'TECHNOLOGY', option : 19, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'TECHNOLOGY', optionName : 'TECHNOLOGY', option : 19, type:'options'})}>
                             <MaterialIcons style={styles.eachOptionIcon} size={icon3} name='memory' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Technology</Text> 
                             {iconRight}  
@@ -207,7 +207,7 @@ class Options extends Component {
 
                         <View style={style.line_2}/>
 
-                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionArticles', {routeName: routeName, headerText:headerText, name : 'TRAVEL & TOURISM', optionName : 'TRAVEL & TOURISM', option : 20, type:'options'})}>
+                        <TouchableOpacity style={[styles.eachOption]} onPress={() => navigation.navigate('OptionsArticles', {routeName: routeName, headerText:headerText, name : 'TRAVEL & TOURISM', optionName : 'TRAVEL & TOURISM', option : 20, type:'options'})}>
                             <MaterialIcons style={styles.eachOptionIcon} size={icon3} name='flight' color={menuIconColor} />
                             <Text style={[styles.eachOptionText, style.ma , {color:menuIconColor}]}>Travel & Tourism</Text> 
                             {iconRight}  

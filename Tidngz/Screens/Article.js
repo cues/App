@@ -28,11 +28,7 @@ import { tabBarVisible , tabBarAnimation, tabBarType } from '../Store/Actions/in
 
 const state = state => {
   return {
-      allArticles          :   state.articles.allArticles,
       selectedArticle      :   state.articles.selectedArticle,
-      articleTablet        :   state.articles.articleTablet,
-      last_articles_id     :   state.articles.last_articles_id,
-      imageActive          :   state.articles.imageActive,
       backgroundMain       :   state.themes.backgroundMain,
       tabBlur              :   state.themes.tabBlur,
       headerColor          :   state.themes.headerColor,
@@ -49,7 +45,6 @@ const dispatch = dispatch => {
 }
 
   
-
 
 class Article extends Component {
 

@@ -37,9 +37,13 @@ class ArticleOptions extends Component {
 
     const optionName = navigation.getParam('optionName' , '')
     const optionNumber = navigation.getParam('option' , 1)
-    const topName = navigation.getParam('top' , '')
-    const date_1 = navigation.getParam('date_1' , '')
-    const date_2 = navigation.getParam('date_2' , '')
+    const top = navigation.getParam('top' , '')
+    const topName = top == 1 ? '24 Hours' :
+                    top == 2 ? '48 Hours' :
+                    top == 3 ? '1 Week' :
+                    top == 4 ? '1 Month' : ''
+    const date_1 = navigation.getParam('date_1_name' , '')
+    const date_2 = navigation.getParam('date_2_name' , '')
 
     headerText = navigation.getParam('headerText' , headerText)
 

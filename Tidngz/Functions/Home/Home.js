@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Platform, Dimensions, FlatList, SectionList, View, TouchableOpacity, Image, Text, StyleSheet, Animated,   ScrollView , RefreshControl} from 'react-native';
 import {OptimizedFlatList} from 'react-native-optimized-flatlist'
 import { connect } from 'react-redux';
-import {refresh_articles, add_article, loader, all_articles, load_articles, articleTablet} from '../../Store/Actions/index';
+import {home_refresh_articles, home_add_article, home_loader, home_all_articles, home_load_articles, home_articleTablet} from '../../Store/Actions/index';
 import Article from '../Articles/Article';
 import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';
 import HomeTitle from './HomeTitle';
@@ -32,12 +32,12 @@ const WIDTH = Dimensions.get('window').width;
   
   const dispatch = dispatch => {
     return {
-        this_refresh_articles :   ()                                                  =>  dispatch(refresh_articles()),
-        this_add_article      :   (article)                                           =>  dispatch(add_article(article)),
-        this_loader           :   ()                                                  =>  dispatch(loader()),
-        this_all_articles     :   (total_records, last_articles_id, number_of_pages)  =>  dispatch(all_articles(total_records, last_articles_id, number_of_pages)),
-        this_load_articles    :   (current_page, start)                               =>  dispatch(load_articles(current_page, start)),
-        this_articleTablet    :   (article)                                           =>  dispatch(articleTablet(article)),
+        this_refresh_articles :   ()                                                  =>  dispatch(home_refresh_articles()),
+        this_add_article      :   (article)                                           =>  dispatch(home_add_article(article)),
+        this_loader           :   ()                                                  =>  dispatch(home_loader()),
+        this_all_articles     :   (total_records, last_articles_id, number_of_pages)  =>  dispatch(home_all_articles(total_records, last_articles_id, number_of_pages)),
+        this_load_articles    :   (current_page, start)                               =>  dispatch(home_load_articles(current_page, start)),
+        this_articleTablet    :   (article)                                           =>  dispatch(home_articleTablet(article)),
     }
   }
 
