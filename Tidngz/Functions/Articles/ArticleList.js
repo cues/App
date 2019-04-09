@@ -178,7 +178,6 @@ class Articles extends Component {
  
       const url = `${api}/Articles/articles.php?key=${apiKey}&user_id=${user_id}&type=2&article_ids=${article_ids}&records_per_page=${records_per_page}&start=${start}`;    
 
-
       await fetch(url)
       .then((response) => response.json())
       .then((response) => {
