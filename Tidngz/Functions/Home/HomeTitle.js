@@ -74,6 +74,9 @@ class HomeTitle extends Component {
                   lat = position.coords.latitude
                   lng =  position.coords.longitude
          
+                //   console.warn(lat)
+                //   console.warn(lng)
+
                     url = `${api}/Weather/User/user.php?&key=${apiKey}&type=${type}&lat=${lat}&long=${lng}&user_id=${user_id}`;
     
           
@@ -83,7 +86,7 @@ class HomeTitle extends Component {
                         
                         this.props.this_add_weather(response)
 
-                        console.log(response)
+                        // console.warn(response)
                         
                         this.setState({
                             weatherLoader : false 

@@ -194,11 +194,11 @@ class weather extends Component {
                             <MaterialIcons style={styles.weatherArrowIcons} name="keyboard-arrow-left" size={25} color='rgba(77, 77, 77, 0.8)'/>
                         </TouchableOpacity>
 
-                        <Animated.View style={[styles.weatherMoreIcon, styles.weatherBottomIcon, {transform: [{ rotate: WEATHER_UNDERGROUND_ROTATE}]}]}>
+                        {/* <Animated.View style={[styles.weatherMoreIcon, styles.weatherBottomIcon, {transform: [{ rotate: WEATHER_UNDERGROUND_ROTATE}]}]}>
                             <TouchableOpacity   onPress={weatherUndergroundHandler}>
                                 <MaterialIcons style={styles.weatherArrowIcons} name="keyboard-arrow-down" size={25} color='rgba(77, 77, 77, 0.8)'/>
                             </TouchableOpacity>
-                        </Animated.View>
+                        </Animated.View> */}
                    
             
             {/* <Text>{WEATHER_CELSIUS_UNIT_TEXT_SHADOW}</Text> */}

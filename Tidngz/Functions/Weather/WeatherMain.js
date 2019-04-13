@@ -2,8 +2,8 @@ import React from 'React';
 import {View, Text, StyleSheet, TouchableOpacity, Image, Animated} from 'react-native';
 import style from '../../Styles/Styles';
 import WeatherIcons from '../../assets/weatherIcons/weatherIcons';
-import weatherUndergroundLogo  from '../../assets/Images/weatherUndergroundlLogo.png';
-import weatherUndergroundLogo_2  from '../../assets/Images/weatherUndergroundlLogo_2.png';
+// import weatherUndergroundLogo  from '../../assets/Images/weatherUndergroundlLogo.png';
+// import weatherUndergroundLogo_2  from '../../assets/Images/weatherUndergroundlLogo_2.png';
 import { connect } from 'react-redux';
 
 const state = state => {
@@ -33,7 +33,7 @@ const weatherMain = props => {
     let temp_today_c;
     let temp_today_f;
 
-    if(temp == feels)
+    if(temp != null || feels == null &&  temp == feels)
     {
         temp_today_c = `The temperature is ${temp} °C  `;
     }else{
@@ -41,7 +41,7 @@ const weatherMain = props => {
     }
 
 
-    if(temp_2 != null && temp_2 == feels_2)
+    if(temp_2 != null || feels_2 == null && temp_2 == feels_2)
     {
         temp_today_f = `The temperature is ${temp_2} °F`;
     }else{
@@ -308,7 +308,7 @@ const weatherMain = props => {
     const WEATHER_FARENHEIT = weatherCF ? 'flex' : 'none'
 
 
-    const WEATHER_UNDERGROUND_LOGO = theme == 'white' ? weatherUndergroundLogo : weatherUndergroundLogo_2
+    // const WEATHER_UNDERGROUND_LOGO = theme == 'white' ? weatherUndergroundLogo : weatherUndergroundLogo_2
 
     return (
         <View style={styles.container}>
@@ -330,18 +330,18 @@ const weatherMain = props => {
             <View style={[style.displayFlex, styles.weatherSun]}>
                 <View style={[style.displayFlex, styles.weatherSunInfo]}>
                     <WeatherIcons style={styles.weatherSunIcons} name='sunrise' size={35} color={icon_sunrise}/>
-                    <Text style={[styles.weatherSunTime, {color:weatherDesc}]}>{sunrise_hour} : {sunrise_minute}</Text>
+                    <Text style={[styles.weatherSunTime, {color:weatherDesc}]}>{sunrise_hour} : {sunrise_minute} am</Text>
                 </View>
                 <View style={[style.displayFlex, styles.weatherSunInfo]}>
                     <WeatherIcons style={styles.weatherSunIcons} name='sunset' size={35} color={icon_sunrise}/>
-                    <Text style={[styles.weatherSunTime, {color:weatherDesc}]}>{sunset_hour} : {sunset_minute}</Text>
+                    <Text style={[styles.weatherSunTime, {color:weatherDesc}]}>{sunset_hour} : {sunset_minute} pm</Text>
                 </View>
             </View>
 
-            <Animated.View style={[style.displayFlex, styles.weatherUnderground, {height:WEATHER_UNDERGROUND, opacity:WEATHER_UNDERGROUND_OPACITY, marginTop:WEATHER_UNDERGROUND_MARGIN_TOP}]}>
+            {/* <Animated.View style={[style.displayFlex, styles.weatherUnderground, {height:WEATHER_UNDERGROUND, opacity:WEATHER_UNDERGROUND_OPACITY, marginTop:WEATHER_UNDERGROUND_MARGIN_TOP}]}>
                     <Text style={[style.bt, styles.weatherUndergroundText, {color:weatherDesc}]}>Weather By : </Text>
                     <Image resizeMode={'cover'} style={[styles.weatherUndergroundLogo]} source = {WEATHER_UNDERGROUND_LOGO}/> 
-            </Animated.View>
+            </Animated.View> */}
 
         </View>
         

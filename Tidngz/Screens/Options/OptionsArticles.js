@@ -22,7 +22,7 @@ const dispatch = dispatch => {
 
 
 FLOAT_HEADER_MAX_HEIGHT = models.includes(model) ? 130 : brand === 'Apple' ? 120 : 50 
-FLOAT_HEADER_MIN_HEIGHT = models.includes(model) ? 100 : brand === 'Apple' ? 97 : 50
+FLOAT_HEADER_MIN_HEIGHT = models.includes(model) ? 110 : brand === 'Apple' ? 87 : 50
 
 
 

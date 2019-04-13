@@ -12,11 +12,8 @@ const state = state => {
         humidity            :   state.weather.hourly.humidity,
         precipitation_mm    :   state.weather.hourly.precipitation_mm,
         precipitation_in    :   state.weather.hourly.precipitation_in,
-        pressure_eng        :   state.weather.hourly.pressure_eng,
-        pressure_met        :   state.weather.hourly.pressure_met,
-        dew_eng             :   state.weather.hourly.dew_eng,
-        dew_met             :   state.weather.hourly.dew_met,
-        uvi                 :   state.weather.hourly.uvi,
+        dew                 :   state.weather.hourly.dew,
+        dew_2               :   state.weather.hourly.dew_2,
         tabBlur             :   state.themes.tabBlur,
         weatherDesc         :   state.themes.weatherDesc,
         weatherSide         :   state.themes.weatherSide,
@@ -25,7 +22,7 @@ const state = state => {
 
 
 const weatherSide = props => {
-    const {tabBlur, weatherDesc, weatherSide, humidity, precipitation_in, precipitation_mm, pressure_eng, pressure_met, dew_eng, dew_met, uvi, weatherSideActive, weatherWindActive, weatherSideHandler, addAnimate, weatherWidth, weatherCF} = props
+    const {tabBlur, weatherDesc, weatherSide, humidity, precipitation_in, precipitation_mm, dew, dew_2, weatherSideActive, weatherWindActive, weatherSideHandler, addAnimate, weatherWidth, weatherCF} = props
 
     const containerActive = weatherSideActive ? styles.containerActive : null
 
@@ -37,7 +34,7 @@ const weatherSide = props => {
     const WEATHER_SIDE = addAnimate.interpolate({
         inputRange:[0,0],
         outputRange: [0,1] ,
-        // extrapolate:'clamp'
+        extrapolate:'clamp'
     })
 
     const WEATHER_SIDE_WIDTH = addAnimate.interpolate({
@@ -47,8 +44,8 @@ const weatherSide = props => {
     })
 
 
-    const WEATHER_CELSIUS   = weatherCF ? 'none' : 'flex'
-    const WEATHER_FARENHEIT = weatherCF ? 'flex' : 'none'
+    const WEATHER_PRECIPITATION   = precipitation_in != null ? weatherCF ? precipitation_in + ' in' : precipitation_mm + ' mm' : '---'
+    const WEATHER_DEW             = dew != null ? weatherCF ? dew + '°C' : dew_2 + '°F' : '---'
 
     return (
         <Animated.View style={[styles.container, containerActive, {width:WEATHER_SIDE_WIDTH, opacity:WEATHER_SIDE, backgroundColor:Platform.select({android : weatherSide, ios:'transparent'})}]}>
@@ -59,7 +56,7 @@ const weatherSide = props => {
 
                 <View style={[styles.weatherSide, windActive]}>
                     <View style={[style.displayFlex, styles.weatherSide1]}>
-                        <WeatherWind />
+                        <WeatherWind weatherCF={weatherCF}/>
                     </View>
                     <View style={styles.weatherSide2}>
                         <View style={styles.weatherFeatures}>
@@ -70,25 +67,12 @@ const weatherSide = props => {
                         <View style={styles.weatherFeatures}>
                             <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide1]}>Precipitation</Text>
                             <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide2]}>:</Text>
-                            <Text style={[{color:weatherDesc, display:WEATHER_CELSIUS}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{precipitation_mm} mm</Text>
-                            <Text style={[{color:weatherDesc, display:WEATHER_FARENHEIT}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{precipitation_in} in</Text>
-                        </View>
-                        <View style={styles.weatherFeatures}>
-                            <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide1]}>Pressure</Text>
-                            <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide2]}>:</Text>
-                            <Text style={[{color:weatherDesc, display:WEATHER_CELSIUS}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{pressure_met} hPa</Text>
-                            <Text style={[{color:weatherDesc, display:WEATHER_FARENHEIT}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{pressure_eng} in</Text>
+                            <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{WEATHER_PRECIPITATION}</Text>
                         </View>
                         <View style={styles.weatherFeatures}>
                             <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide1]}>Dew Point</Text>
                             <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide2]}>:</Text>
-                            <Text style={[{color:weatherDesc, display:WEATHER_CELSIUS}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{dew_met} °C</Text>
-                            <Text style={[{color:weatherDesc, display:WEATHER_FARENHEIT}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{dew_eng} °F</Text>
-                        </View>
-                        <View style={styles.weatherFeatures}>
-                            <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide1]}>UV Index</Text>
-                            <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide2]}>:</Text>
-                            <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{uvi}</Text>
+                            <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{WEATHER_DEW}</Text>
                         </View>
                     </View>
                 </View>

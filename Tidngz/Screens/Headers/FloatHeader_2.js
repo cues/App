@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
         // marginTop : getStatusBarHeight(),
     },
     headerOptions : {
+        marginTop:10,
         width:WIDTH + 20,
         justifyContent:'center',
     },

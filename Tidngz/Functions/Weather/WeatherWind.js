@@ -15,10 +15,13 @@ const state = state => {
 
 const weatherWind = props => {
 
-    const {weatherDesc, wind_direction, wind_speed_km, wind_speed_mph} = props
+    const {weatherDesc, wind_direction, wind_speed_km, wind_speed_mph , weatherCF} = props
 
     let windDirection;
     let windCompassNeedle;
+
+
+    const WEATHER_SPEED  = wind_speed_km != null ?  !weatherCF ? wind_speed_km + ' km' : wind_speed_mph + ' mph' : '---' 
 
 
       if(wind_direction == "N"){
@@ -104,8 +107,7 @@ const weatherWind = props => {
                 </View>
             </View>
             <View style={[styles.wind]}>
-                <Text style={[{color:weatherDesc}, style.bt, styles.wind]}>{wind_speed_km} km</Text>
-                <Text style={[{color:weatherDesc}, style.bt, styles.wind, style.none]}>{wind_speed_mph} mph</Text>
+                <Text style={[{color:weatherDesc}, style.bt, styles.wind]}>{WEATHER_SPEED}</Text>
             </View>
         </View>
     )

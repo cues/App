@@ -181,7 +181,6 @@ class Articles extends Component {
       await fetch(url)
       .then((response) => response.json())
       .then((response) => {
-        // console.warn(response)
 
             for(a = 0; a < response.data.articles.length; a++){
 
