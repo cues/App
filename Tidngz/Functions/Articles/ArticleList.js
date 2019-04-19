@@ -72,12 +72,81 @@ class Articles extends Component {
             option : 1,
             top : 0,
             calender : 0,
+
+
+            isEmptyWeather : true,
+            homeWeather : null,
+            weatherLoader : false
         }
 
 
+        this.getWeather(2,1)
         this.allArticles();
 
     }
+
+
+
+    getWeather = (where, type) => {
+
+        const {apiKey, api, user_id} = this.props
+
+        if(type == 2){
+            this.setState({
+                weatherLoader : true
+            })
+        }
+       
+
+         if(where == 1){
+
+         }else{
+           
+            var lat,lng;
+            if (navigator.geolocation) {
+    
+              navigator.geolocation.getCurrentPosition((position) => {
+            
+                  lat = position.coords.latitude
+                  lng =  position.coords.longitude
+         
+                //   console.warn(lat)
+                //   console.warn(lng)
+
+                    url = `${api}/Weather/User/user.php?&key=${apiKey}&type=${type}&lat=${lat}&long=${lng}&user_id=${user_id}`;
+    
+          
+                    fetch(url)
+                    .then((response) => response.json())
+                    .then((response) => {
+
+
+                        // console.warn(response)
+
+                        // this.props.this_home_weather_call()
+                        
+                        this.setState({
+                            isEmptyWeather : response.data.isEmpty,
+                            homeWeather    : response,
+                            weatherLoader  : false 
+                        })
+
+
+                    })
+                    .catch((error) =>{
+                      console.error(error);
+                    });
+                  
+                });
+            }
+
+         }
+      
+     }
+     
+
+
+
 
 
 
@@ -187,6 +256,7 @@ class Articles extends Component {
                 article = response.data.articles[a];
 
                 this.onArticleAdd(article);
+                        // console.warn(response)
 
                 
                 this.setState({
@@ -254,9 +324,12 @@ class Articles extends Component {
 
         const fullDate = this.props.type == 'calender' ? true : false
 
+        const {weatherLoader, homeWeather, isEmptyWeather} = this.state;
+
+
         if(item.type){
             if(this.props.type == 'home'){
-                return <HomeTitle  item = {item} stylesProps={dis}/>
+                return <HomeTitle  item = {item} stylesProps={dis} getWeather={this.getWeather} weatherLoader={weatherLoader} homeWeather={homeWeather} isEmpty={isEmptyWeather}/>
             }
             else if(this.props.type == 'profile'){
               return <ProfileTitle scrollY={this.props.scrollAnim} item={item} refresh={this.handleRefresh} stylesProps={dis}/> 

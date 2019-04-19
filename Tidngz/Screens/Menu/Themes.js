@@ -9,7 +9,10 @@ import Theme from '../../Components/Themes/Themes';
 
 const state = state => {
   return {
-      backgroundMain         :   state.themes.backgroundMain,
+      api             :   state.main.api,
+      user_id         :   state.main.user.user_id,
+      apiKey          :   state.main.apiKey,
+      backgroundMain  :   state.themes.backgroundMain,
   };
 };
 
@@ -26,6 +29,7 @@ class Themes extends Component {
 
 
 add_theme = (theme) => {
+
   if(theme == 1){
     this.props.this_add_theme_white()
     this.props.navigation.navigate('Themes',{headerIcon : 'rgba(255,255,255,1)'})
@@ -33,6 +37,22 @@ add_theme = (theme) => {
     this.props.this_add_theme_black()
     this.props.navigation.navigate('Themes',{headerIcon : 'rgba(23,23,23,.9)'})
   }
+
+
+  const {apiKey, api, user_id} = this.props
+  
+    url = `${api}/User/Themes/themes.php?key=${apiKey}&user_id=${user_id}&type=darkTheme&theme=${theme}`;
+    
+    fetch(url)
+    .then((response) => response.json())
+    .then((response) => {
+      // console.warn(response)
+    })
+    .catch((error) =>{
+      // console.error(error);
+    });
+
+
 }
 
   render() {

@@ -9,11 +9,6 @@ import { connect } from 'react-redux';
 
 const state = state => {
     return {
-        humidity            :   state.weather.hourly.humidity,
-        precipitation_mm    :   state.weather.hourly.precipitation_mm,
-        precipitation_in    :   state.weather.hourly.precipitation_in,
-        dew                 :   state.weather.hourly.dew,
-        dew_2               :   state.weather.hourly.dew_2,
         tabBlur             :   state.themes.tabBlur,
         weatherDesc         :   state.themes.weatherDesc,
         weatherSide         :   state.themes.weatherSide,
@@ -22,10 +17,9 @@ const state = state => {
 
 
 const weatherSide = props => {
-    const {tabBlur, weatherDesc, weatherSide, humidity, precipitation_in, precipitation_mm, dew, dew_2, weatherSideActive, weatherWindActive, weatherSideHandler, addAnimate, weatherWidth, weatherCF} = props
+    const {tabBlur, weatherDesc, weatherSide,  weatherSideActive, weatherWindActive, weatherSideHandler, addAnimate, weatherWidth, weatherCF, hourly} = props
 
     const containerActive = weatherSideActive ? styles.containerActive : null
-
 
     const windActive = weatherWindActive ? style.flex : style.none
     
@@ -44,8 +38,8 @@ const weatherSide = props => {
     })
 
 
-    const WEATHER_PRECIPITATION   = precipitation_in != null ? weatherCF ? precipitation_in + ' in' : precipitation_mm + ' mm' : '---'
-    const WEATHER_DEW             = dew != null ? weatherCF ? dew + '°C' : dew_2 + '°F' : '---'
+    const WEATHER_PRECIPITATION   = hourly.precipitation_in != null ? weatherCF ? hourly.precipitation_in + ' in' : hourly.precipitation_mm + ' mm' : '---'
+    const WEATHER_DEW             = hourly.dew != null ? !weatherCF ? hourly.dew + '°C' : hourly.dew_2 + '°F' : '---'
 
     return (
         <Animated.View style={[styles.container, containerActive, {width:WEATHER_SIDE_WIDTH, opacity:WEATHER_SIDE, backgroundColor:Platform.select({android : weatherSide, ios:'transparent'})}]}>
@@ -56,13 +50,13 @@ const weatherSide = props => {
 
                 <View style={[styles.weatherSide, windActive]}>
                     <View style={[style.displayFlex, styles.weatherSide1]}>
-                        <WeatherWind weatherCF={weatherCF}/>
+                        <WeatherWind weatherCF={weatherCF} hourly={hourly}/>
                     </View>
                     <View style={styles.weatherSide2}>
                         <View style={styles.weatherFeatures}>
                             <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide1]}>Humidity</Text>
                             <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide2]}>:</Text>
-                            <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{humidity} %</Text>
+                            <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide3]}>{hourly.humidity} %</Text>
                         </View>
                         <View style={styles.weatherFeatures}>
                             <Text style={[{color:weatherDesc}, style.bt, styles.weatherFeatureDivide, styles.weatherFeatureDivide1]}>Precipitation</Text>

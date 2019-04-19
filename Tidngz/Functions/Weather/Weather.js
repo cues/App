@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, View, Text, StyleSheet, TouchableOpacity, Animated, LayoutAnimation} from 'react-native';
+import {Platform, View, Text, StyleSheet, TouchableOpacity, Animated, AsyncStorage, LayoutAnimation} from 'react-native';
 import style from '../../Styles/Styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import WeatherMain from './WeatherMain';
@@ -13,6 +13,8 @@ const state = state => {
 
     }
 }
+
+const WEATHER_TYPE = 'weather_type';
 
 
 class weather extends Component {
@@ -35,11 +37,29 @@ class weather extends Component {
 
         }
 
+
+
+        this.getToken()
+
         // if (Platform.OS === 'android')
         // {
         //   UIManager.setLayoutAnimationEnabledExperimental(true)
         // }
     }
+
+
+  getToken = async () => {
+    try {
+       let token =  await AsyncStorage.getItem(WEATHER_TYPE);
+
+        if(token){
+
+            this.weatherCF_Handler(token)
+       }
+      } 
+      catch (error) {
+      }
+}
     
 
 
@@ -93,6 +113,9 @@ class weather extends Component {
             const weatherCF_type = type == 1 ? false : true
             // const weatherCF_direction = type == 1 ? 'row' : 'row-reverse'
             const weatherCF = type == 1 ? 0 : 1
+
+            const token = type == 1 ? '1' : '2'
+            this.storeToken(token)
         
             this.setState({
                 weatherCF : weatherCF_type,
@@ -107,7 +130,13 @@ class weather extends Component {
     }
 
 
-
+    storeToken = async (accessToken) => {
+        try {
+            await AsyncStorage.setItem(WEATHER_TYPE , accessToken);
+        } catch (error) {
+            // console.warn('something went wrong')
+        }
+    }
 
     layout = (event) => {
         var {x, y, width, height} = event.nativeEvent.layout;
@@ -123,8 +152,37 @@ class weather extends Component {
         const { weatherSideHandler, layout, weatherUndergroundHandler, weatherCF_Handler } = this
 
         const { weatherSideActive, weatherWindActive, addAnimate, addAnimate_2, addAnimate_CF, weatherWidth , weatherCF} = this.state
- 
 
+        const { weather } = this.props;
+
+
+        const astro = {
+            sunrise_hour        :    weather.data.astro.sunrise_hour,
+            sunrise_minutes     :    weather.data.astro.sunrise_minutes,
+            sunset_hour         :    weather.data.astro.sunset_hour,
+            sunset_minutes      :    weather.data.astro.sunset_minutes
+        }
+    
+        const hourly = {
+            source              :    weather.data.hourly.source,
+            icon                :    weather.data.hourly.icon,
+            content             :    weather.data.hourly.content,
+            temp                :    weather.data.hourly.temp,
+            temp_2              :    weather.data.hourly.temp_2,
+            feels               :    weather.data.hourly.feels,
+            feels_2             :    weather.data.hourly.feels_2,
+            dew                 :    weather.data.hourly.dew,
+            dew_2               :    weather.data.hourly.dew_2,
+            humidity            :    weather.data.hourly.humidity,
+            wind_degree         :    weather.data.hourly.wind_degree,
+            wind_speed_km       :    weather.data.hourly.wind_speed_km,
+            wind_speed_mph      :    weather.data.hourly.wind_speed_mph,
+            precipitation_mm    :    weather.data.hourly.precipitation_mm,
+            precipitation_in    :    weather.data.hourly.precipitation_in,
+        }
+
+        // console.warn(weather)
+        
 
             const WEATHER_LINE_MARGIN = addAnimate.interpolate({
                 inputRange : [0,1],
@@ -142,13 +200,13 @@ class weather extends Component {
 
             const WEATHER_CELSIUS = addAnimate_CF.interpolate({
                 inputRange : [0,1],
-                outputRange :[35, 0],
+                outputRange :[25, 0],
                 extrapolate:'clamp'
             })
 
             const WEATHER_CELSIUS_UNIT_TEXT = addAnimate_CF.interpolate({
                 inputRange : [0,1],
-                outputRange : [21, 15],
+                outputRange : [21, 13],
                 extrapolate : 'clamp'
             })
 
@@ -164,13 +222,13 @@ class weather extends Component {
     
             const WEATHER_FARENHEIT = addAnimate_CF.interpolate({
                 inputRange : [0,1],
-                outputRange :[0, 35],
+                outputRange :[0, 25],
                 extrapolate:'clamp'
             })
 
             const WEATHER_FARENHEIT_UNIT_TEXT = addAnimate_CF.interpolate({
                 inputRange : [0,1],
-                outputRange : [15, 21],
+                outputRange : [13, 21],
                 extrapolate : 'clamp'
             })
 
@@ -228,12 +286,13 @@ class weather extends Component {
 
                         <View style={styles.weatherInner} >
 
-                                <WeatherMain addAnimate = {addAnimate_2}  weatherCF = {weatherCF}/>
+                                <WeatherMain weather={weather} astro = {astro} hourly = {hourly} addAnimate = {addAnimate_2}  weatherCF = {weatherCF}/>
 
                         </View>
                         
 
                         <WeatherSide 
+                            hourly = {hourly}
                             weatherCF = {weatherCF}
                             addAnimate = {addAnimate}
                             weatherSideActive = {weatherSideActive} 
@@ -290,8 +349,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     weatherUnit : {
-        height: 30,
-        width: 30,
+        height: 25,
+        width: 25,
         zIndex:2,
         position: 'absolute',
         top: 5,

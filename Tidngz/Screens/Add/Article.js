@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import float from '../Headers/Float';
-import First from './Article/First';
+import First from './Article/Headlines';
 
 import { connect } from 'react-redux';
 

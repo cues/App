@@ -13,7 +13,7 @@ const width = Dimensions.get('window').width
 
 
 import { connect } from 'react-redux';
-import {add_weather, home_weather_call} from '../../Store/Actions/index';
+import { home_weather_call } from '../../Store/Actions/index';
 
 const state = state => {
     return {
@@ -22,98 +22,23 @@ const state = state => {
         api             :   state.main.api,
         user_id         :   state.main.user.user_id,
         apiKey          :   state.main.apiKey,
-        isEmpty         :   state.weather.isEmpty,
-        homeWeatherCall :   state.weather.homeWeatherCall
     }
 }
 
-const dispatch = dispatch => {
-    return {
-        this_add_weather        : weather   =>  dispatch(add_weather(weather)),
-        this_home_weather_call  : bool      =>  dispatch(home_weather_call(bool))
-    }
-}
+
 
 class HomeTitle extends Component {
 
-
-    state={
-        weatherLoader : false
-    }
-
-
-    componentWillMount() {
-
-        !this.props.homeWeatherCall ? this.getWeather(2,1) : null;
-
-        this.props.this_home_weather_call(true)
-
-    }
-
-
-    getWeather = (where, type) => {
-
-        const {apiKey, api, user_id} = this.props
-
-        if(type == 2){
-            this.setState({
-                weatherLoader : true
-            })
-        }
-       
-
-         if(where == 1){
-
-         }else{
-           
-            var lat,lng;
-            if (navigator.geolocation) {
-    
-              navigator.geolocation.getCurrentPosition((position) => {
-            
-                  lat = position.coords.latitude
-                  lng =  position.coords.longitude
-         
-                //   console.warn(lat)
-                //   console.warn(lng)
-
-                    url = `${api}/Weather/User/user.php?&key=${apiKey}&type=${type}&lat=${lat}&long=${lng}&user_id=${user_id}`;
-    
-          
-                    fetch(url)
-                    .then((response) => response.json())
-                    .then((response) => {
-                        
-                        this.props.this_add_weather(response)
-
-                        // console.warn(response)
-                        
-                        this.setState({
-                            weatherLoader : false 
-                        })
-
-
-                    })
-                    .catch((error) =>{
-                      console.error(error);
-                    });
-                  
-                });
-            }
-
-         }
-      
-     }
-     
-
-   
-
+ 
  
 
     render (){
-        const {stylesProps, homeContainer, item, weatherDesc, isEmpty} = this.props;
+        const {stylesProps, homeContainer, item, weatherDesc, getWeather, weatherLoader, homeWeather, isEmpty} = this.props;
 
-        const {weatherLoader} = this.state
+        // const {weatherLoader, homeWeather, isEmpty} = this.state
+
+                        // console.warn(isEmpty)
+
 
         const date = new Date();
         const hour = parseInt(date.getHours());
@@ -125,16 +50,19 @@ class HomeTitle extends Component {
                     : hour >= 17 && hour < 22 ? `GOOD EVENING ${user}`
                     : `Hello ${user}`
 
-        const getWeather = (
+        const fetchWeather = (
             isEmpty && !weatherLoader ? 
-                <TouchableOpacity style={styles.iconContainer} onPress={() => this.getWeather(2,2)}>
-                        <Feather style={styles.icon} name='download-cloud' size={26} color={weatherDesc}/>
-                </TouchableOpacity>
-            : null
+                    <TouchableOpacity style={styles.iconContainer} onPress={() => getWeather(2,2)}>
+                            <Feather style={styles.icon} name='download-cloud' size={26} color={weatherDesc}/>
+                    </TouchableOpacity>      
+            : 
+                isEmpty ?
+                 <View style={styles.iconContainer} ></View>      
+                : null
         )
 
         const weather = (
-            !isEmpty ? <Weather/> : null
+            !isEmpty ? <Weather weather={homeWeather}/> : null
         )
 
 
@@ -142,16 +70,16 @@ class HomeTitle extends Component {
             weatherLoader ?  <Loader style={styles.loader}/> : null
         )
 
-        // const containerWeather = !isEmpty ? {marginTop:55} : null;
+        const containerWeather = !isEmpty ? {marginTop:45} : null;
 
         return (
             <View style={stylesProps}>
-                <View style={[styles.container , style.paddingBackgroundTop]}>
+                <View style={[styles.container , containerWeather, style.paddingBackgroundTop]}>
                     <View style={styles.icons}>
                         {/* <TouchableOpacity style={styles.iconContainer} onPress={() => this.props.navigation.navigate('Trending',{name:'TRENDING'})}>
                             <MaterialIcons style={styles.icon} name='trending-up' size={26} color={weatherDesc}/>
                         </TouchableOpacity> */}
-                        {getWeather}
+                        {fetchWeather}
                     </View>
                     
                     <View style={[styles.homeContainer, {backgroundColor:homeContainer}]} >
@@ -235,4 +163,4 @@ const styles = StyleSheet.create({
   
 });
 
-export default withNavigation(connect(state, dispatch)(HomeTitle));
+export default withNavigation(connect(state)(HomeTitle));

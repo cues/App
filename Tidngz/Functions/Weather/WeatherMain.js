@@ -8,60 +8,51 @@ import { connect } from 'react-redux';
 
 const state = state => {
     return {
-        sunrise_hour        :    state.weather.astro.sunrise_hour,
-        sunrise_minutes     :    state.weather.astro.sunrise_minutes,
-        sunset_hour         :    state.weather.astro.sunset_hour,
-        sunset_minutes      :    state.weather.astro.sunset_minutes,
-
-        icon            :    state.weather.hourly.icon,
-        temp            :    state.weather.hourly.temp,
-        temp_2          :    state.weather.hourly.temp_2,
-        feels           :    state.weather.hourly.feels,
-        feels_2         :    state.weather.hourly.feels_2,
-        time            :    state.weather.time,
-
-        weatherDesc     :    state.themes.weatherDesc,
-        theme           :    state.themes.theme
+        weatherDesc     :    state.themes.weatherDesc
     }
 }
 
 
 const weatherMain = props => {
 
-    const {sunrise_hour, sunrise_minutes, sunset_hour, sunset_minutes, icon, temp, temp_2, feels, feels_2, time , theme, weatherDesc, addAnimate, weatherCF} = props
+    const {weatherDesc, addAnimate, weatherCF, weather, astro, hourly} = props
+
+    const time = weather.data.weatherTime
+
+
 
     let temp_today_c;
     let temp_today_f;
 
-    if(temp != null || feels == null &&  temp == feels)
+    if((hourly.temp != null || hourly.feels == null) &&  (hourly.temp == hourly.feels))
     {
-        temp_today_c = `The temperature is ${temp} °C  `;
+        temp_today_c = `The temperature is ${hourly.temp} °C  `;
     }else{
-        temp_today_c = `The temperature is ${temp} °C ,  though it feels like ${feels} °C  `;
+        temp_today_c = `The temperature is ${hourly.temp} °C , though it feels like ${hourly.feels} °C  `;
     }
 
 
-    if(temp_2 != null || feels_2 == null && temp_2 == feels_2)
+    if((hourly.temp_2 != null || hourly.feels_2 == null) && (hourly.temp_2 == hourly.feels_2))
     {
-        temp_today_f = `The temperature is ${temp_2} °F`;
+        temp_today_f = `The temperature is ${hourly.temp_2} °F`;
     }else{
-        temp_today_f = `The temperature is ${temp_2} °F ,  though it feels like ${feels_2} °F  `;
+        temp_today_f = `The temperature is ${hourly.temp_2} °F , though it feels like ${hourly.feels_2} °F  `;
     }
 
 
-    check_min = ['1','2','3','4','5','6','7','8','9'];
+    // check_min = ['1','2','3','4','5','6','7','8','9'];
 
-    sunrise_minute = check_min.includes(sunrise_minutes) ? '0' + sunrise_minutes : sunrise_minutes;
-    sunset_minute = check_min.includes(sunset_minutes) ? '0' + sunset_minutes : sunset_minutes;
+    // sunrise_minute = check_min.includes(sunrise_minutes) ? '0' + sunrise_minutes : sunrise_minutes;
+    // sunset_minute = check_min.includes(sunset_minutes) ? '0' + sunset_minutes : sunset_minutes;
     
-    sunrise_time = parseInt(sunrise_hour + sunrise_minute);
-    sunset_time = parseInt(sunset_hour + sunset_minute);
+    sunrise_time = parseInt(astro.sunrise_hour + astro.sunrise_minutes);
+    sunset_time = parseInt(astro.sunset_hour + astro.sunset_minutes);
 
   
 
 
-    const icon_moon             =   'rgba(15,101,141,.4)';
     const icon_sun              =   'rgba(253,184,19,1)';
+    const icon_moon             =   'rgba(15,101,141,.4)'; 
     const icon_frosty           =   'rgba(15,101,141,.5)';
     const icon_windysnow        =   'rgba(15,101,141,.4)';
     const icon_showers          =   'rgba(15,101,141,.5)';
@@ -88,196 +79,195 @@ const weatherMain = props => {
     
    
     let weatherIcon;
-    let weather;
-
+    let weatherText;
 
 
 
     if(time >= sunrise_time && time <= sunset_time){
    
 
-        if(icon == 1){
+        if(hourly.icon == 1){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={styles.weatherIcons} name='sun' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its Sunny';
+            weatherText = 'Its Sunny';
         }
-        if(icon == 2){
+        if(hourly.icon == 2){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: -3, lineHeight:94}]} name='cloud' size={iconSize} color={icon_cloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:87}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its sunny with some scattered clouds';
+            weatherText = 'Its sunny with some scattered clouds';
         }
-        if(icon == 3){
+        if(hourly.icon == 3){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: -3, lineHeight:94}]} name='cloud' size={iconSize} color={icon_cloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:87}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its pretty cloudy with some sunshine';
+            weatherText = 'Its pretty cloudy with some sunshine';
         }
-        if(icon == 4){
+        if(hourly.icon == 4){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: -3, lineHeight:94}]} name='cloud' size={iconSize} color={icon_cloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:87}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'It seems to be cloudy';
+            weatherText = 'It seems to be cloudy';
         }
-        if(icon == 5){
+        if(hourly.icon == 5){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={styles.weatherIcons} name='sun' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its sunny but quite hazy';
+            weatherText = 'Its sunny but quite hazy';
         }
-        if(icon == 6){
+        if(hourly.icon == 6){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={styles.weatherIcons} name='mist' size={iconSize} color={icon_mist}/></View> ;
-            weather     = 'Its foggy';
+            weatherText = 'Its foggy';
         }
-        if(icon == 7){
+        if(hourly.icon == 7){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={styles.weatherIcons} name='sun' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its sunny and very hot';
+            weatherText = 'Its sunny and very hot';
         }
-        if(icon == 8){
+        if(hourly.icon == 8){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: -3, lineHeight:94}]} name='cloud' size={iconSize} color={icon_cloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:87}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its sunny and very cold';
+            weatherText = 'Its sunny and very cold';
         }
-        if(icon == 9){
+        if(hourly.icon == 9){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:94}]} name='windysnowcloud' size={iconSize} color={icon_windysnowcloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:90}]} name='windysnow' size={iconSize} color={icon_windysnow}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:89}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its sunny with some blowing snow';
+            weatherText = 'Its sunny with some blowing snow';
         }
-        if(icon == 10){
+        if(hourly.icon == 10){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='drizzle' size={iconSize} color={icon_drizzle}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its sunny with chances of light rain';
+            weatherText = 'Its sunny with chances of light rain';
         }
-        if(icon == 11 || icon == 13){
+        if(hourly.icon == 11 || icon == 13){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='rainy' size={iconSize} color={icon_rainy}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its raining';
+            weatherText = 'Its raining';
         }
-        if(icon == 12){
+        if(hourly.icon == 12){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='drizzle' size={iconSize} color={icon_drizzle}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its sunny with chances of rain';
+            weatherText = 'Its sunny with chances of rain';
         }
-        if(icon == 14){
+        if(hourly.icon == 14){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='thunder' size={iconSize} color={icon_thunder}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its sunny with a chance of a thunderstorm';
+            weatherText = 'Its sunny with a chance of a thunderstorm';
         }
-        if(icon == 15){
+        if(hourly.icon == 15){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='thunder' size={iconSize} color={icon_thunder}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'There is a thunderstorm';
+            weatherText = 'There is a thunderstorm';
         }
-        if(icon == 16){
+        if(hourly.icon == 16){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='frosty' size={iconSize} color={icon_frosty}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'There is a little snow showers/flurries';
+            weatherText = 'There is a little snow showers/flurries';
         }
-        if(icon == 18){
+        if(hourly.icon == 18){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='snowy' size={iconSize} color={icon_snowy}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'There is a chances of snow showers';
+            weatherText = 'There is a chances of snow showers';
         }
-        if(icon == 19){
+        if(hourly.icon == 19){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='snowy' size={iconSize} color={icon_snowy_2}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its snowing';
+            weatherText = 'Its snowing';
         }
-        if(icon == 20){
+        if(hourly.icon == 20){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='snowy' size={iconSize} color={icon_snowy}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'There is a chances of snow showers';
+            weatherText = 'There is a chances of snow showers';
         }
-        if(icon == 21){
+        if(hourly.icon == 21){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='snowy' size={iconSize} color={icon_snowy_2}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Its snowing';
+            weatherText = 'Its snowing';
         }
-        if(icon == 22){
+        if(hourly.icon == 22){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='hail' size={iconSize} color={icon_hail}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'There are chances of ice pellets';
+            weatherText = 'There are chances of ice pellets';
         }
-        if(icon == 23){
+        if(hourly.icon == 23){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='hail' size={iconSize} color={icon_hail}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'Ice pellets are all over';
+            weatherText = 'Ice pellets are all over';
         }
-        if(icon == 24){
+        if(hourly.icon == 24){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {lineHeight:85}]} name='snowy' size={iconSize} color={icon_snowy_2}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:85}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='sunny' size={iconSize} color={icon_sun}/></View> ;
-            weather     = 'There is a snow storm/blizzard';
+            weatherText = 'There is a snow storm/blizzard';
         }
     }else{
 
-        if(icon == 1){
+        if(hourly.icon == 1){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={styles.weatherIcons} name='moon' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its a clear night sky';
+            weatherText = 'Its a clear night sky';
         }
-        if(icon == 2){
+        if(hourly.icon == 2){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: -2, lineHeight:90}]} name='cloud' size={iconSize} color={icon_cloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:87}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its clear with some scattered clouds';
+            weatherText = 'Its clear with some scattered clouds';
         }
-        if(icon == 3){
+        if(hourly.icon == 3){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: -2, lineHeight:90}]} name='cloud' size={iconSize} color={icon_cloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:87}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its pretty cloudy';
+            weatherText = 'Its pretty cloudy';
         }
-        if(icon == 4){
+        if(hourly.icon == 4){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: -2, lineHeight:90}]} name='cloud' size={iconSize} color={icon_cloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:87}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'It seems to be cloudy';
+            weatherText = 'It seems to be cloudy';
         }
-        if(icon == 5){
+        if(hourly.icon == 5){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={styles.weatherIcons} name='moon' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its clear but quite hazy';
+            weatherText = 'Its clear but quite hazy';
         }
-        if(icon == 6){
+        if(hourly.icon == 6){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={styles.weatherIcons} name='mist' size={iconSize} color={icon_mist}/></View> ;
-            weather     = 'Its foggy';
+            weatherText = 'Its foggy';
         }
-        if(icon == 7){
+        if(hourly.icon == 7){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={styles.weatherIcons} name='moon' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its clear and very hot';
+            weatherText = 'Its clear and very hot';
         }
-        if(icon == 8){
+        if(hourly.icon == 8){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: -2, lineHeight:90}]} name='cloud' size={iconSize} color={icon_cloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:87}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its clear and very cold';
+            weatherText = 'Its clear and very cold';
         }
-        if(icon == 9){
+        if(hourly.icon == 9){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:90}]} name='windysnowcloud' size={iconSize} color={icon_windysnowcloud}/><WeatherIcons style= {[styles.weatherIcons, {lineHeight:90}]} name='windysnow' size={iconSize} color={icon_windysnow}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:89}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its clear with some blowing snow';
+            weatherText = 'Its clear with some blowing snow';
         }
-        if(icon == 10){
+        if(hourly.icon == 10){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='drizzle' size={iconSize} color={icon_drizzle}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its clear sky with chances of light rain';
+            weatherText = 'Its clear sky with chances of light rain';
         }
-        if(icon == 11 || icon == 13){
+        if(hourly.icon == 11 || icon == 13){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='rainy' size={iconSize} color={icon_rainy}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its raining';
+            weatherText = 'Its raining';
         }
-        if(icon == 12){
+        if(hourly.icon == 12){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='drizzle' size={iconSize} color={icon_drizzle}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its clear sky with chances of rain';
+            weatherText = 'Its clear sky with chances of rain';
         }
-        if(icon == 14){
+        if(hourly.icon == 14){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='thunder' size={iconSize} color={icon_thunder}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its clear sky with a chance of a thunderstorm';
+            weatherText = 'Its clear sky with a chance of a thunderstorm';
         }
-        if(icon == 15){
+        if(hourly.icon == 15){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='thunder' size={iconSize} color={icon_thunder}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'There is a thunderstorm';
+            weatherText = 'There is a thunderstorm';
         }
-        if(icon == 16){
+        if(hourly.icon == 16){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='frosty' size={iconSize} color={icon_frosty}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'There is a little snow showers/flurries';
+            weatherText = 'There is a little snow showers/flurries';
         }
-        if(icon == 18){
+        if(hourly.icon == 18){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='snowy' size={iconSize} color={icon_snowy}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'There is a chances of snow showers';
+            weatherText = 'There is a chances of snow showers';
         }
-        if(icon == 19){
+        if(hourly.icon == 19){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='snowy' size={iconSize} color={icon_snowy_2}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its snowing';
+            weatherText = 'Its snowing';
         }
-        if(icon == 20){
+        if(hourly.icon == 20){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='snowy' size={iconSize} color={icon_snowy}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'There is a chances of snow showers';
+            weatherText = 'There is a chances of snow showers';
         }
-        if(icon == 21){
+        if(hourly.icon == 21){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='snowy' size={iconSize} color={icon_snowy_2}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Its snowing';
+            weatherText = 'Its snowing';
         }
-        if(icon == 22){
+        if(hourly.icon == 22){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='hail' size={iconSize} color={icon_hail}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'There are chances of ice pellets';
+            weatherText = 'There are chances of ice pellets';
         }
-        if(icon == 23){
+        if(hourly.icon == 23){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='hail' size={iconSize} color={icon_hail}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'Ice pellets are all over';
+            weatherText = 'Ice pellets are all over';
         }
-        if(icon == 24){
+        if(hourly.icon == 24){
             weatherIcon = <View style={styles.weatherIconInner}><WeatherIcons style={[styles.weatherIcons, {marginLeft: 1, lineHeight:84}]} name='snowy' size={iconSize} color={icon_snowy_2}/><WeatherIcons style= {[styles.weatherIcons, {marginLeft: 1, lineHeight:83}]} name='basecloud' size={iconSize} color={icon_basecloud}/><WeatherIcons style={[styles.weatherIcons, {lineHeight:83}]} name='night' size={iconSize} color={icon_moon}/></View> ;
-            weather     = 'There is a snow storm/blizzard';
+            weatherText = 'There is a snow storm/blizzard';
         }
 
     }
 
-
+    weatherText = hourly.content != null ? hourly.content : weatherText
 
 
 
@@ -318,23 +308,23 @@ const weatherMain = props => {
             </View>
 
             <Animated.View style={[styles.weatherDesc, {display:WEATHER_CELSIUS}]}>
-                <Text style={[styles.weatherDescText, style.ma, {color:weatherDesc}]}>{weather}</Text>
+                <Text style={[styles.weatherDescText, style.ma, {color:weatherDesc}]}>{weatherText}</Text>
                 <Text style={[styles.weatherDescText, style.ma, {color:weatherDesc}]}>{temp_today_c}</Text>
             </Animated.View>
 
             <Animated.View style={[styles.weatherDesc, {display:WEATHER_FARENHEIT}]}>
-                <Text style={[styles.weatherDescText, style.ma, {color:weatherDesc}]}>{weather}</Text>
+                <Text style={[styles.weatherDescText, style.ma, {color:weatherDesc}]}>{weatherText}</Text>
                 <Text style={[styles.weatherDescText, style.ma, {color:weatherDesc}]}>{temp_today_f}</Text>
             </Animated.View>
 
             <View style={[style.displayFlex, styles.weatherSun]}>
                 <View style={[style.displayFlex, styles.weatherSunInfo]}>
                     <WeatherIcons style={styles.weatherSunIcons} name='sunrise' size={35} color={icon_sunrise}/>
-                    <Text style={[styles.weatherSunTime, {color:weatherDesc}]}>{sunrise_hour} : {sunrise_minute} am</Text>
+                    <Text style={[styles.weatherSunTime, {color:weatherDesc}]}>{astro.sunrise_hour} : {astro.sunrise_minutes}</Text>
                 </View>
                 <View style={[style.displayFlex, styles.weatherSunInfo]}>
                     <WeatherIcons style={styles.weatherSunIcons} name='sunset' size={35} color={icon_sunrise}/>
-                    <Text style={[styles.weatherSunTime, {color:weatherDesc}]}>{sunset_hour} : {sunset_minute} pm</Text>
+                    <Text style={[styles.weatherSunTime, {color:weatherDesc}]}>{astro.sunset_hour} : {astro.sunset_minutes}</Text>
                 </View>
             </View>
 

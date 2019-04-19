@@ -42,7 +42,7 @@ import Replies from './Screens/Comments/Replies';
 import Notifications from './Screens/Notifications';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import First from './Screens/Add/Article/First';
+import Headlines from './Screens/Add/Article/Headlines';
 import Second from './Screens/Add/Article/Second';
 import TabBar from './Screens/TabBar/TabBar';
 import Login from './Screens/Login_SignUp/Login';
@@ -204,7 +204,7 @@ const SearchStack = createStackNavigator({
 
 const ArticleAdd = createStackNavigator({
   // Article    : AddArticle,  
-  First : First,
+  Headlines : Headlines,
   Second : Second
 },
 {
@@ -221,6 +221,7 @@ const AddTop = createMaterialTopTabNavigator({
   Article    : ArticleAdd,
   Video      : AddVideo    
  },{
+  tabBarComponent:props => <TabBar {...props}/>,
   initialRouteName:'Article',            
   swipeEnabled:false,
   lazy:true,
@@ -321,7 +322,7 @@ const Tab = createBottomTabNavigator({
   },
   {
     tabBarComponent:props => <TabBar {...props}/>,
-    initialRouteName:'Home',            
+    initialRouteName:'Add',            
     animationEnabled : true,
     tabBarOptions:{
       activeBackgroundColor : 'transparent',
