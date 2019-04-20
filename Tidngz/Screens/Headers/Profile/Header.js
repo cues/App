@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, View, Text, Animated, Dimensions} from 'react-native';
 import style from '../../../Styles/Styles';
 import BlurView from '../../../Components/BlurVIew/BlurVIew';
-// import ProfileContainer from '../../../Functions/Profile/Profile';
 import Articles from '../../../Functions/Articles/ArticleList';
 
 import {brand, model, models} from '../../../Components/DeviceInfo/DeviceInfo';

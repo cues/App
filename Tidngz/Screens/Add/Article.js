@@ -18,6 +18,7 @@ class AddArticle extends Component {
     return (
         <View style={[styles.container, {backgroundColor: backgroundMain}]}>               
           <First navigation = {this.props.navigation}/>
+          <Text>asjdbf kjsad</Text>
        </View> 
     );
   }

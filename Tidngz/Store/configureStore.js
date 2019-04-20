@@ -14,7 +14,7 @@ const reducers = combineReducers({
     search           : searchReducer,
     comments         : commentsReducer,
     themes           : themesReducer,
-    weather          : weatherReducer
+    weather          : weatherReducer,
 });
 
 let composeEnhancers = compose;

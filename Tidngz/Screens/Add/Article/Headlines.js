@@ -21,7 +21,7 @@ const state = state => {
     const {backgroundMain, menuText} = this.props
 
     return (
-        <View style={[styles.container, style.paddingBackgroundBottom_2, {backgroundColor: backgroundMain}]}>         
+        <View style={[styles.container, style.paddingBackgroundTop, style.paddingBackgroundBottom_2, {backgroundColor: backgroundMain}]}>         
 
           <View style={addStyle.topBox}>
             <TouchableOpacity style={styles.save}>
@@ -29,6 +29,8 @@ const state = state => {
             </TouchableOpacity>
             <Text style={[style.ca, addStyle.textCount, {color:menuText}]}>123</Text>
 
+
+            
           </View>    
 
           <View style={addStyle.bottomBox}>
@@ -65,8 +67,8 @@ const styles = StyleSheet.create({
       width:70, 
       textAlign:'center',
       lineHeight : 40,
-      letterSpacing:2.5,
-      fontSize:20,
+      letterSpacing:2,
+      fontSize:18,
       color:'rgba(15, 101, 151, 0.7)'
     }
   });

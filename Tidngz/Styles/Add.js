@@ -21,7 +21,8 @@ export default StyleSheet.create({
         bottom: brand === 'Apple' && models.includes(model) ? 73 :  59,
         alignItems:'center',
         justifyContent : 'space-around',
-        flexDirection:'row'
+        flexDirection:'row',
+        // backgroundColor:'red'
       },
 
       bottomButton : {
@@ -42,8 +43,8 @@ export default StyleSheet.create({
         position:'absolute',
         right:10,
         top:10,
-        letterSpacing:2.5,
-        fontSize:20,
+        letterSpacing:2,
+        fontSize:18,
         color:'rgba(15, 101, 151, 0.7)'
       }
 })

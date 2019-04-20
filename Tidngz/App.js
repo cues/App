@@ -11,7 +11,6 @@ import SearchPlaces from './Screens/Search/Places';
 import SearchUsers from './Screens/Search/Users';
 import SearchTags from './Screens/Search/Tags';
 import SearchHistory from './Screens/Search/History';
-import AddArticle from './Screens/Add/Article';
 import AddClassified from './Screens/Add/Classified';
 import AddVideo from './Screens/Add/Video';
 import Options from './Screens/Options/Options';
@@ -42,8 +41,11 @@ import Replies from './Screens/Comments/Replies';
 import Notifications from './Screens/Notifications';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
+import AddTabBar from './Screens/Add/TabBar/TabBar';
 import Headlines from './Screens/Add/Article/Headlines';
 import Second from './Screens/Add/Article/Second';
+
 import TabBar from './Screens/TabBar/TabBar';
 import Login from './Screens/Login_SignUp/Login';
 import SignUp from './Screens/Login_SignUp/SignUp';
@@ -202,13 +204,13 @@ const SearchStack = createStackNavigator({
 
 
 
-const ArticleAdd = createStackNavigator({
+const AddArticle = createStackNavigator({
   // Article    : AddArticle,  
   Headlines : Headlines,
   Second : Second
 },
 {
-  // initialRouteName:'AddTop',
+  initialRouteName:'Headlines',
   headerMode: 'none',
 }
 );
@@ -216,36 +218,36 @@ const ArticleAdd = createStackNavigator({
 
 
 
-const AddTop = createMaterialTopTabNavigator({
+const AddTop = createBottomTabNavigator({
   Classified : AddClassified,
-  Article    : ArticleAdd,
+  Article    : AddArticle,
   Video      : AddVideo    
  },{
-  tabBarComponent:props => <TabBar {...props}/>,
+  tabBarComponent:props => <AddTabBar {...props}/>,
   initialRouteName:'Article',            
   swipeEnabled:false,
   lazy:true,
-  tabBarOptions:{
-    upperCaseLabel : true,
-    activeTintColor:'rgba(15,101,141,1)',
-    inactiveTintColor : 'rgba(47, 47, 47, .9 )',
-    labelStyle :{
-      fontSize:13,
-      letterSpacing:1,
-      fontFamily:'Lato-Regular',
-    },
-    indicatorStyle : {
-      backgroundColor:'rgba(15,101,141,.5)',
-      height:1,
-    },
-    style:{
-      backgroundColor:'white',
-      height: brand === 'Apple' && models.includes(model) ? 88 : 68,
-      height: Platform.select({android:50}),
-      paddingTop: brand === 'Apple' && models.includes(model) ? 40 : 
-                  brand === 'Apple' ? 20 : 5,
-    }
-  },
+  // tabBarOptions:{
+  //   upperCaseLabel : true,
+  //   activeTintColor:'rgba(15,101,141,1)',
+  //   inactiveTintColor : 'rgba(47, 47, 47, .9 )',
+  //   labelStyle :{
+  //     fontSize:13,
+  //     letterSpacing:1,
+  //     fontFamily:'Lato-Regular',
+  //   },
+  //   indicatorStyle : {
+  //     backgroundColor:'rgba(15,101,141,.5)',
+  //     height:1,
+  //   },
+  //   style:{
+  //     backgroundColor:'white',
+  //     height: brand === 'Apple' && models.includes(model) ? 88 : 68,
+  //     height: Platform.select({android:50}),
+  //     paddingTop: brand === 'Apple' && models.includes(model) ? 40 : 
+  //                 brand === 'Apple' ? 20 : 5,
+  //   }
+  // },
 
  })
 

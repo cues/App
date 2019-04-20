@@ -56,3 +56,8 @@ export const SEARCH_TAGS_3      =    'SEARCH_TAGS_3';
 export const SEARCH_PLACES      =    'SEARCH_PLACES';
 export const SEARCH_USERS       =    'SEARCH_USERS';
 export const SEARCH_TAGS        =    'SEARCH_TAGS';
+
+
+
+// ADD_ARTICLE
+export const HEADLINE     =    'HEADLINE';

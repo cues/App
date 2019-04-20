@@ -5,3 +5,4 @@ export { add_weather , home_weather_call} from './weather';
 export { login, logout , tabBarVisible , tabBarAnimation, tabBarType } from './main';
 export { loginRoute , loginError , loginError_2 } from './login';
 export { search_value, search_history, search_suggestions, search_places_1, search_places_2, search_places_3, search_users_1, search_users_2, search_users_3, search_tags_1, search_tags_2, search_tags_3, search_places, search_users, search_tags } from './search';
+export { headline } from './Add/articles';
