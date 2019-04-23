@@ -6,6 +6,7 @@ import searchReducer from './Reducers/search';
 import commentsReducer from './Reducers/comments';
 import themesReducer from './Reducers/themes';
 import weatherReducer from './Reducers/weather';
+import addArticlesReducer from './Reducers/Add/articles';
 
 const reducers = combineReducers({
     main             : mainReducer,
@@ -15,6 +16,7 @@ const reducers = combineReducers({
     comments         : commentsReducer,
     themes           : themesReducer,
     weather          : weatherReducer,
+    addArticles      : addArticlesReducer,
 });
 
 let composeEnhancers = compose;

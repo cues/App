@@ -1,7 +1,8 @@
-import { HEADLINE } from '../../Actions/action_types';
+import { HEADLINE , ARTICLE } from '../../Actions/action_types';
 
 const initialState = {
-    headline : null
+    headline : null,
+    article : null
 };
 
 
@@ -12,6 +13,15 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 headline : action.headline
+            }
+        case ARTICLE : 
+            return{
+                ...state,
+                headline : action.article
+            }
+        default :
+            return {
+                ...state
             }
     }
 }
