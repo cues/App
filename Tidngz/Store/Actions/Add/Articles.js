@@ -1,15 +1,28 @@
-import { HEADLINE , ARTICLE } from '../action_types';
+import { ADD_HEADLINE , ADD_CONTENT , ADD_LINK , HEADLINE_ACTIVE} from '../action_types';
+
+export const headline_active = () => {
+    return {
+        type : HEADLINE_ACTIVE
+    }
+}
 
 export const add_headline = headline => {
     return {
-        type : HEADLINE,
+        type : ADD_HEADLINE,
         headline : headline
     }
 }
 
-export const add_articles = article => {
+export const add_content = content => {
     return {
-        type : ARTICLE,
-        article : article
+        type : ADD_CONTENT,
+        content : content
+    }
+}
+
+export const add_link = link => {
+    return {
+        type : ADD_LINK,
+        link : link
     }
 }

@@ -6,26 +6,27 @@ import {brand, model, models, models2} from '../../../Components/DeviceInfo/Devi
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Add from '../../../Components/TextInput/Add';
 
+
+
+
 import { connect } from 'react-redux';
-import { add_headline, add_articles } from '../../../Store/Actions/index';
+import { add_headline, add_content , error, error_2} from '../../../Store/Actions/index';
 
 const state = state => {
   return {
       backgroundMain          :   state.themes.backgroundMain,
-      menuText                :   state.themes.menuText,
-      menuIconColor2           :   state.themes.menuIconColor2,
-      searchBlur              :   state.themes.searchBlur,
-      searchColor             :   state.themes.searchColor,
-      searchPlaceholderColor  :   state.themes.searchPlaceholderColor,
-      headline                :   state.addArticles.headline,
-      article                 :   state.addArticles.article,
+      menuIconColor2          :   state.themes.menuIconColor2,
+      headline                :   state.addArticles.add_headline,
+      content                 :   state.addArticles.add_content,
     };
 };
 
 const dispatch = dispatch => {
   return {
-      this_add_headline  : text => dispatch(add_headline(text)),
-      this_add_article  : text => dispatch(add_articles(text))
+      this_add_headline   : text => dispatch(add_headline(text)),
+      this_add_content    : text => dispatch(add_content(text)),
+      this_error          : text => dispatch(error(text)),
+      this_error_2        :  () => dispatch(error_2())
   }
 }
 
@@ -44,6 +45,7 @@ const HEIGHT_2 = brand === 'Apple' && models.includes(model) ? 73 :  59
       article : this.props.headline,
       headlineActive : false,
       headlineActive_2 : false,
+      headlineCount : 150
     }
   }
 
@@ -60,30 +62,56 @@ const HEIGHT_2 = brand === 'Apple' && models.includes(model) ? 73 :  59
     }
 
     changeText = text => {
+      if(text != null){
+        const maxLength = 150;
+        let length = text.length;
+        length = maxLength-length;
+        this.setState({
+          headlineCount : length
+        })
+      }else{
+        this.setState({
+          headlineCount : 150
+        })
+      }
+     
       this.props.this_add_headline(text)
     }
 
     changeText_2 = text => {
-      this.props.this_add_article(text)
+      this.props.this_add_content(text)
     }
 
 
 
+    // navigateForward = () => {
+
+    //   this.props.headline == null ? this.props.this_error('Please write a headline for your article') : this.props.navigation.navigate('AddPlace')
+      
+    //   setTimeout(() => {
+    //     this.props.headline == null ? this.props.this_error_2() : null
+    //   },3000)
+    // }
+
+
 
   render() {
-    const {backgroundMain, menuText, menuIconColor2, searchPlaceholderColor, searchColor} = this.props
+    const {backgroundMain, menuIconColor2} = this.props
+
+
+    const headlineCount = this.state.headlineCount
 
     return (
         <View style={[styles.container, style.paddingBackgroundTop, style.paddingBackgroundBottom_2, {backgroundColor: backgroundMain}]}>         
 
-          <View style={addStyle.topBox}
-            behavior={Platform.OS === "ios" ? "padding" : null}
-            keyboardVerticalOffset={Platform.OS === "ios" ? -300 : 0}>
+
+
+          <View style={addStyle.topBox}>
 
                 <TouchableOpacity style={styles.save}>
                   <Text style={[style.ca, styles.saveText, {color:menuIconColor2}]}>SAVE</Text>
                 </TouchableOpacity>
-                <Text style={[style.ca, addStyle.textCount, {color:menuIconColor2}]}>123</Text>
+                <Text style={[style.ca, addStyle.textCount, {color:menuIconColor2}]}>{headlineCount}</Text>
 
                   <View style={styles.textInputView}>
 
@@ -95,22 +123,23 @@ const HEIGHT_2 = brand === 'Apple' && models.includes(model) ? 73 :  59
                         <Text style={[styles.textInput, style.ca, {color:menuIconColor2}]}>Your article</Text>
                       </TouchableOpacity>
 
-                      <Add  placeholder='Headline' text={this.state.headline} write = {this.write}  active = {this.state.headlineActive} changeText={this.changeText}/>
-                      <Add  placeholder='Write your article' text={this.state.article} write = {this.write_2}  active = {this.state.headlineActive_2} changeText={this.changeText_2}/>
+                      <Add  placeholder='Headline' text={this.state.headline} write = {this.write}  active = {this.state.headlineActive} changeText={this.changeText} maxLength={150} blurOnSubmit={true}/>
+                      <Add  placeholder='Write your article' text={this.state.article} write = {this.write_2}  active = {this.state.headlineActive_2} changeText={this.changeText_2} blurOnSubmit={false}/>
       
                   </View >
            
-            
           </View>    
 
-          <View style={addStyle.bottomBox}>
+
+
+          {/* <View style={addStyle.bottomBox}>
             <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]}>
               <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='drafts' size={23}/>
             </TouchableOpacity>
-            <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]}>
+            <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateForward}>
               <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
             </TouchableOpacity>
-          </View> 
+          </View>  */}
 
 
 

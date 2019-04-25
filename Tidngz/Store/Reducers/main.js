@@ -1,30 +1,21 @@
-import {LOGIN, LOGOUT, TABBAR_VISIBLE, TABBAR_ANIMATION, TABBAR_TYPE} from '../Actions/action_types';
+import {LOGIN, LOGOUT, TABBAR_VISIBLE, TABBAR_ANIMATION, TABBAR_TYPE, ERROR, ERROR_2} from '../Actions/action_types';
 
 
 const initialState = {
-    tabBarVisible   : true,
-    tabBarAnimation : true,
-    tabBarType      : 'normal',
-    api : "https://www.wedngz.com/Tidngz/API",
-    apiKey : 1707,
-    LoggedIn : false,
-    selectedUser : '',
-    selectedPlace : '',
-    selectedPlaceLocal : '',
-    selectedHashtag : '',
-    selectedLinked : '',
-    user : ''
-    // user : {
-    //     user_id : 120,
-    //     username: "erroll",
-    //     user_name: "Erroll Alfredo Antao",
-    //     user_name_initial: "E",
-    //     user_sex : 1,
-    //     user_verified: 1,
-    //     user_image: "http://www.wedngz.com/Tidngz/User_Images/tidngz-erroll-2018419113843-standard.JPG",
-    //     user_image_2: "http://www.wedngz.com/Tidngz/User_Images/tidngz-erroll-2018419113843-medium.JPG",
-    //     user_image_3: "http://www.wedngz.com/Tidngz/User_Images/tidngz-erroll-2018419113843-small.JPG",
-    // },
+    error               : false,
+    errorReason         : null,
+    tabBarVisible       : true,
+    tabBarAnimation     : true,
+    tabBarType          : 'normal',
+    api                 : "https://www.wedngz.com/Tidngz/API",
+    apiKey              : 1707,
+    LoggedIn            : false,
+    selectedUser        : '',
+    selectedPlace       : '',
+    selectedPlaceLocal  : '',
+    selectedHashtag     : '',
+    selectedLinked      : '',
+    user                : ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -78,6 +69,18 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 tabBarType : action.tabBarType
+            }
+        case ERROR :
+            return {
+                ...state,
+                error        : true,
+                errorReason  : action.text,
+            }
+        case ERROR_2 :
+            return {
+                ...state,
+                error        : false,
+                errorReason  : null,
             }
         default :
             return state;

@@ -6,6 +6,7 @@ const HEIGHT = Dimensions.get('window').height;
 
 const HEIGHT_1 =  Platform.select({android:50 , ios : models2.includes(model) ? 88 : 68})
 const HEIGHT_2 = brand === 'Apple' && models.includes(model) ? 73 :  59
+const HEIGHT_3 = brand === 'Apple' && models.includes(model) ? 170 :  59
 
 export default StyleSheet.create({
 
@@ -18,7 +19,9 @@ export default StyleSheet.create({
         height : 100, 
         width: WIDTH,
         position:'absolute',
-        bottom: brand === 'Apple' && models.includes(model) ? 73 :  59,
+        top : HEIGHT - HEIGHT_3,
+        // bottom: brand === 'Apple' && models.includes(model) ? 73 :  59,
+
         alignItems:'center',
         justifyContent : 'space-around',
         flexDirection:'row',

@@ -74,19 +74,23 @@ class Login extends Component {
 
     login = async () => {
 
+
         await fetch('https://api.ipify.org/?format=json')
         .then((response) => response.json())
         .then((response) => {
 
-
-        
                 const { api, apiKey } = this.props;
                 const { username, password } = this.state;
 
                 const url = `${api}/LoginSignUp/Login/login.php?key=${apiKey}&type=login&username=${username}&password=${password}&ip=${response.ip}&timezone=${timezone()}`;
+
+                console.warn(url)
+        
                 fetch(url)
                 .then((response) => response.json())
                 .then((response) => {
+
+
 
                     if(response.data.error){
                         this.props.this_loginError('Please check your username or password')

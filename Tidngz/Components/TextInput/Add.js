@@ -74,11 +74,10 @@ class Add extends Component {
 
 
 
-
     render (){
 
       
-        const {active, placeholder, tabBlur, placeholderColor, commentWrite, keyboard, userImage, headerColor} = this.props;
+        const {active, placeholder, tabBlur, placeholderColor, commentWrite, keyboard, userImage, headerColor, maxLength, blurOnSubmit, multiline = true} = this.props;
 
         const writeViewStyle = Platform.select({
                 ios     : styles.container,
@@ -106,11 +105,14 @@ class Add extends Component {
                         placeholder = {placeholder}
                         placeholderTextColor={placeholderColor}
                         underlineColorAndroid='transparent'
-                        multiline = {true}
+                        multiline = {multiline}
                         keyboardAppearance = {keyboard}
                         onChangeText = {this.onChangeText}
                         value = {this.state.text}
                         enablesReturnKeyAutomatically = {true}
+                        maxLength = {maxLength}
+                        // returnKeyType='go'
+                        blurOnSubmit = {blurOnSubmit}
                     />
 
                 
@@ -179,7 +181,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         minHeight:50,
         maxHeight:200,
-        margin :10,
+        padding :10,
+        marginVertical:10,
+        // backgroundColor:'red',
         // fontSize : 15,
         lineHeight : 22,
         letterSpacing :.6,

@@ -33,6 +33,8 @@ export const LOGOUT             =  'LOGOUT';
 export const TABBAR_VISIBLE     =  'TABBAR_VISIBLE'
 export const TABBAR_ANIMATION   =  'TABBAR_ANIMATION'
 export const TABBAR_TYPE        =  'TABBAR_TYPE'
+export const ERROR              =  'ERROR'
+export const ERROR_2            =  'ERROR_2'
 
 
 // LOGIN
@@ -60,5 +62,7 @@ export const SEARCH_TAGS        =    'SEARCH_TAGS';
 
 
 // ADD_ARTICLE
-export const HEADLINE     =    'HEADLINE';
-export const ARTICLE     =    'ARTICLE';
+export const HEADLINE_ACTIVE  =    'HEADLINE_ACTIVE';
+export const ADD_HEADLINE     =    'ADD_HEADLINE';
+export const ADD_CONTENT      =    'ADD_CONTENT';
+export const ADD_LINK         =    'ADD_LINK';

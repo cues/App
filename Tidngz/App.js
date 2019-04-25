@@ -43,8 +43,10 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import AddTabBar from './Screens/Add/TabBar/TabBar';
-import Headlines from './Screens/Add/Article/Headlines';
-import Second from './Screens/Add/Article/Second';
+import Headline from './Screens/Add/Article/Headline';
+import AddPlace from './Screens/Add/Article/Place';
+import CatTagLink from './Screens/Add/Article/CatTagLink';
+import LinkArticle from './Screens/Add/Article/LinkArticle';
 
 import TabBar from './Screens/TabBar/TabBar';
 import Login from './Screens/Login_SignUp/Login';
@@ -206,12 +208,15 @@ const SearchStack = createStackNavigator({
 
 const AddArticle = createStackNavigator({
   // Article    : AddArticle,  
-  Headlines : Headlines,
-  Second : Second
+  Headline : Headline,
+  AddPlace  : AddPlace,
+  CatTagLink : CatTagLink,
+  LinkArticle : LinkArticle
 },
 {
-  initialRouteName:'Headlines',
+  initialRouteName:'Headline',
   headerMode: 'none',
+  cardShadowEnabled : false,
 }
 );
 
@@ -227,6 +232,7 @@ const AddTop = createBottomTabNavigator({
   initialRouteName:'Article',            
   swipeEnabled:false,
   lazy:true,
+  
   // tabBarOptions:{
   //   upperCaseLabel : true,
   //   activeTintColor:'rgba(15,101,141,1)',
