@@ -5,6 +5,7 @@ import addStyle from '../../../Styles/Add';
 import {brand, model, models, models2} from '../../../Components/DeviceInfo/DeviceInfo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Add from '../../../Components/TextInput/Add';
+import Button from '../Button';
 
 
 
@@ -68,12 +69,10 @@ const HEIGHT_2 = brand === 'Apple' && models.includes(model) ? 73 :  59
 
           <View style={addStyle.topBox}>
 
-                  <View style={styles.textInputView}>
+                  <View style={addStyle.textInputView}>
 
-                      <TouchableOpacity>
-                        <Text style={[styles.textInput, style.ca, {color:menuIconColor2}]}>Link to a previous article</Text>
-                      </TouchableOpacity>
-
+                      <Button write= {this.write} text='Link to a previous article'/>
+                      
                   </View >
             
           </View>    
@@ -93,41 +92,6 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       alignItems: 'center',
     },
-    save: {
-      height : 40, 
-      width:70, 
-      position:'absolute',
-      left:10,
-      top:10,
-    },
-    saveText : {
-      height : 40,
-      width:70, 
-      textAlign:'center',
-      lineHeight : 40,
-      letterSpacing:2,
-      fontSize:18,
-      color:'rgba(15, 101, 151, 0.7)'
-    },
-    textInputView:{
-      height: HEIGHT - HEIGHT_1 - HEIGHT_2 - 160,
-      width:'100%',
-      marginTop: 60,
-      alignItems:'center',
-      justifyContent:'center'
-    },
-    textInput : {
-      width:'100%',
-      padding:10,
-      textAlign:'center',
-      fontSize:29,
-      height : 60,
-      // lineHeight: 60,
-      // backgroundColor:'red',
-      fontWeight:Platform.select({android:'200'}),
-      letterSpacing:1.3,
-      marginVertical : 50
-  }
   });
   
   export default connect(state, dispatch)(Headlines)

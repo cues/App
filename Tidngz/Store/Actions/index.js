@@ -6,3 +6,4 @@ export { login, logout , tabBarVisible , tabBarAnimation, tabBarType, error, err
 export { loginRoute , loginError , loginError_2 } from './login';
 export { search_value, search_history, search_suggestions, search_places_1, search_places_2, search_places_3, search_users_1, search_users_2, search_users_3, search_tags_1, search_tags_2, search_tags_3, search_places, search_users, search_tags } from './search';
 export { headline_active, add_headline , add_content , add_link } from './Add/articles';
+export { video_add_video_link, video_headline_active, video_add_headline , video_add_content , video_add_link } from './Add/videos';

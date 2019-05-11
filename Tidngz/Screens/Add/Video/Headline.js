@@ -10,23 +10,23 @@ import Button from '../Button';
 
 
 import { connect } from 'react-redux';
-import { add_headline, add_content , error, error_2} from '../../../Store/Actions/index';
+import { video_add_headline, video_add_content , error, error_2} from '../../../Store/Actions/index';
 
 const state = state => {
   return {
       backgroundMain          :   state.themes.backgroundMain,
       menuIconColor2          :   state.themes.menuIconColor2,
-      headline                :   state.addArticles.add_headline,
-      content                 :   state.addArticles.add_content,
+      headline                :   state.addArticles.video_add_headline,
+      content                 :   state.addArticles.video_add_content,
     };
 };
 
 const dispatch = dispatch => {
   return {
-      this_add_headline   : text => dispatch(add_headline(text)),
-      this_add_content    : text => dispatch(add_content(text)),
-      this_error          : text => dispatch(error(text)),
-      this_error_2        :  () => dispatch(error_2())
+      this_video_add_headline   : text => dispatch(video_add_headline(text)),
+      this_video_add_content    : text => dispatch(video_add_content(text)),
+      this_error                : text => dispatch(error(text)),
+      this_error_2              :  () => dispatch(error_2())
   }
 }
 
@@ -75,11 +75,11 @@ const HEIGHT_2 = brand === 'Apple' && models.includes(model) ? 73 :  59
         })
       }
      
-      this.props.this_add_headline(text)
+      this.props.this_video_add_headline(text)
     }
 
     changeText_2 = text => {
-      this.props.this_add_content(text)
+      this.props.this_video_add_content(text)
     }
 
 
@@ -100,9 +100,6 @@ const HEIGHT_2 = brand === 'Apple' && models.includes(model) ? 73 :  59
 
           <View style={addStyle.topBox}>
 
-                <TouchableOpacity style={styles.save}>
-                  <Text style={[style.ca, styles.saveText, {color:menuIconColor2}]}>SAVE</Text>
-                </TouchableOpacity>
                 <Text style={[style.ca, addStyle.textCount, {color:menuIconColor2}]}>{headlineCount}</Text>
 
                   <View style={addStyle.textInputView}>

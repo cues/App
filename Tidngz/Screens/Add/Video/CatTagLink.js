@@ -11,23 +11,19 @@ import Button from '../Button';
 
 
 import { connect } from 'react-redux';
-import { add_headline, add_articles , error, error_2} from '../../../Store/Actions/index';
+import { video_add_link , error, error_2} from '../../../Store/Actions/index';
 
 const state = state => {
   return {
       backgroundMain          :   state.themes.backgroundMain,
-      menuText                :   state.themes.menuText,
       menuIconColor2          :   state.themes.menuIconColor2,
-      place                   :   state.addArticles.add_place,
-      landmark                :   state.addArticles.add_landmark,
-      landmarkDesc            :   state.addArticles.add_landmarkDesc,
+      link                    :   state.addArticles.video_add_link,
     };
 };
 
 const dispatch = dispatch => {
   return {
-      this_add_headline  : text => dispatch(add_headline(text)),
-      this_add_article  : text => dispatch(add_articles(text)),
+      this_video_add_link     : text => dispatch(video_add_link(text)),
       this_error        : text => dispatch(error(text)),
       this_error_2      :  () => dispatch(error_2())
   }
@@ -44,42 +40,50 @@ const HEIGHT_2 = brand === 'Apple' && models.includes(model) ? 73 :  59
     super(props)
 
     this.state = {
-      place         : this.props.place,
-      landmark      : this.props.landmark,
-      landmarkDesc  : this.props.landmarkDesc,
+      link : this.props.link,
+      linkActive : false
     }
   }
 
+  write = () => {
+    this.setState(prevState => ({
+      linkActive : !prevState.linkActive
+    }))
+  }
+   
 
+    changeText = text => {
+      this.props.this_video_add_link(text)
+    }
 
-
-
- 
 
   render() {
-    const {backgroundMain, menuIconColor2 } = this.props
+    const {backgroundMain, menuIconColor2} = this.props
 
 
 
     return (
         <View style={[styles.container, style.paddingBackgroundTop, style.paddingBackgroundBottom_2, {backgroundColor: backgroundMain}]}>         
 
+
+
           <View style={addStyle.topBox}>
 
                   <View style={addStyle.textInputView}>
 
-                      <Button write= {this.write} text='Add a place'/>
-                      <Button write= {this.write} text='Add a landmark'/>
-      
+                      <Button  text='Select a Category'/>
+                      <Button  text='Add tags'/>
+                      <Button write= {this.write} text='Add a link'/>
+                  
+                      <Add  placeholder='Link' text={this.state.link} write = {this.write}  active = {this.state.linkActive} changeText={this.changeText}  blurOnSubmit={false} multiline={false}/>
+
                   </View >
             
           </View>    
 
 
 
-   
-
-
+       
 
        </View> 
     );

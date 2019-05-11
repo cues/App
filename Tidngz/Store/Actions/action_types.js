@@ -62,7 +62,21 @@ export const SEARCH_TAGS        =    'SEARCH_TAGS';
 
 
 // ADD_ARTICLE
-export const HEADLINE_ACTIVE  =    'HEADLINE_ACTIVE';
-export const ADD_HEADLINE     =    'ADD_HEADLINE';
-export const ADD_CONTENT      =    'ADD_CONTENT';
-export const ADD_LINK         =    'ADD_LINK';
+export const HEADLINE_ACTIVE  = 'HEADLINE_ACTIVE';
+export const ADD_HEADLINE     = 'ADD_HEADLINE';
+export const ADD_CONTENT      = 'ADD_CONTENT';
+export const ADD_LINK         = 'ADD_LINK';
+
+// ADD_VIDEO
+export const VIDEO_HEADLINE_ACTIVE  = 'VIDEO_HEADLINE_ACTIVE';
+export const VIDEO_ADD_VIDEO_LINK   = 'VIDEO_ADD_VIDEO_LINK';
+export const VIDEO_ADD_HEADLINE     = 'VIDEO_ADD_HEADLINE';
+export const VIDEO_ADD_CONTENT      = 'VIDEO_ADD_CONTENT';
+export const VIDEO_ADD_LINK         = 'VIDEO_ADD_LINK';
+
+// ADD_CLASSIFIED
+export const ADD_CLASSIFIED  = 'ADD_CLASSIFIED';
+export const ADD_LINK        = 'ADD_LINK';
+export const ADD_EMAIL       = 'ADD_EMAIL';
+export const ADD_CONTACT     = 'ADD_CONTACT';
+export const ADD_CONTACT_2   = 'ADD_CONTACT_2';

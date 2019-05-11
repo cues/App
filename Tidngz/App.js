@@ -11,8 +11,6 @@ import SearchPlaces from './Screens/Search/Places';
 import SearchUsers from './Screens/Search/Users';
 import SearchTags from './Screens/Search/Tags';
 import SearchHistory from './Screens/Search/History';
-import AddClassified from './Screens/Add/Classified';
-import AddVideo from './Screens/Add/Video';
 import Options from './Screens/Options/Options';
 import Calender from './Screens/Options/Calender';
 import OptionsArticles from './Screens/Options/OptionsArticles';
@@ -42,11 +40,24 @@ import Notifications from './Screens/Notifications';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
+
+import AddClassified from './Screens/Add/Classified';
+
 import AddTabBar from './Screens/Add/TabBar/TabBar';
-import Headline from './Screens/Add/Article/Headline';
-import AddPlace from './Screens/Add/Article/Place';
-import CatTagLink from './Screens/Add/Article/CatTagLink';
-import LinkArticle from './Screens/Add/Article/LinkArticle';
+
+import AddHeadline from './Screens/Add/Article/Headline';
+import AddAddPlace from './Screens/Add/Article/Place';
+import AddCatTagLink from './Screens/Add/Article/CatTagLink';
+import AddLinked from './Screens/Add/Article/Linked';
+import AddMedia from './Screens/Add/Article/Media';
+
+import VideoAddVideoLink from './Screens/Add/Video/VideoLink';
+import VideoAddHeadline from './Screens/Add/Video/Headline';
+import VideoAddPlace from './Screens/Add/Video/Place';
+import VideoAddCatTagLink from './Screens/Add/Video/CatTagLink';
+import VideoAddLinked from './Screens/Add/Video/Linked';
+
+
 
 import TabBar from './Screens/TabBar/TabBar';
 import Login from './Screens/Login_SignUp/Login';
@@ -206,32 +217,59 @@ const SearchStack = createStackNavigator({
 
 
 
-const AddArticle = createStackNavigator({
-  // Article    : AddArticle,  
-  Headline : Headline,
-  AddPlace  : AddPlace,
-  CatTagLink : CatTagLink,
-  LinkArticle : LinkArticle
-},
-{
-  initialRouteName:'Headline',
-  headerMode: 'none',
-  cardShadowEnabled : false,
-}
+const AddArticle = createMaterialTopTabNavigator({
+    Headline      : AddHeadline,
+    AddPlace      : AddAddPlace,
+    CatTagLink    : AddCatTagLink,
+    LinkArticle   : AddLinked,
+    MediaArticle  : AddMedia
+  },
+  {
+    tabBarComponent:null,
+    initialRouteName:'Headline',
+    headerMode: 'none',
+    cardShadowEnabled : false,
+    swipeEnabled : false,
+  }
+);
+
+const AddVideo = createMaterialTopTabNavigator({
+    VideoLink        : VideoAddVideoLink,
+    VideoHeadline    : VideoAddHeadline,
+    VideoAddPlace    : VideoAddPlace,
+    VideoCatTagLink  : VideoAddCatTagLink,
+    VideoLinkArticle : VideoAddLinked,
+  },
+  {
+    tabBarComponent:null,
+    initialRouteName:'VideoLink',
+    headerMode: 'none',
+    cardShadowEnabled : false,
+    swipeEnabled : false,
+  }
 );
 
 
-
-
 const AddTop = createBottomTabNavigator({
-  Classified : AddClassified,
   Article    : AddArticle,
-  Video      : AddVideo    
- },{
+  Video      : AddVideo ,   
+  Classified : AddClassified,
+},{
   tabBarComponent:props => <AddTabBar {...props}/>,
-  initialRouteName:'Article',            
+  initialRouteName:'Classified',            
   swipeEnabled:false,
   lazy:true,
+
+  // tabBarOptions:{
+  //   activeBackgroundColor : 'transparent',
+  //   inactiveTintColor:'rgba(47, 47, 47, .6 )',
+  //   activeTintColor:'rgba(15,101,141,1)',
+  //   showIcon: true,
+  //   showLabel : false,
+  //   style:{
+  //     backgroundColor:'transparent',
+  //   },
+  // },
   
   // tabBarOptions:{
   //   upperCaseLabel : true,
@@ -324,7 +362,7 @@ const ProfileStack = createStackNavigator({
 const Tab = createBottomTabNavigator({
     Home    :  HomeStack,
     Search  :  SearchStack,
-    Add     :  AddStack,
+    Add     :  AddTop,
     Places  :  PlacesStack,
     Profile :  ProfileStack,
   },
@@ -332,20 +370,20 @@ const Tab = createBottomTabNavigator({
     tabBarComponent:props => <TabBar {...props}/>,
     initialRouteName:'Add',            
     animationEnabled : true,
-    tabBarOptions:{
-      activeBackgroundColor : 'transparent',
-      inactiveTintColor:'rgba(47, 47, 47, .6 )',
-      activeTintColor:'rgba(15,101,141,1)',
-      showIcon: true,
-      showLabel : false,
-      style:{
-        backgroundColor:'transparent',
-      //   position: 'absolute',
-      //   right: 0,
-      //   left: 0,
-      //   bottom:0
-      },
-    },
+    // tabBarOptions:{
+    //   activeBackgroundColor : 'transparent',
+    //   inactiveTintColor:'rgba(47, 47, 47, .6 )',
+    //   activeTintColor:'rgba(15,101,141,1)',
+    //   showIcon: true,
+    //   showLabel : false,
+    //   style:{
+    //     backgroundColor:'transparent',
+    //   //   position: 'absolute',
+    //   //   right: 0,
+    //   //   left: 0,
+    //   //   bottom:0
+    //   },
+    // },
    
     
 })

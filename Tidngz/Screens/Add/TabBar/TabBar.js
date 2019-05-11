@@ -14,6 +14,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import { connect } from 'react-redux';
 import { error, error_2, headline_active} from '../../../Store/Actions/index';
+import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
 
 const state = state => {
   return {
@@ -21,8 +22,17 @@ const state = state => {
       tabBlur           :   state.themes.tabBlur,
       selectedArticle   :   state.articles.selectedArticle,
       menuIconColor2          :   state.themes.menuIconColor2,
+      
       headline                :   state.addArticles.add_headline,
-      headlineActive          :   state.addArticles.headlineActive,
+      place                   :   state.addArticles.add_place,
+      landmark                :   state.addArticles.add_landmark,
+      landmarkDesc            :   state.addArticles.add_landmarkDesc,
+
+      video_add_video_link    :   state.addVideos.video_add_video_link,
+      video_add_headline      :   state.addVideos.video_add_headline,
+      video_add_place         :   state.addVideos.add_video_add_place,
+      video_add_landmark      :   state.addVideos.add_video_add_landmark,
+      video_add_landmarkDesc  :   state.addVideos.add_video_add_landmarkDesc,
   };
 };
 
@@ -30,7 +40,6 @@ const dispatch = dispatch => {
   return {
       this_error            : text => dispatch(error(text)),
       this_error_2          :  () => dispatch(error_2()),
-      this_headline_active  : () => dispatch(headline_active()),
   }
 }
 
@@ -44,24 +53,50 @@ class TabBar extends Component  {
       headlineActive      : true,
       placeActive         : false,
       catTagLinkActive    : false,
-      LinkArticleActive   : false,
+      linkedActive        : false,
+      mediaActive         : false,
+
+      videoLinkActive       : true,
+      videoHeadlineActive   : false,
+      videoPlaceActive      : false,
+      videoCatTagLinkActive : false,
+      videoLinkedActive     : false,
     }
+
+    const { navigation } = this.props
+    const { routes , index  }  = navigation.state;
+
+    console.warn(routes)
   }
 
 
+// ARTICLE
 
   // headline
     navigateForwardHeadline = () => {
 
       const { headline , this_error, this_error_2, navigation} = this.props
 
-      headline == null ? this_error('Please write a headline for your article') : navigation.navigate('AddPlace')
+
+      let length = headline != null ? headline.length : 500;
+
+
+      if(headline == null){
+        this_error('Please write a headline for your article')
+      }
+      else if(length < 10 ){
+        this_error('Your headline is too short, minimum of 10 characters')
+      }
+      else{
+        navigation.navigate('AddPlace')
+      }
+
       
       setTimeout(() => {
-        headline == null ? this_error_2() : null
+        headline == null || length < 10 ? this_error_2() : null
       },3000)
 
-      if(headline != null){
+      if(headline != null && length > 9 && length < 301 ){
         this.setState(prevState => ({
           headlineActive : !prevState.headlineActive,
           placeActive    : !prevState.placeActive
@@ -86,14 +121,33 @@ class TabBar extends Component  {
 
     }
 
+
+
+
     navigateForwardPlace = () => {
 
-      this.props.navigation.navigate('AddCatTagLink')
+      const { place , landmark, landmarkDesc, this_error, this_error_2, navigation} = this.props
 
-      this.setState(prevState => ({
-        placeActive       : !prevState.placeActive,
-        catTagLinkActive  : !prevState.catTagLinkActive,
-      }))
+      if(place == null){
+        this_error('Please add a place')
+      }
+      else if(landmark != null && landmarkDesc == null ){
+        this_error('Please choose a landmark title')
+      }
+      else{
+        navigation.navigate('CatTagLink')
+      }
+      
+      setTimeout(() => {
+        place == null ? this_error_2() : null
+      },3000)
+
+      if(place != null ){
+          this.setState(prevState => ({
+          placeActive       : !prevState.placeActive,
+          catTagLinkActive  : !prevState.catTagLinkActive,
+        }))
+      }
       
     }
 
@@ -115,27 +169,355 @@ class TabBar extends Component  {
 
     navigateForwardCatTagLink = () => {
 
-      this.props.navigation.navigate('AddPlace')
+      this.props.navigation.navigate('LinkArticle')
 
       this.setState(prevState => ({
         catTagLinkActive    : !prevState.catTagLinkActive,
-        LinkArticleActive   : !prevState.LinkArticleActive,
+        linkedActive   : !prevState.linkedActive,
       }))
 
     }
 
 
 
+
+    // linked
+    navigateBackLinked = () => {
+
+      this.props.navigation.navigate('CatTagLink')
+
+      this.setState(prevState => ({
+        catTagLinkActive  : !prevState.catTagLinkActive,
+        linkedActive : !prevState.linkedActive,
+      }))
+
+    }
+
+
+    navigateForwardLinked = () => {
+
+      this.props.navigation.navigate('MediaArticle')
+
+      this.setState(prevState => ({
+        linkedActive   : !prevState.linkedActive,
+        mediaActive         : !prevState.mediaActive,
+      }))
+
+    }
+
+    
+
+
+      // media
+      navigateBackMedia = () => {
+
+      this.props.navigation.navigate('Linked')
+
+      this.setState(prevState => ({
+        linkedActive   : !prevState.linkedActive,
+        mediaActive         : !prevState.mediaActive,
+      }))
+
+    }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // VIDEO
+
+  // videoLink
+
+
+  videoNavigateForwardVideoLink = () => {
+
+    const { video_add_video_link , this_error, this_error_2, navigation} = this.props
+
+    if(video_add_video_link == null){
+      this_error('Please add a youtube video link')
+    }
+    else{
+      navigation.navigate('VideoHeadline')
+    }
+    
+    setTimeout(() => {
+      video_add_video_link == null ? this_error_2() : null
+    },3000)
+
+    if(video_add_video_link != null){
+      this.setState(prevState => ({
+        videoLinkActive     : !prevState.videoLinkActive,
+        videoHeadlineActive : !prevState.videoHeadlineActive,
+      }))
+    }
+ 
+  }
+
+
+    // headline
+
+    videoNavigateBackHeadline = () => {
+
+      this.props.navigation.navigate('VideoLink')
+
+        this.setState(prevState => ({
+          videoLinkActive     : !prevState.videoLinkActive,
+          videoHeadlineActive : !prevState.videoHeadlineActive,
+        }))
+      
+
+    }
+
+
+
+    videoNavigateForwardHeadline = () => {
+
+      const { video_add_headline , this_error, this_error_2, navigation} = this.props
+
+
+      let length = video_add_headline != null ? video_add_headline.length : 500;
+
+
+      if(video_add_headline == null){
+        this_error('Please write a headline for your article')
+      }
+      else if(length < 10 ){
+        this_error('Your headline is too short, minimum of 10 characters')
+      }
+      else{
+        navigation.navigate('VideoAddPlace')
+      }
+      
+      setTimeout(() => {
+        video_add_headline == null || length < 10 ? this_error_2() : null
+      },3000)
+
+      if(video_add_headline  != null && length > 9 && length < 301 ){
+        this.setState(prevState => ({
+          videoHeadlineActive : !prevState.videoHeadlineActive,
+          videoPlaceActive    : !prevState.videoPlaceActive
+        }))
+      }
+   
+    }
+
+
+
+  // place
+
+    videoNavigateBackPlace = () => {
+
+      this.props.navigation.navigate('VideoHeadline')
+
+        this.setState(prevState => ({
+          videoHeadlineActive : !prevState.videoHeadlineActive,
+          videoPlaceActive    : !prevState.videoPlaceActive
+        }))
+      
+
+    }
+
+
+
+
+    videoNavigateForwardPlace = () => {
+
+      const { video_add_place , video_add_landmark, video_add_landmarkDesc, this_error, this_error_2, navigation} = this.props
+
+      if(video_add_place == null){
+        this_error('Please add a place')
+      }
+      else if(video_add_landmark != null && video_add_landmarkDesc == null ){
+        this_error('Please choose a landmark title')
+      }
+      else{
+        navigation.navigate('VideoCatTagLink')
+      }
+      
+      setTimeout(() => {
+        video_add_place == null ? this_error_2() : null
+      },3000)
+
+      if(video_add_place  != null ){
+          this.setState(prevState => ({
+          videoPlaceActive       : !prevState.videoPlaceActive,
+          videoCatTagLinkActive  : !prevState.videocatTagLinkActive,
+        }))
+      }
+      
+    }
+
+
+
+
+
+    // Category tags link
+    videoNavigateBackCatTagLink = () => {
+
+      this.props.navigation.navigate('VideoAddPlace')
+
+      this.setState(prevState => ({
+        videoPlaceActive       : !prevState.videoPlaceActive,
+        videoCatTagLinkActive  : !prevState.videocatTagLinkActive,
+      }))
+
+    }
+
+    videoNavigateForwardCatTagLink = () => {
+
+      this.props.navigation.navigate('VideoLinkArticle')
+
+      this.setState(prevState => ({
+        videoCatTagLinkActive  : !prevState.videoCatTagLinkActive,
+        videoLinkedActive      : !prevState.videoLinkedActive,
+      }))
+
+    }
+
+
+
+
+    // linked
+    videoNavigateBackLinked = () => {
+
+      this.props.navigation.navigate('VideoCatTagLink')
+
+      this.setState(prevState => ({
+        videoCatTagLinkActive  : !prevState.videoCatTagLinkActive,
+        videoLinkedActive      : !prevState.videoLinkedActive,
+      }))
+
+    }
+
+
+
+
+
+
+
+    routeFinder = (navigationState) => {
+      if (!navigationState) return;
+    
+      const x = [navigationState.routeName];
+      while (navigationState.routes) {
+        const route = navigationState.routes[navigationState.index];
+        x.push(route.routeName);
+        navigationState = route;
+      }
+    
+      return x;
+    }
+    
+
+
   render(){
 
 
     const { navigation , headerColor, tabBlur, menuIconColor2 }      = this.props;
-    const { routes , index  }  = navigation.state;
-    const { headlineActive, placeActive , catTagLinkActive} = this.state;
+    const { routes , index , routeName }  = navigation.state;
+    const { headlineActive, placeActive , catTagLinkActive, linkedActive, mediaActive} = this.state;
+    const { videoLinkActive, videoHeadlineActive , videoPlaceActive, videoCatTagLinkActive, videoLinkedActive} = this.state;
+
+    let route =  this.routeFinder(this.props.navigation.state) 
+    route = route[1]
+
+    // console.warn(route)
+// VIDEO
+    const videoDisplayVideoLink = (
+      videoLinkActive && route == 'Video' ? 
+        <View style={addStyle.bottomBox}>
+          {/* <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]}>
+            <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='drafts' size={23}/>
+          </TouchableOpacity> */}
+          <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.videoNavigateForwardVideoLink}>
+            <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
+          </TouchableOpacity>
+        </View> 
+      : null
+  )
 
 
-    const displayHeadline = (
-        headlineActive ? 
+    const videoDisplayHeadline = (
+      videoHeadlineActive && route == 'Video' ? 
+        <View style={addStyle.bottomBox}>
+          <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.videoNavigateBackHeadline}>
+              <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-back' size={23}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.videoNavigateForwardHeadline}>
+            <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
+          </TouchableOpacity>
+        </View> 
+      : null
+  )
+
+
+  const videoDisplayPlace  = (
+      videoPlaceActive && route == 'Video' ?
+          <View style={addStyle.bottomBox}>
+            <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.videoNavigateBackPlace}>
+              <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-back' size={23}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.videoNavigateForwardPlace}>
+              <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
+            </TouchableOpacity>
+          </View> 
+          : null
+
+  )
+
+
+  const videoDisplayCatTagLink = (
+    videoCatTagLinkActive && route == 'Video' ? 
+      <View style={addStyle.bottomBox}>
+        <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.videoNavigateBackCatTagLink}>
+          <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-back' size={23}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.videoNavigateForwardCatTagLink}>
+          <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
+        </TouchableOpacity>
+      </View> 
+      : null
+  )
+
+
+
+  const videoDisplayLinked = (
+    videoLinkedActive && route == 'Video' ? 
+      <View style={addStyle.bottomBox}>
+        <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.videoNavigateBackLinked}>
+          <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-back' size={23}/>
+        </TouchableOpacity>
+        {/* <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateForwardLinked}>
+          <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
+        </TouchableOpacity> */}
+      </View> 
+      : null
+  )
+
+
+
+
+
+
+
+
+
+// ARTICLE
+
+    const articleDisplayHeadline = (
+        headlineActive && route == 'Article' ? 
           <View style={addStyle.bottomBox}>
             <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]}>
               <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='drafts' size={23}/>
@@ -148,8 +530,8 @@ class TabBar extends Component  {
     )
 
 
-    const displayPlace  = (
-        placeActive ?
+    const articleDisplayPlace  = (
+        placeActive && route == 'Article' ?
             <View style={addStyle.bottomBox}>
               <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateBackPlace}>
                 <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-back' size={23}/>
@@ -163,8 +545,8 @@ class TabBar extends Component  {
     )
 
 
-    const displayCatTagLink = (
-      catTagLinkActive ? 
+    const articleDisplayCatTagLink = (
+      catTagLinkActive && route == 'Article' ? 
         <View style={addStyle.bottomBox}>
           <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateBackCatTagLink}>
             <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-back' size={23}/>
@@ -177,6 +559,55 @@ class TabBar extends Component  {
     )
 
 
+
+    const articleDisplayLinked = (
+      linkedActive && route == 'Article' ? 
+        <View style={addStyle.bottomBox}>
+          <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateBackLinked}>
+            <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-back' size={23}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateForwardLinked}>
+            <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
+          </TouchableOpacity>
+        </View> 
+        : null
+    )
+
+
+    const articleDisplayMedia = (
+      mediaActive && route == 'Article' ? 
+        <View style={addStyle.bottomBox}>
+          <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateBackMedia}>
+            <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-back' size={23}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateForwardMedia}>
+            <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
+          </TouchableOpacity>
+        </View> 
+        : null
+    )
+
+
+
+
+
+
+
+
+// CLASSIFIED
+
+
+
+
+
+
+
+
+
+
+
+
+
     const TabBarItem = (
       routes.map((route, i) => (
           <TabBarItems navigation={navigation} key={route.routeName} {...route} isActive = {index === i}/>
@@ -187,10 +618,10 @@ class TabBar extends Component  {
 
 
       return (
-        <View  style={[styles.container, {backgroundColor:Platform.select({android : headerColor})}]}>
+        <View  style={[styles.container, {backgroundColor:Platform.select({android : headerColor, ios:'transparent'})}]}>
       
 
-              <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} /> 
+              <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} />  
 
 
               <View style={styles.Animatable}>
@@ -198,10 +629,19 @@ class TabBar extends Component  {
               </View>
         
 
-              {displayHeadline}
-              {displayPlace}
-              {displayCatTagLink}
-             
+              {articleDisplayHeadline}
+              {articleDisplayPlace}
+              {articleDisplayCatTagLink}
+              {articleDisplayLinked}
+              {articleDisplayMedia}
+
+              {videoDisplayVideoLink}
+              {videoDisplayHeadline}
+              {videoDisplayPlace}
+              {videoDisplayCatTagLink}
+              {videoDisplayLinked}
+
+
 
               <Error/>
 
@@ -222,7 +662,8 @@ const styles = StyleSheet.create({
     left: 0,
     top:0,
     // overflow:'hidden', 
-    zIndex:100
+    zIndex:100,
+    // backgroundColor:'red'
   },
 
   Animatable :{ 

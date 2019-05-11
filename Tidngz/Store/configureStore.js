@@ -7,6 +7,8 @@ import commentsReducer from './Reducers/comments';
 import themesReducer from './Reducers/themes';
 import weatherReducer from './Reducers/weather';
 import addArticlesReducer from './Reducers/Add/articles';
+import addVideosReducer from './Reducers/Add/videos';
+import addClassifiedReducer from './Reducers/Add/classified';
 
 const reducers = combineReducers({
     main             : mainReducer,
@@ -17,6 +19,8 @@ const reducers = combineReducers({
     themes           : themesReducer,
     weather          : weatherReducer,
     addArticles      : addArticlesReducer,
+    addVideos        : addVideosReducer,
+    addClassified    : addClassifiedReducer,
 });
 
 let composeEnhancers = compose;

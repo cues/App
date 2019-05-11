@@ -7,7 +7,7 @@ const initialState = {
     tabBarVisible       : true,
     tabBarAnimation     : true,
     tabBarType          : 'normal',
-    api                 : "https://www.wedngz.com/Tidngz/API",
+    api                 : "http://www.wedngz.com/Tidngz/API",
     apiKey              : 1707,
     LoggedIn            : false,
     selectedUser        : '',

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         backgroundColor:'rgba(255,0,0,1)',
     },
     loginErrorText:{
-        fontSize:14,
+        fontSize:13,
         width:'100%',
         height:HEADER_HEIGHT - MARGIN_TOP,
         lineHeight:HEADER_HEIGHT - MARGIN_TOP,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         left:0,
         textAlign:'center',
         letterSpacing:1,
-        textShadowColor: 'rgba(0,0,0,.9)',
+        textShadowColor: 'rgba(0,0,0,1)',
         textShadowOffset: {width: 1, height: 1},
         textShadowRadius:1
     },
