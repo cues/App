@@ -32,25 +32,25 @@ class Home extends Component {
     }
 
 
-    static navigationOptions = ({navigation}) =>  {
-      return {
-          header: null,
-          headerTransparent : true,
+    // static navigationOptions = ({navigation}) =>  {
+    //   return {
+    //       header: null,
+    //       headerTransparent : true,
 
-                // headerTransparent : true,
-                // headerBackground : <Header/>,
-                // headerBackgroundTransitionPreset : 'fade', 
-                // headerTitle: (
-                //     <Image style={styles.headerTitle} resizeMode={'cover'} source = {{uri : 'https://www.wedngz.com/Tidngz/User_Images/tidngz.png'}}/>
-                // ),
-                // headerLeft: (
-                //     <HeaderIcons type='Home' position='Left' navigation={navigation}/>  
-                // ),
-                // headerRight: (
-                //     <HeaderIcons type='Home' position='Right' navigation={navigation}/>   
-                // )
-        }
-    } 
+    //             // headerTransparent : true,
+    //             // headerBackground : <Header/>,
+    //             // headerBackgroundTransitionPreset : 'fade', 
+    //             // headerTitle: (
+    //             //     <Image style={styles.headerTitle} resizeMode={'cover'} source = {{uri : 'https://www.wedngz.com/Tidngz/User_Images/tidngz.png'}}/>
+    //             // ),
+    //             // headerLeft: (
+    //             //     <HeaderIcons type='Home' position='Left' navigation={navigation}/>  
+    //             // ),
+    //             // headerRight: (
+    //             //     <HeaderIcons type='Home' position='Right' navigation={navigation}/>   
+    //             // )
+    //     }
+    // } 
 
 
     handleMomentumScrollBegin = (event) => {
@@ -108,40 +108,6 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start',
       alignItems: 'center',
       width:'100%',
-    },
-    header: {
-        opacity: 1,
-          position : 'absolute',
-          top:0,
-          left:0,
-          right:0,
-          alignItems:'center',
-          borderBottomWidth:1,
-          borderColor:'rgba(23,23,23,.1)',
-          overflow:'hidden',  
-    },
-  
-    headerTitle : {
-        height: 55,
-        width: 55,
-        alignSelf: "center", 
-        marginLeft: "auto", 
-        marginRight: "auto",
-        // backgroundColor:'blue'
-    },
-    headerLeft : {
-        height: 40,
-        width: 40,
-        marginLeft: 5,
-        lineHeight:40,
-        // backgroundColor:'blue'
-    },
-    headerRight : {
-        height: 40,
-        width: 40,
-        marginRight: 5,
-        lineHeight:40,
-        fontWeight:'900'
     },
   });
 

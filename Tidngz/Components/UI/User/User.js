@@ -54,14 +54,14 @@ const styles = StyleSheet.create({
         height: 22,
         lineHeight: 22,
         fontSize: 13,
-        letterSpacing: .7,
+        letterSpacing: 1,
         // backgroundColor:'red'
     },
     username : {
         height: 18,
         lineHeight: 18,
         fontSize: 11,
-         letterSpacing: .6,
+         letterSpacing: .9,
         //  backgroundColor:'red'
         },
 });

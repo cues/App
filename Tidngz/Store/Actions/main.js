@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT, TABBAR_VISIBLE, TABBAR_ANIMATION, TABBAR_TYPE, ERROR, ERROR_2} from './action_types';
+import {LOGIN, LOGOUT, TABBAR_VISIBLE, TABBAR_ANIMATION, TABBAR_TYPE, ERROR, ERROR_2, SIDEBAR, SIDEBAR_2} from './action_types';
 
 
 export const login = response => { 
@@ -45,5 +45,19 @@ export const error = text => {
 export const error_2 = () => {
     return {
         type : ERROR_2,
+    }
+}
+
+
+export const sideBar = () => {
+    return {
+        type : SIDEBAR,
+    }
+}
+
+
+export const sideBar_2 = () => {
+    return {
+        type : SIDEBAR_2,
     }
 }

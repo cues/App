@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {StatusBar, Platform, StyleSheet, Text, View, TouchableOpacity, FlatList, Image} from 'react-native';
-import { get_comments, refresh_comments, load_comments, update_comment, report_modal_comment ,  update_article } from '../../Store/Actions/index'
 import {withNavigation} from 'react-navigation'
 import {OptimizedFlatList} from 'react-native-optimized-flatlist';
 import Comment from './Comment';
@@ -10,6 +9,8 @@ import HeaderBottomFlatlist from '../../Components/UI/HeaderBottomFlatlist/Heade
 import style from '../../Styles/Styles'
 
 import { connect } from 'react-redux';
+import { get_comments, refresh_comments, load_comments, update_comment, report_modal_comment ,  update_article } from '../../Store/Actions/index'
+
 const state = state => {
   return {
       backgroundMain     :  state.themes.backgroundMain,
@@ -71,8 +72,6 @@ class CommentList extends Component {
     const article = navigation.getParam('article')
     const articles_id = article.articles_id;
     const last_comment_id = article.articles_comments_data.last_comment_id;
-  
-
 
     url = `${api}/Articles/Comment/Comment/Get/comment.php?key=${apiKey}&user_id=${user_id}&articles_id=${articles_id}&last_comment_id=${last_comment_id}&records_per_page=${records_per_page}&start=${start}`;
 

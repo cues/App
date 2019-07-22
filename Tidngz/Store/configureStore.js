@@ -4,6 +4,7 @@ import loginReducer from './Reducers/login';
 import articlesReducer from './Reducers/articles';
 import searchReducer from './Reducers/search';
 import commentsReducer from './Reducers/comments';
+import notificationsReducer from './Reducers/notifications';
 import themesReducer from './Reducers/themes';
 import weatherReducer from './Reducers/weather';
 import addArticlesReducer from './Reducers/Add/articles';
@@ -16,6 +17,7 @@ const reducers = combineReducers({
     articles         : articlesReducer,
     search           : searchReducer,
     comments         : commentsReducer,
+    notifications    : notificationsReducer,
     themes           : themesReducer,
     weather          : weatherReducer,
     addArticles      : addArticlesReducer,

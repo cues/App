@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import style from '../../Styles/Styles';
 import addStyle from '../../Styles/Add';
 
+
 const state = state => {
     return {
         menuIconColor2          :   state.themes.menuIconColor2,
@@ -13,7 +14,7 @@ const state = state => {
 
 const button = props => {
 
-    const { write, text , menuIconColor2 } = props;
+    const { write, text , menuIconColor2, this_sideBar } = props;
     
     return (
         <TouchableOpacity onPress={write}>

@@ -1,12 +1,12 @@
 // ARTICLE
 export const SELECTED_ARTICLE           =  'SELECTED_ARTICLE';
 export const IMAGE_SELECTED_ARTICLE     =  'IMAGE_SELECTED_ARTICLE';
-export const REFRESH_ARTICLES     =  'REFRESH_ARTICLES';
-export const ADD_ARTICLE     =  'ADD_ARTICLE';
-export const LOADER     =  'LOADER';
-export const ALL_ARTICLES     =  'ALL_ARTICLES';
-export const LOAD_ARTICLES     =  'LOAD_ARTICLES';
-export const UPDATE_ARTICLES     =  'UPDATE_ARTICLES';
+export const REFRESH_ARTICLES           =  'REFRESH_ARTICLES';
+export const ADD_ARTICLE                =  'ADD_ARTICLE';
+export const LOADER                     =  'LOADER';
+export const ALL_ARTICLES               =  'ALL_ARTICLES';
+export const LOAD_ARTICLES              =  'LOAD_ARTICLES';
+export const UPDATE_ARTICLES            =  'UPDATE_ARTICLES';
 
 
 // COMMENTS
@@ -16,6 +16,15 @@ export const REFRESH_COMMENTS       =   'REFRESH_COMMENTS';
 export const LOAD_COMMENTS          =   'LOAD_COMMENTS';
 export const REPORT_MODAL_COMMENT   =   'REPORT_MODAL_COMMENT';
 export const UPDATE_COMMENT         =   'UPDATE_COMMENT';
+
+
+// NOTIFICATIONS
+export const GET_NOTIFICATIONS           =   'GET_NOTIFICATIONS';
+export const REFRESH_NOTIFICATIONS       =   'REFRESH_NOTIFICATIONS';
+export const COUNT_NOTIFICATIONS         =   'COUNT_NOTIFICATIONS';
+export const LOAD_NOTIFICATIONS          =   'LOAD_NOTIFICATIONS';
+export const UPDATE_NOTIFICATION         =   'UPDATE_NOTIFICATION';
+export const LOADER_NOTIFICATIONS        =   'LOADER_NOTIFICATIONS';
 
 // THEME
 export const ADD_THEME_WHITE   =  'ADD_THEME_WHITE';
@@ -35,6 +44,8 @@ export const TABBAR_ANIMATION   =  'TABBAR_ANIMATION'
 export const TABBAR_TYPE        =  'TABBAR_TYPE'
 export const ERROR              =  'ERROR'
 export const ERROR_2            =  'ERROR_2'
+export const SIDEBAR            =  'SIDEBAR'
+export const SIDEBAR_2          =  'SIDEBAR_2'
 
 
 // LOGIN
@@ -75,8 +86,8 @@ export const VIDEO_ADD_CONTENT      = 'VIDEO_ADD_CONTENT';
 export const VIDEO_ADD_LINK         = 'VIDEO_ADD_LINK';
 
 // ADD_CLASSIFIED
-export const ADD_CLASSIFIED  = 'ADD_CLASSIFIED';
-export const ADD_LINK        = 'ADD_LINK';
-export const ADD_EMAIL       = 'ADD_EMAIL';
-export const ADD_CONTACT     = 'ADD_CONTACT';
-export const ADD_CONTACT_2   = 'ADD_CONTACT_2';
+export const CLASSIFIED_ADD_CONTENT     = 'CLASSIFIED_ADD_CONTENT';
+export const CLASSIFIED_ADD_LINK        = 'CLASSIFIED_ADD_LINK';
+export const CLASSIFIED_ADD_EMAIL       = 'CLASSIFIED_ADD_EMAIL';
+export const CLASSIFIED_ADD_CONTACT     = 'CLASSIFIED_ADD_CONTACT';
+export const CLASSIFIED_ADD_CONTACT_2   = 'CLASSIFIED_ADD_CONTACT_2';

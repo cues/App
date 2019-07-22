@@ -24,7 +24,7 @@ const weatherMain = props => {
     let temp_today_c;
     let temp_today_f;
 
-    if((hourly.temp != null || hourly.feels == null) &&  (hourly.temp == hourly.feels))
+    if(hourly.temp != null || hourly.feels == null || hourly.temp == hourly.feels)
     {
         temp_today_c = `The temperature is ${hourly.temp} °C  `;
     }else{
@@ -32,7 +32,7 @@ const weatherMain = props => {
     }
 
 
-    if((hourly.temp_2 != null || hourly.feels_2 == null) && (hourly.temp_2 == hourly.feels_2))
+    if(hourly.temp_2 != null || hourly.feels_2 == null || hourly.temp_2 == hourly.feels_2)
     {
         temp_today_f = `The temperature is ${hourly.temp_2} °F`;
     }else{
@@ -44,12 +44,13 @@ const weatherMain = props => {
 
     // sunrise_minute = check_min.includes(sunrise_minutes) ? '0' + sunrise_minutes : sunrise_minutes;
     // sunset_minute = check_min.includes(sunset_minutes) ? '0' + sunset_minutes : sunset_minutes;
+    astro.sunrise_minutes = (astro.sunrise_minutes < 10 ? '0' : '') + astro.sunrise_minutes
+    astro.sunset_minutes = (astro.sunset_minutes < 10 ? '0' : '') + astro.sunset_minutes
     
     sunrise_time = parseInt(astro.sunrise_hour + astro.sunrise_minutes);
     sunset_time = parseInt(astro.sunset_hour + astro.sunset_minutes);
 
   
-
 
     const icon_sun              =   'rgba(253,184,19,1)';
     const icon_moon             =   'rgba(15,101,141,.4)'; 
@@ -80,7 +81,6 @@ const weatherMain = props => {
    
     let weatherIcon;
     let weatherText;
-
 
 
     if(time >= sunrise_time && time <= sunset_time){

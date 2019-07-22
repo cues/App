@@ -53,7 +53,6 @@ class Comments extends Component {
 
     this.userComment(thisArticle.article.this_commented);
 
-
     setTimeout(() => {
         tabBarType_Article()
     },300)

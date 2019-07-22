@@ -36,14 +36,15 @@ import Ads from './Screens/Menu/Ads';
 import Menu from './Screens/Menu/Menu';
 import Comments from './Screens/Comments/Comments';
 import Replies from './Screens/Comments/Replies';
-import Notifications from './Screens/Notifications';
+import Notifications from './Screens/Notifications/Notifications';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
-import AddClassified from './Screens/Add/Classified';
-
 import AddTabBar from './Screens/Add/TabBar/TabBar';
+
+import ClassifiedAddContent from './Screens/Add/Classified/Content';
+import ClassifiedAddPLace from './Screens/Add/Classified/Place';
 
 import AddHeadline from './Screens/Add/Article/Headline';
 import AddAddPlace from './Screens/Add/Article/Place';
@@ -96,28 +97,28 @@ const width = Dimensions.get('window').width;
 // })
 
 const HomeStack = createStackNavigator({
-  Home          :   Home,
-  Comments      :   Comments,
-  Replies       :   Replies,
-  Options       :   Options,
-  OptionsArticles      :   OptionsArticles,
-  Calender      :   Calender,
+  Home                :   Home,
+  Comments            :   Comments,
+  Replies             :   Replies,
+  Options             :   Options,
+  OptionsArticles     :   OptionsArticles,
+  Calender            :   Calender,
   CalenderArticles    :   CalenderArticles,
-  Menu          :   Menu,
-  Bookmark      :   Bookmark,
-  Setting       :   Setting,
-  Themes        :   Themes,
-  Account       :   Account,
-  Trending      :   Trending,
-  Terms         :   Terms,
-  Privacy       :   Privacy,
-  Help          :   Help,
-  About         :   About,
-  Contact       :   Contact,
-  Ads           :   Ads,
-  Article       :   Article,
-  Notifications :   Notifications
-},{
+  Menu                :   Menu,
+  Bookmark            :   Bookmark,
+  Setting             :   Setting,
+  Themes              :   Themes,
+  Account             :   Account,
+  Trending            :   Trending,
+  Terms               :   Terms,
+  Privacy             :   Privacy,
+  Help                :   Help,
+  About               :   About,
+  Contact             :   Contact,
+  Ads                 :   Ads,
+  Article             :   Article,
+  Notifications       :   Notifications
+},{          
   cardStyle:{
     backgroundColor:'transparent'
   },
@@ -249,6 +250,19 @@ const AddVideo = createMaterialTopTabNavigator({
   }
 );
 
+const AddClassified = createMaterialTopTabNavigator({
+  ClassifiedAddContent : ClassifiedAddContent,
+  ClassifiedAddPLace  : ClassifiedAddPLace
+},
+{
+  tabBarComponent:null,
+  initialRouteName:'ClassifiedAddContent',
+  headerMode: 'none',
+  cardShadowEnabled : false,
+  swipeEnabled : false,
+}
+);
+
 
 const AddTop = createBottomTabNavigator({
   Article    : AddArticle,
@@ -368,7 +382,7 @@ const Tab = createBottomTabNavigator({
   },
   {
     tabBarComponent:props => <TabBar {...props}/>,
-    initialRouteName:'Add',            
+    initialRouteName:'Home',            
     animationEnabled : true,
     // tabBarOptions:{
     //   activeBackgroundColor : 'transparent',
@@ -547,7 +561,7 @@ class App extends Component {
     let newApp ;
     newApp = LoggedIn ? user.user_active ? <AppContainer /> : <ActivateContainer/> : <LoginContainer />
     // newApp =  LoggedIn ? <AppContainer /> : null
-  
+
       return (
         // <ImageBackground  style={styles.container} source={{uri:'http://www.wedngz.com/Tidngz/Images/tidngz-106.png'}} style={{flex: 1, width: '100%', height:'100%'}}>
         <View style={styles.container} >

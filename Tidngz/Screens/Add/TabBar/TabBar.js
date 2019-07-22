@@ -9,6 +9,7 @@ import {brand, model, models} from '../../../Components/DeviceInfo/DeviceInfo';
 import style from '../../../Styles/Styles'
 import Footer from '../../../Functions/Articles/Footer';
 import Error from  '../../../Components/Error/Error';
+import SideBar from '../../../Components/SideBar/SideBar';
 import addStyle from '../../../Styles/Add';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
@@ -33,6 +34,8 @@ const state = state => {
       video_add_place         :   state.addVideos.add_video_add_place,
       video_add_landmark      :   state.addVideos.add_video_add_landmark,
       video_add_landmarkDesc  :   state.addVideos.add_video_add_landmarkDesc,
+
+      content                 :   state.addClassified.add_classified,
   };
 };
 
@@ -61,13 +64,121 @@ class TabBar extends Component  {
       videoPlaceActive      : false,
       videoCatTagLinkActive : false,
       videoLinkedActive     : false,
+
+      classifiedContentActive : true,
+      classifiedPlaceActive : false
     }
 
     const { navigation } = this.props
     const { routes , index  }  = navigation.state;
 
-    console.warn(routes)
+    // console.warn(routes)
   }
+
+
+
+
+
+
+
+
+
+
+// CLASSIFIED
+
+  // content
+  navigateForwardClassifiedContent = () => {
+
+    const { content , this_error, this_error_2, navigation} = this.props
+
+
+    let length = content != null ? content.length : 500;
+
+
+    if(content == null){
+      this_error('Please write your classified Ad')
+    }
+    else if(length < 10 ){
+      this_error('Your Ad is too short, minimum of 20 characters')
+    }
+    else{
+      navigation.navigate('ClassifiedAddPLace')
+    }
+
+    
+    setTimeout(() => {
+      content == null || length < 20 ? this_error_2() : null
+    },3000)
+
+    if(content != null && length > 19 && length < 301 ){
+      this.setState(prevState => ({
+        classifiedContentActive : !prevState.classifiedContentActive,
+        classifiedPlaceActive    : !prevState.classifiedPlaceActive
+      }))
+    }
+ 
+  }
+
+
+
+
+
+// place
+
+navigateBackClassifiedPlace = () => {
+
+  this.props.navigation.navigate('ClassifiedAddContent')
+
+    this.setState(prevState => ({
+      classifiedContentActive : !prevState.classifiedContentActive,
+      classifiedPlaceActive   : !prevState.classifiedPlaceActive
+    }))
+  
+
+}
+
+
+
+
+navigateForwardClassifiedPlace = () => {
+
+  alert('ok')
+
+  // const { place , landmark, landmarkDesc, this_error, this_error_2, navigation} = this.props
+
+  // if(place == null){
+  //   this_error('Please add a place')
+  // }
+  // else if(landmark != null && landmarkDesc == null ){
+  //   this_error('Please choose a landmark title')
+  // }
+  // else{
+  //   navigation.navigate('CatTagLink')
+  // }
+  
+  // setTimeout(() => {
+  //   place == null ? this_error_2() : null
+  // },3000)
+
+  // if(place != null ){
+  //     this.setState(prevState => ({
+  //     placeActive       : !prevState.placeActive,
+  //     catTagLinkActive  : !prevState.catTagLinkActive,
+  //   }))
+  // }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ARTICLE
@@ -427,13 +538,16 @@ class TabBar extends Component  {
 
     const { navigation , headerColor, tabBlur, menuIconColor2 }      = this.props;
     const { routes , index , routeName }  = navigation.state;
-    const { headlineActive, placeActive , catTagLinkActive, linkedActive, mediaActive} = this.state;
-    const { videoLinkActive, videoHeadlineActive , videoPlaceActive, videoCatTagLinkActive, videoLinkedActive} = this.state;
+    const { headlineActive , placeActive , catTagLinkActive , linkedActive , mediaActive} = this.state;
+    const { videoLinkActive , videoHeadlineActive , videoPlaceActive , videoCatTagLinkActive , videoLinkedActive} = this.state;
+    const { classifiedContentActive , classifiedPlaceActive } = this.state;
 
     let route =  this.routeFinder(this.props.navigation.state) 
     route = route[1]
 
     // console.warn(route)
+
+
 // VIDEO
     const videoDisplayVideoLink = (
       videoLinkActive && route == 'Video' ? 
@@ -596,9 +710,31 @@ class TabBar extends Component  {
 
 // CLASSIFIED
 
+const classifiedDisplayContent = (
+  classifiedContentActive && route == 'Classified' ? 
+    <View style={addStyle.bottomBox}>
+      <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateForwardClassifiedContent}>
+        <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
+      </TouchableOpacity>
+    </View> 
+  : null
+)
 
 
 
+const classifiedDisplayPlace  = (
+  classifiedPlaceActive && route == 'Classified' ?
+      <View style={addStyle.bottomBox}>
+        <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateBackClassifiedPlace}>
+          <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-back' size={23}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={[addStyle.bottomButton, {borderColor:menuIconColor2}]} onPress={this.navigateForwardClassifiedPLace}>
+          <MaterialIcons style={[style.displayFlex, addStyle.navigationButtons]} color={menuIconColor2} name='arrow-forward' size={25}/>           
+        </TouchableOpacity>
+      </View> 
+      : null
+
+)
 
 
 
@@ -640,10 +776,14 @@ class TabBar extends Component  {
               {videoDisplayPlace}
               {videoDisplayCatTagLink}
               {videoDisplayLinked}
-
+              
+              {classifiedDisplayContent}
+              {classifiedDisplayPlace}
 
 
               <Error/>
+
+              <SideBar/>
 
         </View>
     

@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         // marginTop : getStatusBarHeight(),
     },
     headerIcons : {
-        marginTop: models.includes(model) ? 40 : brand === 'Apple' ? 16 : 7,
+        marginTop: models.includes(model) ? 38 : brand === 'Apple' ? 16 : 7,
         width:'100%',
         // backgroundColor:'red',
         flexDirection : 'row',

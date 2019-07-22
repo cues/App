@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, Dimensions, FlatList, SectionList, View, TouchableOpacity, Image, Text, StyleSheet, Animated,   ScrollView , RefreshControl} from 'react-native';
 import {OptimizedFlatList} from 'react-native-optimized-flatlist'
-import { connect } from 'react-redux';
 import Article from './Article';
 import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';
 import style from '../../Styles/Styles'; 
@@ -14,6 +13,7 @@ import moment from 'moment';
 
 const WIDTH = Dimensions.get('window').width;
 
+import { connect } from 'react-redux';
 
   const state = state => {
     return {
@@ -256,12 +256,6 @@ class Articles extends Component {
                 article = response.data.articles[a];
 
                 this.onArticleAdd(article);
-                        // console.warn(response)
-
-                
-                this.setState({
-                    refreshing : false,
-                })
 
             }
 
@@ -294,7 +288,8 @@ class Articles extends Component {
                 key           :   `${article.articles_id}`, 
                 article       :   article
             }),
-            loader:false
+            loader:false,
+            refreshing : false,
         })
     }
 

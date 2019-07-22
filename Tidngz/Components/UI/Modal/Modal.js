@@ -6,7 +6,7 @@ import style from '../../../Styles/Styles'
 import BlurView from '../..//BlurVIew/BlurVIew';
 class Modals extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         Platform.OS == 'ios' ?  StatusBar.setHidden(true, 'fade') : null ;
     }
 

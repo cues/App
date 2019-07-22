@@ -174,12 +174,12 @@ const styles = StyleSheet.create({
     line :{
         height:1, 
         width:width - 40, 
-        backgroundColor:'rgba(47,47,47,.4)'
+        backgroundColor:'rgba(123,123,123,.4)'
     },
     line2 :{
         height:1, 
         width:width - 40,  
-        backgroundColor:'rgba(47,47,47,.2)'
+        backgroundColor:'rgba(123,123,123,.2)'
     },
     items : {
         height: 35,

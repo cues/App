@@ -1,7 +1,8 @@
-import {LOGIN, LOGOUT, TABBAR_VISIBLE, TABBAR_ANIMATION, TABBAR_TYPE, ERROR, ERROR_2} from '../Actions/action_types';
+import {LOGIN, LOGOUT, TABBAR_VISIBLE, TABBAR_ANIMATION, TABBAR_TYPE, ERROR, ERROR_2, SIDEBAR, SIDEBAR_2} from '../Actions/action_types';
 
 
 const initialState = {
+    sideBar             : false,
     error               : false,
     errorReason         : null,
     tabBarVisible       : true,
@@ -81,6 +82,16 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 error        : false,
                 errorReason  : null,
+            }
+        case SIDEBAR : 
+            return {
+                ...state,
+                sideBar : true
+            }
+        case SIDEBAR_2 : 
+            return {
+                ...state,
+                sideBar : false
             }
         default :
             return state;
