@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StatusBar, StyleSheet, Text, View, TouchableOpacity, AsyncStorage} from 'react-native';
-import { WebView } from "react-native-webview";
+// import { WebView } from "react-native-webview";
 import Header from './Header';
 import Footer from './Footer';
 import Box from './Box';

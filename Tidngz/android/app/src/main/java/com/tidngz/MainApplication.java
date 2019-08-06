@@ -1,10 +1,14 @@
 package com.tidngz;
 
 import android.app.Application;
+import android.util.Log;
+import com.facebook.react.PackageList;
+import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
+import com.facebook.react.bridge.JavaScriptExecutorFactory;
 
 import com.facebook.react.ReactApplication;
-import com.bhavan.RNNavBarColor.RNNavBarColor;
-import com.kishanjvaghela.cardview.RNCardViewPackage;
+import com.reactnativecommunity.geolocation.GeolocationPackage;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -25,11 +29,24 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-            new MainReactPackage(),
-            new RNNavBarColor(),
-            new RNCardViewPackage()
-      );
+
+      // List<ReactPackage> packages = new PackageList(this).getPackages();
+      @SuppressWarnings("UnnecessaryLocalVariable")
+        List<ReactPackage> packages = new PackageList(this).getPackages();
+        // Packages that cannot be autolinked yet can be added manually here, for example:
+        // packages.add(new MainReactPackage(),
+            new GeolocationPackage();
+            new MainReactPackage();
+            new RNCWebViewPackage();
+        // packages.add(new RNNavBarColor());
+        // packages.add(new RNCardViewPackage());
+    
+      // return Arrays.<ReactPackage>asList(
+            // new MainReactPackage(),
+            // new RNNavBarColor(),
+            // new RNCardViewPackage(),
+          return packages;
+      // );
     }
 
     @Override

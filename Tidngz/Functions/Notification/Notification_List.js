@@ -7,7 +7,7 @@ import FooterText from '../../Components/UI/Loader/FooterText';
 
 import Notification from './Notification';
 import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';
-
+      
 import { connect } from 'react-redux';
 import { get_notifications, load_notifications, count_notifications } from '../../Store/Actions/notifications'
 
