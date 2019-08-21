@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 
 const state = state => {
     return {
+        api                     :   state.main.api,
+        user_id                 :   state.main.user.user_id,
+        apiKey                  :   state.main.apiKey,
         tabBlur             :   state.themes.tabBlur,
         menuIconColor       :   state.themes.menuIconColor,
     }
@@ -16,15 +19,30 @@ const state = state => {
 
 class Follow extends Component {
 
-
     state = {
         follow : this.props.user.user_following
     }
 
-    follow = () => {
-        this.setState(prevState => ({
-            follow : !prevState.follow
-        }))
+    follow = async() => {
+        const { api, apiKey, user_id, user, menuIconColor} = this.props;
+
+        const type = this.state.follow ? 2 : 1
+
+
+        url = `${api}/UserFollow/userFollow.php?key=${apiKey}&user_id=${user_id}&type=${type}&user_id_follow=${user.user_id}`;
+  
+        await fetch(url)
+        .then((response) => response.json())
+        .then((response) => {
+            
+            this.setState(prevState => ({
+                follow : !prevState.follow
+            }))
+        })
+        .catch((error) =>{
+        });
+
+      
     }
 
     render() {

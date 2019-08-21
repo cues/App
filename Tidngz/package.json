@@ -10,7 +10,7 @@
     "react-native-maps": "https://github.com/react-community/react-native-maps.git"
   },
   "dependencies": {
-    "@react-native-community/async-storage": "^1.5.1",
+    "@react-native-community/async-storage": "^1.6.1",
     "@react-native-community/geolocation": "^1.4.2",
     "babel-plugin-react-native-classname-to-style": "^1.2.2",
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",

@@ -6,6 +6,7 @@ import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';
 import style from '../../Styles/Styles'; 
 import Loader from '../../Components/UI/Loader/Loader';
 import HomeTitle from '../Home/HomeTitle';
+import BookmarkTitle from '../Bookmark/BookmarkTitle';
 import ProfileTitle from '../Profile/ProfileTitle';
 import { withNavigation } from 'react-navigation';
 import moment from 'moment';
@@ -158,15 +159,15 @@ class Articles extends Component {
                             type == 'place'         ?   11 :
                             type == 'placeLocal'    ?   11 :
                             type == 'hashtag'       ?   11 :
-                            type == 'bookmark'      ?   11 :
+                            type == 'Bookmark'      ?   51 :
                             type == 'linked'        ?   11 :
                             type == 'profile'       ?   71 :
-                            type == 'trending'      ?   11 :
+                            type == 'Trending'      ?   81 :
                             type == 'options'       ?   routeName == 'home'             ?   12  :
                                                         routeName == 'place'            ?   12  :
                                                         routeName == 'placeLocal'       ?   12  :
                                                         routeName == 'hashtag'          ?   12  :
-                                                        routeName == 'bookmark'         ?   12  :
+                                                        routeName == 'Bookmark'         ?   52  :
                                                         routeName == 'linked'           ?   12  :
                                                         routeName == 'profile'          ?   72  :
                                                         routeName == 'trending'         ?   12  :   12  :
@@ -174,7 +175,7 @@ class Articles extends Component {
                                                         routeName == 'place'            ?   13  :
                                                         routeName == 'placeLocal'       ?   13  :
                                                         routeName == 'hashtag'          ?   13  :
-                                                        routeName == 'bookmark'         ?   13  :
+                                                        routeName == 'Bookmark'         ?   53  :
                                                         routeName == 'linked'           ?   13  :
                                                         routeName == 'profile'          ?   73  :
                                                         routeName == 'trending'         ?   13  :   13  :
@@ -182,7 +183,7 @@ class Articles extends Component {
                                                         routeName == 'place'            ?   14  :
                                                         routeName == 'placeLocal'       ?   14  :
                                                         routeName == 'hashtag'          ?   14  :
-                                                        routeName == 'bookmark'         ?   14  :
+                                                        routeName == 'Bookmark'         ?   54  :
                                                         routeName == 'linked'           ?   14  :
                                                         routeName == 'profile'          ?   74  :
                                                         routeName == 'trending'         ?   14  :   14  :   11
@@ -208,6 +209,7 @@ class Articles extends Component {
 
         const source = this.source()
 
+
         const url = `${api}/Articles/articles.php?key=${apiKey}&user_id=${user_id}&user_1=${selectedUser}&type=1&article_source=${source}&options_id=${option}&top=${top}&date_1=${date_1}&date_2=${date_2}`;
 
 
@@ -219,6 +221,7 @@ class Articles extends Component {
                 last_articles_id  =  response.data.last_articles_id
                 number_of_pages   =  Math.ceil(total_records / this.props.records_per_page);
                 article_ids       =  response.data.article_ids
+
 
                 this.setState({
                     total_records:total_records,
@@ -329,10 +332,20 @@ class Articles extends Component {
             else if(this.props.type == 'profile'){
               return <ProfileTitle scrollY={this.props.scrollAnim} item={item} refresh={this.handleRefresh} stylesProps={dis}/> 
             }
+            // else if(this.props.type == 'Bookmark'){
+            //     return <BookmarkTitle stylesProps={dis}/> 
+            // }
             else if(this.props.type == 'options' || this.props.type == 'top' || this.props.type == 'calender' ){
                 return (
                     <View style={[style.paddingBackgroundTop,  dis]}>
                         <View style={{height : 75, width : '100%'}}/>
+                    </View>
+                );
+            }
+            else{
+                return (
+                    <View style={[style.paddingBackgroundTop,  dis]}>
+                        <View style={{height : 15, width : '100%'}}/>
                     </View>
                 );
             }
@@ -388,12 +401,14 @@ class Articles extends Component {
         const title = type == 'home' ? home :
                         type == 'profile' ? user : home
 
-        const flatlist = type == 'home' || type == 'options' || type == 'top' || type == 'calender' ? styles1.flatlist : 
+        const flatlist = type == 'home' || type == 'options' || type == 'top' || type == 'calender' || type == 'Trending'  || type == 'Bookmark' ? styles1.flatlist : 
                          type == 'profile' ? styles2.flatlist : null 
 
         const flatlistMargin = this.state.refreshing ? 
                                     type == 'home'  ? styles1.flatlistMargin : 
                                     type == 'profile' ? styles2.flatlistMargin : 
+                                    type == 'Trending' ? styles2.flatlistMargin : 
+                                    type == 'Bookmark' ? styles2.flatlistMargin : 
                                     type == 'options'  ? styles3.flatlistMargin : 
                                     type == 'top'  ? styles3.flatlistMargin : 
                                     type == 'calender'  ? styles3.flatlistMargin : null 

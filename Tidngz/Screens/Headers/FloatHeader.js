@@ -92,7 +92,9 @@ const styles = StyleSheet.create({
         alignSelf: "center", 
         flexGrow:1,
         color:'rgba(15,101,141,1)',
-        textShadowColor: 'rgba(102,102,102, 1)',
+
+        textShadowColor: 'rgba(23,23,23, 1)',
+        // textShadowColor: 'rgba(102,102,102, 1)',
         // textShadowColor: 'rgba(0,0,0, .4)',
         textShadowOffset: {width: 1, height: -0},
         textShadowRadius: 1,

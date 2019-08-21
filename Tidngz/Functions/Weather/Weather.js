@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Platform, View, Text, StyleSheet, TouchableOpacity, Animated, AsyncStorage, LayoutAnimation} from 'react-native';
+import {Platform, View, Text, StyleSheet, TouchableOpacity, Animated, LayoutAnimation} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import style from '../../Styles/Styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import WeatherMain from './WeatherMain';

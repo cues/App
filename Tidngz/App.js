@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Dimensions, Platform, ImageBackground, StatusBar , TextInput, AsyncStorage} from 'react-native';
+import {StyleSheet, View, Dimensions, Platform, ImageBackground, StatusBar , TextInput} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import {SafeAreaView,createSwitchNavigator, createDrawerNavigator, createStackNavigator, createAppContainer , createBottomTabNavigator, createMaterialTopTabNavigator} from "react-navigation";
 import {timezone} from './Components/Timezone/Timezone';
 import SplashScreen from 'react-native-splash-screen'
@@ -39,6 +40,8 @@ import Replies from './Screens/Comments/Replies';
 import Notifications from './Screens/Notifications/Notifications';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
+import AccountTabBar from './Screens/Account/TabBar/TabBar';
 
 
 import AddTabBar from './Screens/Add/TabBar/TabBar';
@@ -96,6 +99,25 @@ const width = Dimensions.get('window').width;
 //     Options : Options
 // })
 
+
+// const AccountStack = createMaterialTopTabNavigator({
+//   User      :  UserStack,
+//   Password  :  PasswordStack,
+//   Info      :  InfoTop,
+//   Delete    :  DeleteStack,
+// },
+// {
+//   // tabBarComponent:props => <AccountTabBar {...props}/>,
+//   tabBarComponent:null,
+//   initialRouteName:'User',            
+//   animationEnabled : false,
+//   swipeEnabled : false,
+  
+// })
+
+
+
+
 const HomeStack = createStackNavigator({
   Home                :   Home,
   Comments            :   Comments,
@@ -148,6 +170,10 @@ HomeStack.navigationOptions = ({ navigation }) => {
     tabBarVisible
   };
 };
+
+
+
+
 
 
 

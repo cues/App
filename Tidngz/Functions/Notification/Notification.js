@@ -71,49 +71,46 @@ class Notification extends Component {
         const notification = item.notification
 
         let text = null;
-        let noti = null;
         let data = null;
         let userFollow = null;
 
+        const noti = notification.data
+
         if(notification.likes == 1){
 
-            noti = notification.likes_data
             text = <Text><Text style={{color:'rgba(15, 101, 141, .9)'}}>likes</Text><Text> your article </Text></Text>
 
         }
 
         if(notification.comment == 1){
 
-            noti = notification.comment_data
             text = <Text><Text style={{color:'rgba(15, 101, 141, .9)'}}>commented</Text><Text> on your article </Text></Text>
 
         }
 
         if(notification.comment_likes == 1){
-
-            noti = notification.comment_likes_data   
+   
             text = <Text><Text style={{color:'rgba(15, 101, 141, .9)'}}>liked</Text><Text> your comment </Text></Text>
 
         }
       
         if(notification.comment_reply == 1){
 
-            noti = notification.comment_reply_data   
             text = <Text><Text style={{color:'rgba(15, 101, 141, .9)'}}>replied</Text><Text> on your comment </Text></Text>
 
         }
 
         if(notification.reply_likes == 1){
 
-            noti = notification.reply_likes_data   
             text = <Text><Text style={{color:'rgba(15, 101, 141, .9)'}}>likes</Text><Text> your reply </Text></Text>
 
         }
 
 
+
         if(notification.followers != 1){
             const userData = noti.count == 0 || noti.count == 1 ? `${noti.user.user_name}` :
-                                            noti.count == 2 ? `${noti.user.user_name} and 1 another user` :
+                                            noti.count == 2 ? `${noti.user.user_name} and 1 other user` :
                                                               `${noti.user.user_name} and ${noti.count} other users` 
 
              data   =  <Text style={[style.la , styles.text, {color:articleContent}]}>{userData} {text} <Text style={{color:'rgba(15, 101, 141, .9)'}}>{noti.headline}{notification.notifications_id}</Text></Text>
@@ -121,8 +118,6 @@ class Notification extends Component {
         }
             else
         {
-
-            noti = notification.followers_data   
 
             text = <Text><Text> started </Text><Text style={{color:'rgba(15, 101, 141, .9)'}}>following</Text><Text> you </Text></Text>
             data   =  <Text style={[style.la , styles.text, styles.text_follower, {color:articleContent}]}>{noti.user.user_name}{text}{notification.notifications_id}</Text>
