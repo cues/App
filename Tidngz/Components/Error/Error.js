@@ -22,15 +22,21 @@ const state = state => {
 class Error extends Component {
 
     render (){
-        const {error, tabBlur, errorReason, menuIconColor} = this.props
+        const {type = 1, error, tabBlur, errorReason, menuIconColor} = this.props
 
+        const display = error ? 'flex' : 'none';
         let slideError = error ? 'bounceIn' : 'slideOutUp';
 
+        const top = type == 2 ? styles.containerTop : ''
+
         return (
-            <Animatable.View  animation={slideError} duration={1500} style={[styles.loginError]}>
+            <View style={[styles.container, top, {display:display}]}>
+                <Animatable.View  animation={slideError} duration={1500} style={[styles.loginError]}>
                 {/* <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={10} />                   */}
-                <Text style={[style.la, styles.loginErrorText, {color:menuIconColor}]}>{errorReason}</Text>
-            </Animatable.View>
+                    <Text style={[style.la, styles.loginErrorText]}>{errorReason}</Text>
+                </Animatable.View>
+            </View>
+          
         )
     }
 }
@@ -38,20 +44,29 @@ class Error extends Component {
 
 const styles = StyleSheet.create({
     container : {
-        height : 100,
-        backgroundColor : 'red',
-        zIndex : 100000,
-    },
+        // height : 100,
+        // backgroundColor : 'red',
+        // zIndex : 100000,
 
-    loginError : {
         position:'absolute',
         height : HEADER_HEIGHT,
         width:'100%',
-        // top:0,
         left:0,
+    },
+    containerTop : {
+        top: 0
+    },
+
+    loginError : {
+        // position:'absolute',
+        height : '100%',
+        width:'100%',
+        // top:0,
         backgroundColor:'rgba(255,0,0,1)',
     },
+    
     loginErrorText:{
+        color:'rgba(0,0,0,1)',
         fontSize:13,
         width:'100%',
         height:HEADER_HEIGHT - MARGIN_TOP,

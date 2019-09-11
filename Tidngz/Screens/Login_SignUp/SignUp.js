@@ -7,7 +7,7 @@ import Footer from './Footer';
 import Box from './Box';
 import LoginButton from '../../Components/Button/Button';
 import Timezone from '../../Components/Timezone/Timezone';
-import Input from '../../Components/TextInput/Login';
+import Input from '../../Components/TextInput/User';
 import FontAwesome from  'react-native-vector-icons/FontAwesome';
 import IcoFont from '../../assets/IcoFont/IcoFont';
 import BlurView from '../../Components/BlurVIew/BlurVIew';
@@ -217,7 +217,7 @@ class SignUp extends Component {
 
                 <Input textContentType = 'username' placeholder = 'USERNAME' iconName = 'person-outline' maxLength = {25} handleChange = {changeHandler}/>
                 
-                <Input textContentType = 'name' placeholder = 'EMAIL' iconName = 'mail-outline' handleChange = {changeHandler} />
+                <Input textContentType = 'email' placeholder = 'EMAIL' iconName = 'mail-outline' handleChange = {changeHandler} />
 
                 <Input textContentType = 'password' secureTextEntry = {true} placeholder = 'PASSWORD' iconName = 'lock-outline' handleChange = {changeHandler} />
 

@@ -27,9 +27,11 @@ const reducer = (state = initialState, action) => {
                 LoggedIn : true,
                 user : {
                     user_id            :  action.response.data.user.user_id,
+                    token              :  action.response.data.user.token,
                     user_name          :  action.response.data.user.user_name,
                     user_name_initial  :  action.response.data.user.user_name_initial,
                     username           :  action.response.data.user.username,
+                    user_email         :  action.response.data.user.user_email,
                     user_sex           :  action.response.data.user.user_sex,
                     user_verified      :  action.response.data.user.user_verified,
                     user_image         :  action.response.data.user.user_image,

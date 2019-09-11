@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Box from './Box';
 import LoginButton from '../../Components/Button/Button';
-import Input from '../../Components/TextInput/Login';
+import Input from '../../Components/TextInput/User';
 import FontAwesome from  'react-native-vector-icons/FontAwesome';
 import BlurView from '../../Components/BlurVIew/BlurVIew';
 

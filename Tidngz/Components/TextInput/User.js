@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, View, TextInput, Text, KeyboardAvoidingView} from 'react-native';
 import style from '../../Styles/Styles';
 import MaterialIcons from  'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import { connect } from 'react-redux';
 
@@ -20,9 +21,11 @@ class Input extends Component {
     constructor(props){
         super(props)
 
+        const { placeholder, placeholderValue = '' } = this.props
+        const oldValue = placeholderValue == '' ? placeholder : placeholderValue
 
         this.state = {
-            value : this.props.placeholder,
+            value : oldValue,
             editing : false
         }
     }
@@ -30,24 +33,30 @@ class Input extends Component {
     change = () => {
         value = this.state.value
 
-        if(value == this.props.placeholder){
-            this.setState({
-                value : '',
-                editing : true
-            })
+        if(value != this.props.placeholderValue){
+            if(value == this.props.placeholder){
+                this.setState({
+                    value : '',
+                    editing : true
+                })
+            }
         }
     }
 
     change_2 = () => {
         value = this.state.value
 
-        if(value == ''){
+        const { placeholder } = this.props
+        
+        if(value == ''){ 
             this.setState({
-                value : this.props.placeholder,
+                value : placeholder,
                 editing : false
             })
         }
     }
+
+
 
     changeText =  (value) => {
 
@@ -55,8 +64,10 @@ class Input extends Component {
             value : value,
             editing : true,
         })
+        
+        const { placeholder } = this.props
 
-        this.props.handleChange(value, this.props.placeholder);
+        this.props.handleChange(value, placeholder);
         
     }
 
@@ -64,11 +75,16 @@ class Input extends Component {
 
      const {    
                 placeholder,
+                placeholderValue = '',
                 menuIconColor, 
                 menuIconColor2, 
                 keyboard, 
                 iconName = '', 
+                iconName_2 = '', 
                 textContentType, 
+                containerStyles,
+                inputStyles,
+                iconStyle,
                 maxLength = 1000    } = this.props
 
      let { secureTextEntry = false } = this.props
@@ -81,18 +97,22 @@ class Input extends Component {
 
      const icon = (
          iconName != '' ?
-            <MaterialIcons style={styles.icons} name={iconName} size={23} color={menuIconColor} />
-         : null
+            <MaterialIcons style={[styles.icons, iconStyle]} name={iconName} size={23} color={menuIconColor} />
+         : 
+        iconName_2 != '' ?
+            <FontAwesome style={[styles.icons, iconStyle]} name={iconName_2} size={23} color={menuIconColor} />
+         :
+         null
      )
 
     const color = placeholder == value ? menuIconColor2 : menuIconColor;
 
         return (
             
-            <View style={styles.container} >
+            <View style={[styles.container, containerStyles]} >
                 {icon}
                 <TextInput 
-                    style = {[styles.input, style.ma, {color:color}]} 
+                    style = {[styles.input, style.ma, {color:color}, inputStyles]} 
                     value = {value}
                     keyboardAppearance = {keyboard}
                     onChangeText = {changeText}

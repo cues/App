@@ -27,7 +27,7 @@ import Bookmark from './Screens/Menu/Bookmark';
 import Setting from './Screens/Menu/Setting';
 import Themes from './Screens/Menu/Themes';
 import Trending from './Screens/Menu/Trending';
-import Account from './Screens/Menu/Account';
+import Account from './Screens/Account/Account';
 import Terms from './Screens/Menu/Terms';
 import Privacy from './Screens/Menu/Privacy';
 import Help from './Screens/Menu/Help';
