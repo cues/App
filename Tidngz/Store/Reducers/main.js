@@ -1,10 +1,12 @@
-import {LOGIN, LOGOUT, TABBAR_VISIBLE, TABBAR_ANIMATION, TABBAR_TYPE, ERROR, ERROR_2, SIDEBAR, SIDEBAR_2} from '../Actions/action_types';
+import {LOGIN, LOGOUT, TABBAR_VISIBLE, TABBAR_ANIMATION, TABBAR_TYPE, ERROR, ERROR_2, SUCCESS, SUCCESS_2, SIDEBAR, SIDEBAR_2, DELETE_USER_IMAGE, HOME_REFRESH, PROFILE_REFRESH} from '../Actions/action_types';
 
 
 const initialState = {
     sideBar             : false,
     error               : false,
     errorReason         : null,
+    success             : false,
+    successReason       : null,
     tabBarVisible       : true,
     tabBarAnimation     : true,
     tabBarType          : 'normal',
@@ -16,7 +18,9 @@ const initialState = {
     selectedPlaceLocal  : '',
     selectedHashtag     : '',
     selectedLinked      : '',
-    user                : ''
+    user                : '',
+    homeRefresh         :  false,
+    profileRefresh      :  false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -85,6 +89,18 @@ const reducer = (state = initialState, action) => {
                 error        : false,
                 errorReason  : null,
             }
+        case SUCCESS :
+            return {
+                ...state,
+                success        : true,
+                successReason  : action.text,
+            }
+        case SUCCESS_2 :
+            return {
+                ...state,
+                success        : false,
+                successReason  : null,
+            }
         case SIDEBAR : 
             return {
                 ...state,
@@ -95,6 +111,23 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 sideBar : false
             }
+        case DELETE_USER_IMAGE :
+            return {
+                ...state,
+                user : user
+            }
+        case HOME_REFRESH : {
+            return {
+                ...state,
+                homeRefresh : true
+            }
+        }
+        case PROFILE_REFRESH : {
+            return {
+                ...state,
+                profileRefresh : true
+            }
+        }
         default :
             return state;
     }

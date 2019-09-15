@@ -26,6 +26,7 @@ const initialState = {
     weatherSide             :   'rgba(240,240,240,.9)',
     userName                :   'rgba(23, 23, 23, 0.8)',
     username                :   'rgba(23, 23, 23, 0.6)',
+    accountFloat            :   'rgba(255,255,255,.9)'
 }
 
 
@@ -61,6 +62,7 @@ const reducer = (state = initialState, action) => {
                 weatherSide             :   'rgba(240,240,240,.9)',
                 userName                :   'rgba(23, 23, 23, 0.8)',
                 username                :   'rgba(23, 23, 23, 0.6)',
+                accountFloat            :   'rgba(255,255,255,.9)'
             }   
         case ADD_THEME_BLACK :  
             return {
@@ -90,6 +92,7 @@ const reducer = (state = initialState, action) => {
                 weatherSide             :   'rgba(17,17,17,.9)',
                 userName                :   'rgba(230,230,230, 0.8)',
                 username                :   'rgba(230,230,230, 0.6)',
+                accountFloat            :   'rgba(0,0,0,.9)'
             }
         default:
             return state;

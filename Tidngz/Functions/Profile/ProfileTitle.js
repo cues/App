@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Dimensions, Platform, StyleSheet, View, Text, Animated, Image, AsyncStorage, TouchableOpacity} from 'react-native';
+import {Dimensions, Platform, StyleSheet, View, Text, Animated, Image, TouchableOpacity} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import style from '../../Styles/Styles'; 
 import BlurView from '../../Components/BlurVIew/BlurVIew';
 import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';

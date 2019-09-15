@@ -44,9 +44,13 @@ export const TABBAR_ANIMATION   =  'TABBAR_ANIMATION'
 export const TABBAR_TYPE        =  'TABBAR_TYPE'
 export const ERROR              =  'ERROR'
 export const ERROR_2            =  'ERROR_2'
+export const SUCCESS            =  'SUCCESS'
+export const SUCCESS_2          =  'SUCCESS_2'
 export const SIDEBAR            =  'SIDEBAR'
 export const SIDEBAR_2          =  'SIDEBAR_2'
-
+export const DELETE_USER_IMAGE  =  'DELETE_USER_IMAGE'
+export const HOME_REFRESH       =  'HOME_REFRESH'
+export const PROFILE_REFRESH    =  'PROFILE_REFRESH'
 
 // LOGIN
 export const LOGINROUTE     =   'LOGINROUTE';

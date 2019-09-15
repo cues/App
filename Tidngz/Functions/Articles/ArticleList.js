@@ -84,6 +84,7 @@ class Articles extends Component {
         this.getWeather(2,1)
         this.allArticles();
 
+
     }
 
 

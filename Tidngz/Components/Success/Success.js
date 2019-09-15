@@ -11,10 +11,10 @@ import { loginError_2 } from '../../Store/Actions/index'
 const state = state => {
     return {
         tabBlur          :   state.themes.tabBlur,
-        error            :   state.main.error,
-        errorReason      :   state.main.errorReason,
+        success          :   state.main.success,
+        successReason    :   state.main.successReason,
         menuIconColor    :   state.themes.menuIconColor,
-        theme             :   state.themes.theme,
+        theme            :   state.themes.theme,
     }
 }
 
@@ -25,16 +25,16 @@ class Error extends Component {
 
 
     render (){
-        const {type = 1, error, tabBlur, errorReason, menuIconColor} = this.props
+        const {type = 1, success, tabBlur, successReason, menuIconColor} = this.props
 
-        const display = error ? 'flex' : 'none';
-        let slideError = error ? 'slideInDown' : 'slideOutUp';
+        const display = success ? 'flex' : 'none';
+        let slideSuccess = success ? 'slideInDown' : 'slideOutUp';
 
         const top = type == 2 ? styles.containerTop : ''
 
         const absolute = display == 'flex' ? styles.containerAbsolute : null
 
-        if(error){
+        if(success){
             Platform.OS == 'android' ? StatusBar.setBackgroundColor('rgba(255,0,0,1)', true) : null
             StatusBar.setBarStyle('light-content')
         }else{
@@ -51,9 +51,9 @@ class Error extends Component {
 
         return (
             <View style={[styles.container, top, absolute, {display:display}]}>
-                <Animatable.View  animation={slideError} duration={500} style={[styles.loginError]}>
+                <Animatable.View  animation={slideSuccess} duration={500} style={[styles.loginSuccess]}>
                 {/* <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={10} />                   */}
-                    <Text style={[style.la, styles.loginErrorText]}>{errorReason}</Text>
+                    <Text style={[style.la, styles.loginSuccessText]}>{successReason}</Text>
                 </Animatable.View>
             </View>
           
@@ -79,15 +79,15 @@ const styles = StyleSheet.create({
         top: 0
     },
 
-    loginError : {
+    loginSuccess : {
         // position:'absolute',
         height : '100%',
         width:'100%',
         // top:0,
-        backgroundColor:'rgba(255,0,0,1)',
+        backgroundColor:'rgba(15,101,141,1)',
     },
     
-    loginErrorText:{
+    loginSuccessText:{
         color:'rgba(0,0,0,1)',
         fontSize:13,
         width:'100%',

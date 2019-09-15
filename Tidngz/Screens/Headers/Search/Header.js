@@ -218,7 +218,7 @@ class header extends Component{
             <View style= {[styles.header , {backgroundColor:Platform.select({android:headerColor})}]}>
                 <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} />  
                 
-                <CardView style={[styles.headerSearch, {backgroundColor:searchBlur}]}m
+                <CardView style={[styles.headerSearch, {backgroundColor:searchBlur}]}
                                 cardElevation={1}
                                 cardMaxElevation={1}
                                 cornerRadius={17}>

@@ -98,10 +98,12 @@ class Login extends Component {
                     }
                     else{
 
+
                         accessToken = response.data.user.token
                         this.storeToken(accessToken)
                         response.data.user.user_dark_mode || !response.data.user.user_active ? this.props.this_add_theme_black() : this.props.this_add_theme_white()
                         this.props.this_login(response);
+                        
                     }
                 
                 })

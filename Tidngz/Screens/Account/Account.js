@@ -9,6 +9,7 @@ import Info from '../../Functions/Account/Info/Info';
 import Delete from '../../Functions/Account/Delete/Delete';
 
 import Error from  '../../Components/Error/Error';
+import Success from  '../../Components/Success/Success';
 
 
 import Header from '../Headers/FloatHeader'
@@ -49,10 +50,10 @@ class Account extends Component {
   const {backgroundMain, menuIconColor, articleItem} = this.props
   const {type} = this.state
 
-  const section_user      = type == 1 ? style.flex : style.none
-  const section_password  = type == 2 ? style.flex : style.none
-  const section_info      = type == 3 ? style.flex : style.none
-  const section_delete    = type == 4 ? style.flex : style.none
+  const section_user      = type == 1 ? 'flex' : 'none'
+  const section_password  = type == 2 ? 'flex' : 'none'
+  const section_info      = type == 3 ? 'flex' : 'none'
+  const section_delete    = type == 4 ? 'flex' : 'none'
 
   const headerIconUser      = type == 1 ? articleItem : 'transparent'
   const headerIconPassword  = type == 2 ? articleItem : 'transparent'
@@ -94,6 +95,8 @@ class Account extends Component {
           <Header/>
 
           <Error type={2}/>
+
+          <Success type={2}/>
 
        </View> 
     );

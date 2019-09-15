@@ -28,7 +28,29 @@ class Input extends Component {
             value : oldValue,
             editing : false
         }
+        
     }
+
+
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        // if (this.props.userID !== prevProps.userID) {
+        //   this.fetchData(this.props.userID);
+        // }
+        if(this.props.changed != prevProps.changed){
+            this.props.changedBack()
+            
+            
+            const { placeholder, placeholderValue = '' } = this.props
+            const oldValue = placeholderValue == '' ? placeholder : placeholderValue
+    
+            this.setState({
+                value : oldValue,
+                editing : false
+            })
+        }
+      }
+
 
     change = () => {
         value = this.state.value
@@ -43,14 +65,17 @@ class Input extends Component {
         }
     }
 
+
+
     change_2 = () => {
         value = this.state.value
 
-        const { placeholder } = this.props
+        const { placeholder, placeholderValue = '' , changed } = this.props
+        const oldValue = placeholderValue == '' ? placeholder : placeholderValue
         
         if(value == ''){ 
             this.setState({
-                value : placeholder,
+                value : oldValue,
                 editing : false
             })
         }
@@ -85,6 +110,7 @@ class Input extends Component {
                 containerStyles,
                 inputStyles,
                 iconStyle,
+                multiline = false,
                 maxLength = 1000    } = this.props
 
      let { secureTextEntry = false } = this.props
@@ -121,8 +147,11 @@ class Input extends Component {
                     secureTextEntry={secureTextEntry}
                     onFocus={this.change}
                     onEndEditing={this.change_2}
-                    multiline={false}
+                    multiline={multiline}
                     numberOfLines={1}
+                    autoCapitalize = 'none'
+                    // ellipsizeMode="head"
+                    // selection={{start:0, end:0}} 
                 />
             </View>
 
@@ -151,6 +180,7 @@ const styles = StyleSheet.create({
         borderBottomColor:'rgba(123,123,123,.6)',
         textAlign:'center',
         paddingBottom:Platform.select({android:5}),
+        // textAlignVertical: "top", 
     },
     icons : {
         // backgroundColor:'green',
