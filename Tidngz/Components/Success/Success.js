@@ -35,7 +35,7 @@ class Error extends Component {
         const absolute = display == 'flex' ? styles.containerAbsolute : null
 
         if(success){
-            Platform.OS == 'android' ? StatusBar.setBackgroundColor('rgba(255,0,0,1)', true) : null
+            Platform.OS == 'android' ? StatusBar.setBackgroundColor('rgba(15,101,141,1)', true) : null
             StatusBar.setBarStyle('light-content')
         }else{
             value = this.props.theme == 'white' ? 1 : 0

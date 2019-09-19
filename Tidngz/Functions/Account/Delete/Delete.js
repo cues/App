@@ -121,7 +121,7 @@ class Delete extends Component {
 
         return (
             <View style={[styles.container, absolute, {display : visible}]}>
-                <View style={[styles.sureContainer, absolute_2, {display : displayDelete}]}>
+                <View style={[styles.sureContainer, absolute_2, {display : displayDelete , backgroundColor:Platform.select({android : accountFloat})}]}>
                     <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={10} />
                     <View style={style.displayFlex}>
                         <Text style={[styles.sure_text, style.bt, {color:menuIconColor}]}>Are you absolutely sure? </Text>

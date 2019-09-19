@@ -74,7 +74,8 @@ export const SEARCH_PLACES      =    'SEARCH_PLACES';
 export const SEARCH_USERS       =    'SEARCH_USERS';
 export const SEARCH_TAGS        =    'SEARCH_TAGS';
 
-
+// ACCOUNT
+export const ACCOUNT_PLACES     =    'ACCOUNT_PLACES';
 
 // ADD_ARTICLE
 export const HEADLINE_ACTIVE  = 'HEADLINE_ACTIVE';

@@ -376,6 +376,7 @@ const ProfileStack = createStackNavigator({
   Calender      :   Calender,
   CalenderArticles    :   CalenderArticles,
   Article       :   Article,
+  Account             :   Account,
 },{
   cardStyle:{
     backgroundColor:'transparent'

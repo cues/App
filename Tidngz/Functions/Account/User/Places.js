@@ -9,7 +9,7 @@ import {brand, model, models, models2} from '../../../Components/DeviceInfo/Devi
 import style from '../../../Styles/Styles';
 import SearchPlaces from './Content/Places';
 
-import {  error, error_2 , success, success_2, search_places} from '../../../Store/Actions/index'
+import {  error, error_2 , success, success_2, account_places} from '../../../Store/Actions/index'
 
 
 
@@ -31,9 +31,9 @@ const state = state => {
         searchColor             :   state.themes.searchColor,
         searchPlaceholderColor  :   state.themes.searchPlaceholderColor,
         keyboard                :  state.themes.keyboard,
-
-        search_places_count :   state.search.search_places_count,
-        search_places       :   state.search.search_places
+        headerColor             : state.themes.headerColor,
+        account_places_count :   state.account.account_places_count,
+        account_places       :   state.account.account_places
     }
 }
 
@@ -43,7 +43,7 @@ const dispatch = dispatch => {
         this_error_2             :   ()             =>  dispatch(error_2()),
         this_success             :   text           =>  dispatch(success(text)),
         this_success_2           :   ()             =>  dispatch(success_2()),
-        this_search_places       : (count, result)  =>  dispatch(search_places(count, result)),
+        this_account_places       : (count, result)  =>  dispatch(account_places(count, result)),
     }
 }
 
@@ -57,7 +57,7 @@ class Places extends Component {
 
 
         this.state = {
-            value   : '',
+            value : '',
         }
     }
 
@@ -65,11 +65,11 @@ class Places extends Component {
 
     componentDidUpdate(prevProps) {
 
-        const { placesContainer , this_search_places } = this.props
+        const { placesContainer , this_account_places } = this.props
 
         if(placesContainer != prevProps.placesContainer){
 
-            this_search_places(0, [])
+            this_account_places(0, [])
 
             this.setState({
                 value : ''
@@ -82,33 +82,31 @@ class Places extends Component {
 
     searchHandler = async (value) => {
 
-        const { api , apiKey , user_id , this_search_places} = this.props
+        this.setState({
+            value : value,
+        })  
 
-     
-            
+        const { api , apiKey , user_id , this_account_places} = this.props
+       
         const url = `${api}/Search/search.php?key=${apiKey}&user_id=${user_id}&type=search&search=${value}`;
 
         await fetch(url)
         .then((response) => response.json())
         .then((response) => {
-            this_search_places(response.data.places.count, response.data.places.place)
-
-            this.setState({
-                value : value
-            })  
+            this_account_places(response.data.places.count, response.data.places.place)
         })
     }
 
 
     reset = () => {
 
-        const { this_search_places } = this.props
+        const { this_account_places } = this.props
 
         this.setState({
             value : ''
         })
 
-        this_search_places(0, [])
+        this_account_places(0, [])
     }
  
 
@@ -116,7 +114,7 @@ class Places extends Component {
     
     render(){
 
-        const { absolute, display, placesClose, accountFloat , menuIconColor, tabBlur, searchBlur, searchColor , searchPlaceholderColor, keyboard , search_places_count, search_places , selectedPlaceHandler} = this.props
+        const { headerColor, absolute, display, placesClose, accountFloat , menuIconColor, tabBlur, searchBlur, searchColor , searchPlaceholderColor, keyboard , account_places_count, account_places , selectedPlaceHandler} = this.props
 
         const { value } = this.state
 
@@ -124,21 +122,22 @@ class Places extends Component {
 
 
 
-        const searchPlace = search_places.map((search, index) => (
+        const searchPlace = account_places.map((search, index) => (
             <View key={search.key}>
-      
+    
                   <SearchPlaces place={search} selectedPlaceHandler={selectedPlaceHandler}/>
       
-                <View style={[style.line, index + 1 == search_places_count ? style.none : null]}/>
+                <View style={[style.line, index + 1 == account_places_count ? style.none : null]}/>
+
             </View>
           ))
       
           const search = (
-            search_places_count == 0 ? 
-                value == '' ?
+            account_places_count == 0 ? 
+               value == ''?
                     <Text style={[styles.noSearch, {color:menuIconColor}]}>Search for a place</Text>
                 :
-                    <Text style={[styles.noSearch, {color:menuIconColor}]}>No places found</Text>
+                    <Text style={[styles.noSearch, {color:menuIconColor}]}>No places found</Text> 
             :
               <View>
                 { searchPlace }
@@ -147,7 +146,7 @@ class Places extends Component {
 
 
         return(
-            <View style={[styles.placesFloat, absolute , {display : display}]}>
+            <View style={[styles.placesFloat, absolute , {display : display, backgroundColor:Platform.select({android : accountFloat})}]}>
 
                 <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={10} />
                 

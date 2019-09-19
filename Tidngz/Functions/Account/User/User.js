@@ -5,9 +5,11 @@ import MaterialIcons from  'react-native-vector-icons/MaterialIcons';
 import SaveButton from '../../../Components/Button/Button';
 import style from '../../../Styles/Styles';
 import Places from './Places';
+// import Images from './Images';
 
 import { connect } from 'react-redux';
 import { login , error, error_2 , success, success_2, deleteUserImage , home_refresh , profile_refresh} from '../../../Store/Actions/index'
+
 
 const state = state => {
     return {
@@ -18,10 +20,8 @@ const state = state => {
         user_id             :   state.main.user.user_id,
         username            :   state.main.user.username,
         user_name           :   state.main.user.user_name,
-        user_email          :   state.main.user.user_email,
         user_place_id       :   state.main.user.user_place_id,
         user_place          :   state.main.user.user_place,
-        user_image_2        :   state.main.user.user_image_2,
         menuIconColor       :   state.themes.menuIconColor,
         menuIconColor_2     :   state.themes.menuIconColor_2,
     }
@@ -47,13 +47,12 @@ class User extends Component {
         
 
 
-        const { user, username , user_name, user_email, user_place_id , user_place } = this.props
+        const { user, username , user_name, user_place_id , user_place } = this.props
 
         this.state = {
             user            : user,
             username        : username,
             user_name       : user_name,
-            user_email      : user_email,
             user_place_id   : user_place_id,
             user_place      : user_place,
             placesContainer : false
@@ -89,7 +88,17 @@ class User extends Component {
      save = () => {
 
         const { api, apiKey , token, user_id , this_error, this_error_2, this_success, this_success_2, this_login , this_home_refresh , this_profile_refresh } = this.props;
-        const { username, user_name, user_email, user_place_id } = this.state;
+        const { username, user_name, user_place_id } = this.state;
+
+        if(this.props.username == username && this.props.user_name == user_name && this.props.user_place_id == user_place_id){
+
+            this_error('sorry!! nothing to update') 
+            setTimeout(() => {
+                this_error_2()
+            },2500)
+            return false;
+        }
+
 
         if(user_name == '' || username == ''){
 
@@ -103,18 +112,17 @@ class User extends Component {
             return false;
         }
 
-        if(this.props.username == username && this.props.user_name == user_name && this.props.user_place_id == user_place_id){
-            return false;
-        }
+   
 
-        const url = `${api}/Account/User/user.php?key=${apiKey}&token=${token}&user_id=${user_id}&username=${username}&name=${user_name}&email=${user_email}&place=${user_place_id}`;
+        const url = `${api}/Account/User/user.php?key=${apiKey}&token=${token}&user_id=${user_id}&username=${username}&name=${user_name}&place=${user_place_id}`;
 
+        // console.warn(url)
 
         fetch(url)
         .then((response) => response.json())
         .then((response) => {
 
-          console.warn(response)
+        //   console.warn(response)
 
             if(response.data.error){
                 this_error(response.data.errorReason)
@@ -135,6 +143,8 @@ class User extends Component {
         })
      }
 
+
+    //  IMAGE 
 
      updateUser = user => {
         user.user_image = '';
@@ -157,6 +167,9 @@ class User extends Component {
             })
      }
 
+
+
+    //  PLACE
 
      placesOpen = () => {
         this.setState({
@@ -182,9 +195,12 @@ class User extends Component {
         this.placesClose()
     }
 
+
+
+
     render (){
 
-        let { username , user_name, user_email, user_place_id , user_place , user , placesContainer} = this.state
+        let { username , user_name, user_place_id , user_place , user , placesContainer} = this.state
 
         const { visible , menuIconColor , menuIconColor2  } = this.props
 
@@ -194,14 +210,6 @@ class User extends Component {
         const placeText = user_place_id == "" ? 'Add your location' : user_place
     
 
-        const image = (
-            user.user_image == '' ? 
-                                <Text style={[styles.userImage, styles.userImageText, style.bt]}>{user.user_name_initial}</Text>
-                            :
-                                <Image style={styles.userImage} source={{uri : user.user_image_2}} /> 
-        )
-
-        
         const absolute = visible == 'flex' ? styles.containerAbsolute : null
 
         const displayPlaces = placesContainer ? 'flex' : 'none'
@@ -213,9 +221,8 @@ class User extends Component {
                 <Places absolute={absolute_2} display={displayPlaces} placesClose={placesClose} selectedPlaceHandler={selectedPlaceHandler} placesContainer={placesContainer}/>
 
                 <View style={styles.imageContainer}>
-                    <TouchableOpacity style={styles.imageBox}>
-                        {image}
-                    </TouchableOpacity>
+
+                    {/* <Images user={user}/> */}
 
                     <TouchableOpacity style={styles.deleteBox} onPress={deleteImage}>
                         <MaterialIcons style={styles.deleteIcon} name='delete' size={23} color={menuIconColor} />

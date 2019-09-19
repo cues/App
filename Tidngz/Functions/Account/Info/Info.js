@@ -9,6 +9,7 @@ import BlurView from '../../../Components/BlurVIew/BlurVIew';
 
 import { login , error, error_2 , success, success_2, deleteUserImage , home_refresh , profile_refresh} from '../../../Store/Actions/index'
 
+
 const state = state => {
     return {
         api             :   state.main.api,
@@ -98,23 +99,120 @@ class Info extends Component {
     save = () => {
 
         const { api, apiKey , token, user_id , this_error, this_error_2, this_login , this_success, this_success_2, this_profile_refresh } = this.props;
-        const { facebook , instagram , twitter , youtube , website , bio } = this.state;
+        let { facebook , instagram , twitter , youtube , website , bio } = this.state;
+
+
 
 
         if(this.props.facebook == facebook && this.props.instagram == instagram && this.props.twitter == twitter && this.props.youtube == youtube && this.props.website == website && this.props.bio == bio ){
+            this_error('sorry!! nothing to update') 
+            setTimeout(() => {
+                this_error_2()
+            },2500)
             return false;
         }
+
+        if( (facebook != '' && facebook.indexOf("facebook.com/") == -1) || 
+            (instagram != '' && instagram.indexOf("instagram.com/") == -1) || 
+            (twitter != '' && twitter.indexOf("twitter.com/") == -1) || 
+            (youtube != '' && youtube.indexOf("youtube.com/channel/") == -1)  ){
+
+            facebook    != ''   &&   facebook.indexOf("facebook.com/") == -1        ?   this_error('Please check your facebook profile link')   : 
+            instagram   != ''   &&   instagram.indexOf("instagram.com/") == -1      ?   this_error('Please check your instagram profile link')  :
+            twitter     != ''   &&   twitter.indexOf("twitter.com/") == -1          ?   this_error('Please check your twitter profile link')    :
+            youtube     != ''   &&   youtube.indexOf("youtube.com/channel/") == -1  ?   this_error('Please check your youtube profile link')    : null
+
+            setTimeout(() => {
+                this_error_2()
+            },2500)
+
+            return false;
+        }
+
+
+        // FACEBBOK
+        if(facebook != '' && facebook.indexOf("www.") == -1){
+            facebook = "www." + facebook
+
+            this.setState({
+                facebook  : facebook,
+            })
+        }
+
+        if(facebook != '' && facebook.indexOf("https://") == -1){
+            facebook = "https://" + facebook
+
+            this.setState({
+                facebook  : facebook,
+            })
+        }
+
+        // INSTAGRAM
+        if(instagram != '' && instagram.indexOf("www.") == -1){
+            instagram = "www." + instagram
+
+            this.setState({
+                instagram  : instagram,
+            })
+        }
+
+        if(instagram != '' && instagram.indexOf("https://") == -1){
+            instagram = "https://" + instagram
+
+            this.setState({
+                instagram  : instagram,
+            })
+        }
+
+
+        // TWITTER
+        twitter = twitter.replace("www.", "");
+        this.setState({
+            twitter  : twitter,
+        })
+        
+
+        if(twitter != '' && twitter.indexOf("https://") == -1){
+            twitter = "https://" + twitter
+
+            this.setState({
+                twitter  : twitter,
+            })
+        }
+
+
+        // YOUTUBE
+
+        if(youtube != '' && youtube.indexOf("www.") == -1){
+            youtube = "www." + youtube
+
+            this.setState({
+                youtube  : youtube,
+            })
+        }
+
+        if(youtube != '' && youtube.indexOf("https://") == -1){
+            youtube = "https://" + youtube
+
+            this.setState({
+                youtube  : youtube,
+            })
+        }
+
+
+        // console.warn(youtube)
+
 
         const url = `${api}/Account/Info/info.php?key=${apiKey}&token=${token}&user_id=${user_id}&facebook=${facebook}&instagram=${instagram}&twitter=${twitter}&youtube=${youtube}&website=${website}&bio=${bio}`;
 
 
-        console.warn(url)
+        // console.warn(url)
 
         fetch(url)
         .then((response) => response.json())
         .then((response) => {
 
-          console.warn(response)
+        //   console.warn(response)
 
             if(response.data.error){
                 this_error(response.data.errorReason)
@@ -179,7 +277,7 @@ class Info extends Component {
         return (
             <View style={[styles.container, absolute, {display : visible}]}>
 
-                    <View style={[styles.bioFloat, absolute_2, {display : displayBio}]}>
+                    <View style={[styles.bioFloat, absolute_2, {display : displayBio, backgroundColor:Platform.select({android : accountFloat})}]}>
                         <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={10} />
                         <MaterialIcons style={styles.bioClose}  name='close' size={30} color={menuIconColor} onPress={bioClose}/>
                         <Input containerStyles={styles.containerStylesBio} inputStyles={styles.inputStylesBio}  textContentType = 'name' multiline={true}  placeholderValue = {placeholderBio}  placeholder = 'BIO'  maxLength = {150}  handleChange = {changeHandler}/>
@@ -267,7 +365,7 @@ const styles = StyleSheet.create({
         // backgroundColor:'blue'
     },
     containerStylesBio:{
-        width:'96%',
+        width:'90%',
     },
     containerStyles:{
         // backgroundColor:'orange',
@@ -276,9 +374,10 @@ const styles = StyleSheet.create({
     inputStylesBio : {
         borderBottomWidth : 0,
         width:'100%',
-        textAlign:'left',
+        textAlign:'center',
         // backgroundColor:'blue',
-        paddingRight:0,
+        paddingHorizontal:0,
+        // paddingRight:0,
         height: null,
         lineHeight:27,
     },

@@ -3,6 +3,7 @@ import mainReducer from './Reducers/main';
 import loginReducer from './Reducers/login';
 import articlesReducer from './Reducers/articles';
 import searchReducer from './Reducers/search';
+import accountReducer from './Reducers/account';
 import commentsReducer from './Reducers/comments';
 import notificationsReducer from './Reducers/notifications';
 import themesReducer from './Reducers/themes';
@@ -16,6 +17,7 @@ const reducers = combineReducers({
     login            : loginReducer,
     articles         : articlesReducer,
     search           : searchReducer,
+    account          : accountReducer,
     comments         : commentsReducer,
     notifications    : notificationsReducer,
     themes           : themesReducer,

@@ -102,7 +102,7 @@ class Password extends Component {
             .then((response) => response.json())
             .then((response) => {
 
-            console.warn(response)
+            // console.warn(response)
 
                 if(response.data.error){
                     this_error(response.data.errorReason)

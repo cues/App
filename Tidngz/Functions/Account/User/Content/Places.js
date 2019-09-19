@@ -21,7 +21,7 @@ const state = state => {
 
 const dispatch = dispatch => {
   return {
-      this_search_history  : (count, result) => dispatch(search_history(count, result)),
+
   }
 }
 
@@ -42,7 +42,6 @@ class SearchPlaces extends Component {
     const { selectedPlaceHandler } = this
 
     return (
-        <View style={styles.eachSearch} >
 
         <TouchableOpacity style={styles.eachSearch} onPress={() => selectedPlaceHandler(place.place_id, place.place_name)}>
 
@@ -69,7 +68,6 @@ class SearchPlaces extends Component {
             </View>
         </TouchableOpacity>
 
-    </View>
     );
   }
 }

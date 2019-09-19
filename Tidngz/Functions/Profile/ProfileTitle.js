@@ -134,14 +134,14 @@ class ProfileTitle extends Component {
                         <View  style={styles.profileSide}>
                     
                                     <CreatedView  style={[styles.profileSide_Each, {backgroundColor:Platform.select({android:headerColor})}]} cardElevation={1} cardMaxElevation={1} cornerRadius={0}>
-                                        <TouchableOpacity style={[styles.profileSide_EachOverflow, ]}>
+                                        <TouchableOpacity style={[styles.profileSide_EachOverflow, ]} onPress={this.logout}>
                                                     <BlurView viewRef={1}  blurType={tabBlur} blurAmount={1} />   
-                                                    <MaterialIcons style={[styles.profileSide_Each_Text]} name='power-settings-new' size={25} color={menuIconColor} onPress={this.logout}/>
+                                                    <MaterialIcons style={[styles.profileSide_Each_Text]} name='power-settings-new' size={25} color={menuIconColor} />
                                         </TouchableOpacity>
                                     </CreatedView>
 
                                     <CreatedView  style={[styles.profileSide_Each, {backgroundColor:Platform.select({android:headerColor})}]} cardElevation={1} cardMaxElevation={1} cornerRadius={0}>
-                                        <TouchableOpacity style={styles.profileSide_EachOverflow}>
+                                        <TouchableOpacity style={styles.profileSide_EachOverflow} onPress={() => navigation.navigate('Account', {name:'ACCOUNT'})}>
                                                     <BlurView viewRef={1}  blurType={tabBlur} blurAmount={1} />   
                                                     <MaterialIcons style={[styles.profileSide_Each_Text]} name='edit' size={21} color={menuIconColor}/>
                                         </TouchableOpacity>
