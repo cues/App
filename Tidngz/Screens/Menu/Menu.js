@@ -118,13 +118,6 @@ class Menu extends Component {
 
                 <View style={styles.line2}/>
 
-                <TouchableOpacity style={[styles.items, styles.items2]} onPress = {() => this.props.navigation.navigate('About',{name:'ABOUT US'})}>
-                    <Text style={[styles.itemsText, {color:menuText}, styles.itemsText2 , style.ma]}>ABOUT US</Text>
-                    {iconRight2}
-                </TouchableOpacity>
-
-                <View style={styles.line2}/>
-
                 <TouchableOpacity style={[styles.items, styles.items2]} onPress = {() => this.props.navigation.navigate('Help',{name:'HELP'})}>
                     <Text style={[styles.itemsText, {color:menuText}, styles.itemsText2 , style.ma]}>HELP</Text>
                     {iconRight2}
@@ -132,19 +125,28 @@ class Menu extends Component {
 
                 <View style={styles.line2}/>
 
-                <TouchableOpacity style={[styles.items, styles.items2]} onPress = {() => this.props.navigation.navigate('Contact',{name:'CONTACT US'})}>
+                <TouchableOpacity style={[styles.items, styles.items2]} onPress = {() => this.props.navigation.navigate('About',{name:'ABOUT'})}>
+                    <Text style={[styles.itemsText, {color:menuText}, styles.itemsText2 , style.ma]}>ABOUT</Text>
+                    {iconRight2}
+                </TouchableOpacity>
+
+                <View style={styles.line2}/>
+
+                
+
+                {/* <TouchableOpacity style={[styles.items, styles.items2]} onPress = {() => this.props.navigation.navigate('Contact',{name:'CONTACT US'})}>
                     <Text style={[styles.itemsText, {color:menuText}, styles.itemsText2 , style.ma]}>CONTACT US</Text>
                     {iconRight2}
                 </TouchableOpacity>
 
-                <View style={styles.line2}/>
+                <View style={styles.line2}/> */}
 
-                <TouchableOpacity style={[styles.items, styles.items2]} onPress = {() => this.props.navigation.navigate('Ads',{name:'ADVERTISMENTS'})}>
+                {/* <TouchableOpacity style={[styles.items, styles.items2]} onPress = {() => this.props.navigation.navigate('Ads',{name:'ADVERTISMENTS'})}>
                     <Text style={[styles.itemsText, {color:menuText}, styles.itemsText2 , style.ma]}>ADS</Text>
                     {iconRight2}
                 </TouchableOpacity>
 
-                <View style={styles.line2}/>
+                <View style={styles.line2}/> */}
 
                 <View style={[styles.items , styles.tidngz]}>
                     <Text style={[styles.tidngzText, style.bt]}>TIDNGZ</Text> 
@@ -222,8 +224,8 @@ const styles = StyleSheet.create({
     },
     itemsText2:{
         lineHeight:17,
-        fontSize: 10,
-        letterSpacing: 1,
+        fontSize: 12,
+        letterSpacing: 1.2,
     },
     tidngz : {
         marginTop:10,

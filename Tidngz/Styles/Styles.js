@@ -26,9 +26,8 @@ export default StyleSheet.create({
     line : {
         height:2,
         borderRadius:100,
-        marginHorizontal:10,
-        marginVertical:10,
-        backgroundColor:'rgba(123,123,123, 0.2)'
+        margin:10,
+        backgroundColor:'rgba(123,123,123, 0.4)'
     },
     line_2:{
         height:2, 
@@ -214,6 +213,29 @@ export default StyleSheet.create({
     google_color_light : {
         color: 'rgba(234,67,53,.8)'
     },
+
+
+
+
+    itemsHeader :{
+        fontSize:18,
+        lineHeight:31,
+        letterSpacing:1.2,
+        marginBottom:5,
+        marginTop:0,
+        fontWeight:'bold'
+      },
+      itemsBody :{
+        fontSize:15,
+        lineHeight:26,
+        letterSpacing:1,
+        marginVertical:5,
+      },
+      itemsList :{
+        fontSize:14,
+        lineHeight:25,
+        letterSpacing:.7
+      }
 });
 
 

@@ -28,8 +28,7 @@ class Images extends Component {
                                 <Text style={[styles.userImage, styles.userImageText, style.bt]}>{user.user_name_initial}</Text>
                             :
                                 <Image style={styles.userImage} source={{uri : user.user_image}} /> 
-        )
-
+        ) 
 
         return (
             <TouchableOpacity style={styles.imageBox}>

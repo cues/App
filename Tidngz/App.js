@@ -31,6 +31,20 @@ import Account from './Screens/Account/Account';
 import Terms from './Screens/Menu/Terms';
 import Privacy from './Screens/Menu/Privacy';
 import Help from './Screens/Menu/Help';
+import GeneralHelp from './Screens/Menu/HelpSections/General';
+import AccountHelp from './Screens/Menu/HelpSections/Account';
+import ArticleHelp from './Screens/Menu/HelpSections/Article';
+import BookmarkHelp from './Screens/Menu/HelpSections/Bookmark';
+import ClassifiedHelp from './Screens/Menu/HelpSections/Classified';
+import HomeHelp from './Screens/Menu/HelpSections/Home';
+import MapHelp from './Screens/Menu/HelpSections/Map';
+import MenuHelp from './Screens/Menu/HelpSections/Menu';
+import NotificationHelp from './Screens/Menu/HelpSections/Notification';
+import PlaceHelp from './Screens/Menu/HelpSections/Place';
+import ProfileHelp from './Screens/Menu/HelpSections/Profile';
+import SearchHelp from './Screens/Menu/HelpSections/Search';
+import SettingHelp from './Screens/Menu/HelpSections/Setting';
+import ThemesHelp from './Screens/Menu/HelpSections/Themes';
 import Contact from './Screens/Menu/Contact';
 import About from './Screens/Menu/About';
 import Ads from './Screens/Menu/Ads';
@@ -135,6 +149,20 @@ const HomeStack = createStackNavigator({
   Terms               :   Terms,
   Privacy             :   Privacy,
   Help                :   Help,
+  GeneralHelp         :   GeneralHelp,
+  AccountHelp         :   AccountHelp,
+  ArticleHelp         :   ArticleHelp,
+  BookmarkHelp        :   BookmarkHelp,
+  ClassifiedHelp      :   ClassifiedHelp,
+  HomeHelp            :   HomeHelp,
+  MapHelp             :   MapHelp,
+  MenuHelp            :   MenuHelp,
+  NotificationHelp    :   NotificationHelp,
+  PlaceHelp           :   PlaceHelp,
+  ProfileHelp         :   ProfileHelp,
+  SearchHelp          :   SearchHelp,
+  SettingHelp         :   SettingHelp,
+  ThemesHelp          :   ThemesHelp,
   About               :   About,
   Contact             :   Contact,
   Ads                 :   Ads,

@@ -203,8 +203,6 @@ android {
 
 
 dependencies {
-    implementation project(':@react-native-community_geolocation')
-    implementation project(':react-native-webview')
     implementation project(':react-native-cardview')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
