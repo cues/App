@@ -27,6 +27,15 @@ const dispatch = dispatch => {
 class Calender extends Component {
 
 
+  static navigationOptions = ({navigation}) =>  {
+    return {
+        header: null,
+        headerTransparent : true,
+        }
+    } 
+
+    
+
   constructor(props) {
     super(props);
 

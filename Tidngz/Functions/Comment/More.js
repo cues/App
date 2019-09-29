@@ -35,13 +35,13 @@ class More extends Component {
     }
 
 
-    componentWillMount() {
+    componentDidMount() {
        this.intervalId =  setInterval(() => {
             this.update_date()
            }, 1000);
     }
 
-    componentWillMount() {
+    componentWillUnmount() {
         clearInterval(this.intervalId);
     }
 

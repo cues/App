@@ -28,19 +28,19 @@ class Bookmark extends Component {
             <ScrollView>
               <View style={[styles.inner, style.paddingBackgroundTop, style.paddingBackgroundBottom_2]}>
                   
-                    <Text style={[style.itemsHeader, {color:menuText} , style.la]}>
+                    <Text style={[style.itemsHeader, {color:menuText} ]}>
                         Can I bookmark articles?
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         All articles that are posted by other users can be bookmarked, by clikcing on the top right section of the article.
                     </Text>
                     
                     <View style={style.line}/>
 
-                    <Text style={[style.itemsHeader, {color:menuText} , style.la]}>
+                    <Text style={[style.itemsHeader, {color:menuText} ]}>
                         How to view the articles that I bookmarked?
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         Click on the menu icon --> Bookmarks, this will lead you to the bookmarks page.
                     </Text>
                                  

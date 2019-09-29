@@ -151,7 +151,20 @@ export default StyleSheet.create({
         })
     },
 
+    shadowLight : {
+        textShadowOffset: {width: 0, height: 0},
+        textShadowColor: 'rgba(0,0,0, 1)',
+        textShadowRadius: 1,
+    },
+    shadowDark : {
+        textShadowOffset: {width: 1, height: 2},
+        textShadowColor: 'rgba(0,0,0, 1)',
+        textShadowRadius: 1,
+    },
 
+
+
+    
 
     noSearch : {
         height: 50,
@@ -223,13 +236,15 @@ export default StyleSheet.create({
         letterSpacing:1.2,
         marginBottom:5,
         marginTop:0,
-        fontWeight:'bold'
+        // fontWeight:'bold'
+        fontFamily:'Cinzel-Bold',
       },
       itemsBody :{
         fontSize:15,
         lineHeight:26,
         letterSpacing:1,
         marginVertical:5,
+        fontFamily:'Lato-Regular',
       },
       itemsList :{
         fontSize:14,

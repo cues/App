@@ -28,16 +28,16 @@ class Search extends Component {
             <ScrollView>
               <View style={[styles.inner, style.paddingBackgroundTop, style.paddingBackgroundBottom_2]}>
                   
-                    <Text style={[style.itemsHeader, {color:menuText} , style.la]}>
+                    <Text style={[style.itemsHeader, {color:menuText} ]}>
                         What can i search for?
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         Search helps you find places, users and hashtags.
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         It also provides you with the history of your search results
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         When you click on the search icon, a tab would open, displaying you the tranding news articles from around the world.
                     </Text>
                  

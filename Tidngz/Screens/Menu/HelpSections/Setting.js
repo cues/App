@@ -28,19 +28,19 @@ class Setting extends Component {
             <ScrollView>
               <View style={[styles.inner, style.paddingBackgroundTop, style.paddingBackgroundBottom_2]}>
                   
-                    <Text style={[style.itemsHeader, {color:menuText} , style.la]}>
+                    <Text style={[style.itemsHeader, {color:menuText} ]}>
                         Blocked users
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         View all the users that you have blocked here, you can unblock any of them by clicking on the unblock button on the right
                     </Text>
 
                     <View style={style.line}/>
 
-                    <Text style={[style.itemsHeader, {color:menuText} , style.la]}>
+                    <Text style={[style.itemsHeader, {color:menuText} ]}>
                         Classified Ads
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         All the classified ads for today and the future are displayed here. You are not able to edit any of the ads placed though you can delete them.
                     </Text>
                    

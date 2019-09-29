@@ -8,7 +8,7 @@ const Loader = props => {
         return (
             <ActivityIndicator
                             style={[styles.loader, props.style]}
-                            size="small"
+                            size="large"
                             color={'rgba(102,102,102,.7)'}
                         />
         )
@@ -18,7 +18,8 @@ const Loader = props => {
 const styles = StyleSheet.create({
     loader : {
         height:40, 
-        width: '100%'
+        width: '100%',
+        zIndex:10000
     },
     loaderDummy : {
         height:40, 

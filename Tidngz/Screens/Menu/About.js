@@ -26,16 +26,20 @@ class About extends Component {
 
               <View style={[styles.container, style.paddingBackgroundTop, style.paddingBackgroundBottom_2]}>
                   
-                    <Text style={[style.itemsHeader, {color:menuText, textAlign:'center'} , style.la]}>
-                      Tidngz is a news based web service, that caters manly to all the local news & classified ads that may or may not have been published on any newspapers, websites or blogs.
-                    </Text>
-                    <Text style={[style.itemsBody, {color:menuText , textAlign:'center'} , style.la]}>
-                    </Text>
-                    <Text style={[style.itemsBody, {color:menuText , textAlign:'center'} , style.la]}>
-                      Our app is available to download from the apple app store and the google play store.
-                    </Text>
+                   <View style={[styles.inner]}>
+
+        
+                      <Text style={[style.itemsHeader, {color:menuText, textAlign:'center', fontSize:23, lineHeight:36,} , style.ca]}>
+                        Tidngz is a news based web service, that caters manly to all the local news & classified ads that may or may not have been published on any newspapers, websites or blogs.
+                      </Text>
+                      <Text style={[style.itemsBody, {color:menuText , textAlign:'center'} , style.cib]}>
+                      </Text>
+                      <Text style={[style.itemsBody, {color:menuText , textAlign:'center'} , style.cib]}>
+                        You can use the website or the app. Our app is available to download from the apple app store and the google play store
+                      </Text>
 
 
+                  </View>
               </View>
 
           <Header/>

@@ -14,7 +14,7 @@ class User extends Component {
 
  
 
-    componentWillMount() {
+    componentDidMount() {
 
         this.update_date()
 

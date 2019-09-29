@@ -31,13 +31,13 @@ const dispatch = dispatch => {
 class SearchPlaces extends Component {
 
 
-  navigate = place_id => {
+  navigate = () => {
 
-    const { api, apiKey, user_id , navigation, this_search_history} = this.props;
+    const { api, apiKey, user_id ,place, navigation, this_search_history} = this.props; 
 
-    navigation.navigate('PlacesTitle')
+    navigation.navigate('Place',{id:place.id})
 
-    const url = `${api}/Search/search.php?key=${apiKey}&user_id=${user_id}&type=add&item_id=${place_id}&item_type=PLACE`;
+    const url = `${api}/Search/search.php?key=${apiKey}&user_id=${user_id}&type=add&item_id=${place.id}&item_type=PLACE`;
       
     fetch(url)
     .then((response) => response.json())
@@ -57,25 +57,25 @@ class SearchPlaces extends Component {
     return (
         <View style={styles.eachSearch} >
 
-        <TouchableOpacity style={styles.eachSearch} onPress={() => this.navigate(place.place_id)}>
-            <Image style={styles.placeFlag} source={{uri : place.place_flag}}/>
+        <TouchableOpacity style={styles.eachSearch} onPress={this.navigate}>
+            <Image style={styles.placeFlag} source={{uri : place.flag}}/>
 
             <View style={styles.placeNameContainer}>
 
                             {
-                            place.place_name != place.place_county && place.place_county != '' ?
-                                place.place_province != '' ?
-                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, {color:menuIconColor}]}>{place.place_name} </Text><Text style={[style.bt, styles.placeAddress, {color:menuIconColor}]}>{place.place_county} | {place.place_province} | {place.place_country} </Text></View>
+                            place.name != place.county && place.county != '' ?
+                                place.province != '' ?
+                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, {color:menuIconColor}]}>{place.name} </Text><Text style={[style.bt, styles.placeAddress, {color:menuIconColor}]}>{place.county} | {place.province} | {place.country} </Text></View>
                                 :
-                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, {color:menuIconColor}]}>{place.place_name} </Text><Text style={[style.bt, styles.placeAddress, {color:menuIconColor}]}>{place.place_county} | {place.place_country} </Text></View>
+                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, {color:menuIconColor}]}>{place.name} </Text><Text style={[style.bt, styles.placeAddress, {color:menuIconColor}]}>{place.county} | {place.country} </Text></View>
                                 :
-                                place.place_name != place.place_province && place.place_province != '' ?
-                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, {color:menuIconColor}]}>{place.place_name} </Text><Text style={[style.bt, styles.placeAddress, {color:menuIconColor}]}>{place.place_province} | {place.place_country} </Text></View>
+                                place.name != place.province && place.province != '' ?
+                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, {color:menuIconColor}]}>{place.name} </Text><Text style={[style.bt, styles.placeAddress, {color:menuIconColor}]}>{place.province} | {place.country} </Text></View>
                                 :   
-                                    place.place_name == place.place_country ? 
-                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, styles.placeNameCountry, {color:menuIconColor}]}>{place.place_name} </Text></View>
+                                    place.name == place.country ? 
+                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, styles.placeNameCountry, {color:menuIconColor}]}>{place.name} </Text></View>
                                     :
-                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, {color:menuIconColor}]}>{place.place_name} </Text><Text style={[style.bt, styles.placeAddress, {color:menuIconColor}]}>{place.place_country} </Text></View>
+                                    <View style={styles.placeNameBox}><Text style={[style.bt, styles.placeName, {color:menuIconColor}]}>{place.name} </Text><Text style={[style.bt, styles.placeAddress, {color:menuIconColor}]}>{place.country} </Text></View>
                                 
                             }
             </View>

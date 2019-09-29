@@ -10,7 +10,7 @@ import IcoFont from '../../../assets/IcoFont/IcoFont';
 import {search_value, search_suggestions, search_places_1, search_places_2, search_places_3, 
         search_users_1, search_users_2, search_users_3, 
         search_tags_1, search_tags_2, search_tags_3, 
-        search_places, search_users, search_tags} from '../../../Store/Actions/index'
+        search_places, search_users, search_tags, place_active} from '../../../Store/Actions/index'
 import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 
@@ -25,7 +25,8 @@ const state = state => {
         searchBlur              :   state.themes.searchBlur,
         searchColor             :   state.themes.searchColor,
         searchPlaceholderColor  :   state.themes.searchPlaceholderColor,
-        keyboard                :  state.themes.keyboard,
+        keyboard                :   state.themes.keyboard,
+        placeActive             :   state.place.placeActive
     }
 }
 
@@ -44,7 +45,8 @@ const dispatch = dispatch => {
         this_search_tags_3   : (count, result) => dispatch(search_tags_3(count, result)),
         this_search_places  : (count, result) => dispatch(search_places(count, result)),
         this_search_users   : (count, result) => dispatch(search_users(count, result)),
-        this_search_tags    : (count, result) => dispatch(search_tags(count, result))
+        this_search_tags    : (count, result) => dispatch(search_tags(count, result)),
+        this_place_active   :  ()  => dispatch(place_active())
     }
 }
 
@@ -61,18 +63,32 @@ class header extends Component{
             history : false,
             value   : '',
         }
-    
-    
+
+        this.suggestionHandler()
+        
+      }
+
+
+      componentDidUpdate(prevProps) {
+        if (this.props.placeActive !== prevProps.placeActive) {
+            console.warn('follow');
+            this.props.this_place_active();
+            this.suggestionHandler()
+            this.reset()  
+        }
+      }
+      
+
+
+    suggestionHandler = () =>{
         const { api, apiKey, user_id , this_search_suggestions} = this.props;
 
-    
         const url = `${api}/Search/search.php?key=${apiKey}&user_id=${user_id}&type=suggestions`;
-    
           
-        fetch(url)
+        rm rffetch(url)
         .then((response) => response.json())
-        .then((response) => {
-            // console.warn(response)
+        .then((response) => { 
+            // console.warn(response.data.items)
           
             this_search_suggestions(response.data.count, response.data.items)
     
@@ -80,10 +96,8 @@ class header extends Component{
         .catch((error) =>{
             // console.warn(error)
         })
-    
-      }
+    }
 
-      
 
     navigate = (type) => {                  
 
@@ -206,6 +220,12 @@ class header extends Component{
         this_search_tags_3(0, [])
         this_search_value('');
     }
+
+
+
+  
+
+
 
     render(){
         const {searchBlur, tabBlur, headerColor, headerIcons , searchColor , searchPlaceholderColor, keyboard} = this.props

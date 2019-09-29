@@ -49,7 +49,7 @@ class Help extends Component {
 
                     <View style={styles.line}/>
 
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('ArticleHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('ArticleHelp',{name:'ARTICLE'})}>
                       <MaterialIcons style={styles.itemsIcon} name="crop-portrait" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>ARTICLE</Text>
                       {iconRight}
@@ -57,7 +57,7 @@ class Help extends Component {
 
                     <View style={styles.line}/>
 
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('BookmarkHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('BookmarkHelp',{name:'BOOKMARK'})}>
                       <MaterialIcons style={styles.itemsIcon} name="bookmark" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>BOOKMARK</Text>
                       {iconRight}
@@ -65,7 +65,7 @@ class Help extends Component {
 
                     <View style={styles.line}/>
 
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('ClassifiedHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('ClassifiedHelp',{name:'CLASSIFIED'})}>
                       <MaterialIcons style={styles.itemsIcon} name="language" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>CLASSIFIED</Text>
                       {iconRight}
@@ -73,7 +73,7 @@ class Help extends Component {
 
                     <View style={styles.line}/>
 
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('HomeHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('HomeHelp',{name:'HOME'})}>
                       <MaterialIcons style={styles.itemsIcon} name="home" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>HOME</Text>
                       {iconRight}
@@ -81,7 +81,7 @@ class Help extends Component {
 
                     <View style={styles.line}/>
 
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('MapHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('MapHelp',{name:'MAP'})}>
                       <MaterialIcons style={styles.itemsIcon} name="map" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>MAP</Text>
                       {iconRight}
@@ -89,7 +89,7 @@ class Help extends Component {
 
                     <View style={styles.line}/>
 
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('NotificationHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('NotificationHelp',{name:'NOTIFICATION'})}>
                       <MaterialIcons style={styles.itemsIcon} name="notifications" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>NOTIFICATION</Text>
                       {iconRight}
@@ -97,7 +97,7 @@ class Help extends Component {
       
                     <View style={styles.line}/>
 
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('PlaceHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('PlaceHelp',{name:'PLACE'})}>
                       <MaterialIcons style={styles.itemsIcon} name="place" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>PLACE</Text>
                       {iconRight}
@@ -105,7 +105,7 @@ class Help extends Component {
 
                     <View style={styles.line}/>
 
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('ProfileHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('ProfileHelp',{name:'PROFILE'})}>
                       <MaterialIcons style={styles.itemsIcon} name="person" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>PROFILE</Text>
                       {iconRight}
@@ -113,7 +113,7 @@ class Help extends Component {
 
                     <View style={styles.line}/>
                     
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('SearchHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('SearchHelp',{name:'SEARCH'})}>
                       <MaterialIcons style={styles.itemsIcon} name="search" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>SEARCH</Text>
                       {iconRight}
@@ -121,7 +121,7 @@ class Help extends Component {
 
                     <View style={styles.line}/>
 
-                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('SettingHelp',{name:'ACCOUNT'})}>
+                    <TouchableOpacity style={styles.items} onPress = {() => this.props.navigation.navigate('SettingHelp',{name:'SETTING'})}>
                       <MaterialIcons style={styles.itemsIcon} name="settings" size={22} color={menuIconColor} />
                       <Text style={[styles.itemsText, {color:menuText} , style.ma]}>SETTING</Text>
                       {iconRight}

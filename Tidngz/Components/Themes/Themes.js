@@ -19,7 +19,7 @@ const themes = props => {
 
     const display = ( 
         Platform.OS == 'ios' ? 
-            <View style={{width: '100%', height:'100%', position:'absolute', display:'none'}}>
+            <View style={{width: '100%', height:'100%', position:'absolute',}}>
                 <ImageBackground source={{uri:'http://www.wedngz.com/Tidngz/Images/tidngz-135.png'}} style={{width: '100%', height:'100%', position:'absolute'}}></ImageBackground>
                 <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={17} />  
             </View>

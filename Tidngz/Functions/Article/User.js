@@ -13,8 +13,8 @@ class User extends Component {
 
  
 
-    componentWillMount() {
-       this.intervalId =  setInterval(() => {
+    componentDidMount() {
+        this.intervalId =  setInterval(() => {
             this.update_date()
            }, 1000);
     }

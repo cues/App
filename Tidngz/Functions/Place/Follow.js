@@ -1,14 +1,25 @@
+
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, Dimensions} from 'react-native';
+import {Platform, StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, Dimensions, Animated} from 'react-native';
 import style from '../../Styles/Styles';
 import BlurView from '../../Components/BlurVIew/BlurVIew';
 
 import { connect } from 'react-redux';
+import { place_follow } from '../../Store/Actions/index';
 
 const state = state => {
     return {
         tabBlur             :   state.themes.tabBlur,
         menuIconColor       :   state.themes.menuIconColor,
+        api                 :   state.main.api,
+        user_id             :   state.main.user.user_id,
+        apiKey              :   state.main.apiKey,
+    }
+}
+
+const dispatch = dispatch => {
+    return {
+        this_place_follow : place => dispatch(place_follow(place))
     }
 }
 
@@ -19,26 +30,58 @@ class Follow extends Component {
         follow : this.props.place.place_following
     }
 
-    follow = () => {
-        this.setState(prevState => ({
-            follow : !prevState.follow
-        }))
+
+    
+    follow = async () => {
+
+        const { api , user_id , apiKey , this_place_follow} = this.props;
+        let { place } = this.props
+        const place_id = place.id;
+
+        const url = `${api}/Places/Follow/follow.php?key=${apiKey}&user_id=${user_id}&place_id=${place_id}`;
+
+        await fetch(url)
+        .then((response) => response.json())
+        .then((response) => {
+
+            this.setState({
+                follow : response.data.follow
+            })
+
+            place = this.props.place
+            place = this.placeFollowUpdate(place, response.data.follow, response.data.followers)
+            this_place_follow(place)
+
+        })
+
+        // this.setState(prevState => ({
+        //     follow : !prevState.follow
+        // })) 
     }
+
+
+    placeFollowUpdate = (place, follow, count) => {
+        place.place_followers = count
+        place.place_following = follow
+        return place; 
+      }
+
+      
 
     render() {
 
-        const { place , menuIconColor, tabBlur} = this.props;
+        const { place , menuIconColor, tabBlur, height = 30, fontSize = 13, padding = 10} = this.props;
         const { follow } = this.state;
 
-
+        const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
         return(
-        <TouchableOpacity style={ styles.placeFollow } onPress={this.follow}>
+        <AnimatedTouchableOpacity style={ [styles.placeFollow , {height:height}]} onPress={this.follow}>
               <BlurView  viewRef={1}  blurType={tabBlur} blurAmount={7} />  
-              <Text style={[style.bt,styles.placeFollowText, {color:follow ? 'rgba(15,101,141,1)': menuIconColor}]}>
+              <Animated.Text style={[style.bt,styles.placeFollowText, {paddingHorizontal:padding, fontSize:fontSize, lineHeight: height, color:follow ? 'rgba(15,101,141,1)': menuIconColor}]}>
                 {follow ? 'Following' : 'Follow'}
-              </Text>
-        </TouchableOpacity>
+              </Animated.Text>
+        </AnimatedTouchableOpacity>
 
         )
     }
@@ -65,5 +108,5 @@ const styles = StyleSheet.create({
     
 })
 
-export default connect(state)(Follow)
+export default connect(state, dispatch)(Follow)
 

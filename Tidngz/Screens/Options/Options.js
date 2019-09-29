@@ -32,7 +32,12 @@ const dispatch = dispatch => {
 class Options extends Component {
 
     
-      
+    static navigationOptions = ({navigation}) =>  {
+        return {
+            header: null,
+            headerTransparent : true,
+            }
+        } 
 
     render (){
 
@@ -49,6 +54,7 @@ class Options extends Component {
         const routeName = navigation.getParam('routeName' , '')
         const headerText = navigation.getParam('headerText' , '')
     
+    // alert(routeName)
 
         return (
             <View style={[styles.container, {backgroundColor : backgroundMain}]}>

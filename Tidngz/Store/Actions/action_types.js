@@ -52,6 +52,12 @@ export const DELETE_USER_IMAGE  =  'DELETE_USER_IMAGE'
 export const HOME_REFRESH       =  'HOME_REFRESH'
 export const PROFILE_REFRESH    =  'PROFILE_REFRESH'
 
+// PLACES
+export const PLACE          = 'PLACE'
+export const PLACE_FOLLOW   = 'PLACE_FOLLOW'
+export const PLACE_ACTIVE   = 'PLACE_ACTIVE'
+
+
 // LOGIN
 export const LOGINROUTE     =   'LOGINROUTE';
 export const LOGINERROR     =   'LOGINERROR';
@@ -96,3 +102,5 @@ export const CLASSIFIED_ADD_LINK        = 'CLASSIFIED_ADD_LINK';
 export const CLASSIFIED_ADD_EMAIL       = 'CLASSIFIED_ADD_EMAIL';
 export const CLASSIFIED_ADD_CONTACT     = 'CLASSIFIED_ADD_CONTACT';
 export const CLASSIFIED_ADD_CONTACT_2   = 'CLASSIFIED_ADD_CONTACT_2';
+
+

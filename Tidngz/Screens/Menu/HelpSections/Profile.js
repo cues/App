@@ -28,28 +28,28 @@ class Profile extends Component {
             <ScrollView>
               <View style={[styles.inner, style.paddingBackgroundTop, style.paddingBackgroundBottom_2]}>
                   
-                    <Text style={[style.itemsHeader, {color:menuText} , style.la]}>
+                    <Text style={[style.itemsHeader, {color:menuText} ]}>
                         Profile box
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         This displays your information relating to your Name, Username, Bio , Website, your number of followers, following and posts.
                     </Text>
 
                     <View style={style.line}/>
 
-                    <Text style={[style.itemsHeader, {color:menuText} , style.la]}>
+                    <Text style={[style.itemsHeader, {color:menuText} ]}>
                         Articles
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         All articles that are posted and shared by you are displayed here.
                     </Text>
                    
                     <View style={style.line}/>
 
-                    <Text style={[style.itemsHeader, {color:menuText} , style.la]}>
+                    <Text style={[style.itemsHeader, {color:menuText} ]}>
                         Classified
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         Classified ads posted by you for the day are displayed here.
                     </Text>
                     

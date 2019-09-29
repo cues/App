@@ -3,6 +3,7 @@ import {Platform, StyleSheet, View, Text, Animated, Dimensions} from 'react-nati
 import style from '../../../Styles/Styles';
 import BlurView from '../../../Components/BlurVIew/BlurVIew';
 import Articles from '../../../Functions/Articles/ArticleList';
+import { _handleScroll } from '../../../Components/HeaderScroll/HeaderScroll'
 
 import {brand, model, models} from '../../../Components/DeviceInfo/DeviceInfo';
 
@@ -14,6 +15,7 @@ const state = state => {
         headerColor     :   state.themes.headerColor,
         tabBlur         :   state.themes.tabBlur,
         menuIconColor   :   state.themes.menuIconColor,
+        menuText        :   state.themes.menuText,
         user            :   state.main.user,
     }
 }
@@ -100,7 +102,7 @@ class Header extends Component {
 
     render (){
 
-        const {tabBlur, user, menuIconColor, headerColor} = this.props
+        const {tabBlur, user, menuText, headerColor} = this.props
         const {scrollY, viewWidthOld, viewWidthNew} = this.state;
     
         const headerHeight = scrollY.interpolate({
@@ -216,7 +218,7 @@ class Header extends Component {
 
                         <Animated.Image source={{uri:user.user_image}} style={[styles.headerUser_Image, {height:imageDimensions, width:imageDimensions, marginTop:imageTop, marginRight:imageRight, borderRadius: imageRadius}]}/>
 
-                        <Animated.Text style={[style.ca, styles.headerUser_Name, {fontSize :headerFont, color:menuIconColor}]}>
+                        <Animated.Text style={[style.ca, styles.headerUser_Name, {fontSize :headerFont, color:menuText}]}>
                             {user.user_name} 
                         </Animated.Text>
 
@@ -265,7 +267,7 @@ const styles = StyleSheet.create({
         position:'absolute',
         flexDirection:'row',
         // backgroundColor:'red',
-
+        marginBottom:4
     },
     headerUser_Image : {
         // height : 20,
@@ -290,7 +292,8 @@ const styles = StyleSheet.create({
         right:0,
         bottom:5,
         justifyContent:'space-evenly',
-        flexDirection:'row'
+        flexDirection:'row',
+        // backgroundColor:'red'
     },
     Each_userInfo : {
         marginHorizontal : 10,

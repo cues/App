@@ -28,31 +28,31 @@ class Notification extends Component {
             <ScrollView>
               <View style={[styles.inner, style.paddingBackgroundTop, style.paddingBackgroundBottom_2]}>
                   
-                    <Text style={[style.itemsHeader, {color:menuText} , style.la]}>
+                    <Text style={[style.itemsHeader, {color:menuText} ]}>
                         What notifications do i receive?
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                         You get notified when any user
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                     1) Likes your posts.
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                     2) Comments on your posts.
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                     3) Likes on your comments.
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                     4) Replies on your comments.
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                     5) Likes on your replies.
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                     6) Replies on the comments you have replied.
                     </Text>
-                    <Text style={[style.itemsBody, {color:menuTextLight} , style.la]}>
+                    <Text style={[style.itemsBody, {color:menuTextLight} ]}>
                     7) Follows you.
                     </Text>
 

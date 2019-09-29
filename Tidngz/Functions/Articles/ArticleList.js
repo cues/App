@@ -8,6 +8,7 @@ import Loader from '../../Components/UI/Loader/Loader';
 import HomeTitle from '../Home/HomeTitle';
 import BookmarkTitle from '../Bookmark/BookmarkTitle';
 import ProfileTitle from '../Profile/ProfileTitle';
+import PlaceTitle from '../Place/PlaceTitle';
 import { withNavigation } from 'react-navigation';
 import moment from 'moment';
 
@@ -154,10 +155,11 @@ class Articles extends Component {
 
     source = () => {
         let {type, navigation} = this.props
-        const routeName = navigation.getParam('routeName' , '')
+        // const routeName = navigation.getParam('routeName' , '')
+
 
         const source    =   type == 'home'          ?   11 : 
-                            type == 'place'         ?   11 :
+                            type == 'place'         ?   21 :
                             type == 'placeLocal'    ?   11 :
                             type == 'hashtag'       ?   11 :
                             type == 'Bookmark'      ?   51 :
@@ -165,7 +167,7 @@ class Articles extends Component {
                             type == 'profile'       ?   71 :
                             type == 'Trending'      ?   81 :
                             type == 'options'       ?   routeName == 'home'             ?   12  :
-                                                        routeName == 'place'            ?   12  :
+                                                        routeName == 'place'            ?   22  :
                                                         routeName == 'placeLocal'       ?   12  :
                                                         routeName == 'hashtag'          ?   12  :
                                                         routeName == 'Bookmark'         ?   52  :
@@ -173,7 +175,7 @@ class Articles extends Component {
                                                         routeName == 'profile'          ?   72  :
                                                         routeName == 'trending'         ?   12  :   12  :
                             type == 'top'           ?   routeName == 'home'             ?   13  :
-                                                        routeName == 'place'            ?   13  :
+                                                        routeName == 'place'            ?   23  :
                                                         routeName == 'placeLocal'       ?   13  :
                                                         routeName == 'hashtag'          ?   13  :
                                                         routeName == 'Bookmark'         ?   53  :
@@ -181,7 +183,7 @@ class Articles extends Component {
                                                         routeName == 'profile'          ?   73  :
                                                         routeName == 'trending'         ?   13  :   13  :
                             type == 'calender'      ?   routeName == 'home'             ?   14  :
-                                                        routeName == 'place'            ?   14  :
+                                                        routeName == 'place'            ?   24  :
                                                         routeName == 'placeLocal'       ?   14  :
                                                         routeName == 'hashtag'          ?   14  :
                                                         routeName == 'Bookmark'         ?   54  :
@@ -196,9 +198,10 @@ class Articles extends Component {
 
     allArticles = async () => {
 
-        const { api, user_id, apiKey, navigation, selectedPlace, selectedPlaceLocal, selectedHashtag, selectedLinked} = this.props
+        const {type, api, user_id, apiKey, navigation, selectedPlace, selectedPlaceLocal, selectedHashtag, selectedLinked} = this.props
         let { selectedUser } = this.props
-        selectedUser = selectedUser == '' ? user_id : selectedUser
+        const user_1 = navigation.getParam('user_1' , user_id)
+        const place_id = navigation.getParam('id' , '')
         const option = navigation.getParam('option', 1)
         const top = navigation.getParam('top', '')
         let date_1 = navigation.getParam('date_1', '')
@@ -209,10 +212,8 @@ class Articles extends Component {
         date_2 = date_2 == 'Invalid date' ? date_1 : date_2
 
         const source = this.source()
-
-
-        const url = `${api}/Articles/articles.php?key=${apiKey}&user_id=${user_id}&user_1=${selectedUser}&type=1&article_source=${source}&options_id=${option}&top=${top}&date_1=${date_1}&date_2=${date_2}`;
-
+        
+        const url = `${api}/Articles/articles.php?key=${apiKey}&user_id=${user_id}&user_1=${user_1}&place_id=${place_id}&type=1&article_source=${source}&options_id=${option}&top=${top}&date_1=${date_1}&date_2=${date_2}`;
 
         await fetch(url)
         .then((response) => response.json())
@@ -333,9 +334,9 @@ class Articles extends Component {
             else if(this.props.type == 'profile'){
               return <ProfileTitle scrollY={this.props.scrollAnim} item={item} refresh={this.handleRefresh} stylesProps={dis}/> 
             }
-            // else if(this.props.type == 'Bookmark'){
-            //     return <BookmarkTitle stylesProps={dis}/> 
-            // }
+            else if(this.props.type == 'place'){
+                return <PlaceTitle scrollY={this.props.scrollAnim} item={item} refresh={this.handleRefresh} stylesProps={dis}/> 
+            }
             else if(this.props.type == 'options' || this.props.type == 'top' || this.props.type == 'calender' ){
                 return (
                     <View style={[style.paddingBackgroundTop,  dis]}>
@@ -402,8 +403,8 @@ class Articles extends Component {
         const title = type == 'home' ? home :
                         type == 'profile' ? user : home
 
-        const flatlist = type == 'home' || type == 'options' || type == 'top' || type == 'calender' || type == 'Trending'  || type == 'Bookmark' ? styles1.flatlist : 
-                         type == 'profile' ? styles2.flatlist : null 
+        const flatlist  =   type == 'home' ||  type == 'options' || type == 'top' || type == 'calender' || type == 'Trending'  || type == 'Bookmark' ? styles1.flatlist : 
+                            type == 'place' || type == 'profile' ? styles2.flatlist : null 
 
         const flatlistMargin = this.state.refreshing ? 
                                     type == 'home'  ? styles1.flatlistMargin : 
@@ -468,10 +469,12 @@ const styles = StyleSheet.create({
 const styles1 = StyleSheet.create({
     
     flatlist:{
-        width:WIDTH + 20,
+            marginHorizontal : -10,
+            width:WIDTH + 20,
     },
     flatlistMargin : {
-        marginTop:105,
+        marginTop:0,
+        // marginTop:105,
     },
    
 });
@@ -482,9 +485,11 @@ const styles2 = StyleSheet.create({
     flatlist:{
             width:WIDTH + 20,
             marginHorizontal : -10,
+            // backgroundColor:'red'
     },
     flatlistMargin : {
-        marginTop:120,
+        marginTop:0,
+        // marginTop:120,
     },
    
 });

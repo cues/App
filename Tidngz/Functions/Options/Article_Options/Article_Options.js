@@ -49,6 +49,7 @@ class ArticleOptions extends Component {
 
     routeName = navigation.getParam('routeName' , routeName)
 
+    // alert(routeName)
 
     const optionStyle = [styles.selectedOption, style.tidngz_color]
                             

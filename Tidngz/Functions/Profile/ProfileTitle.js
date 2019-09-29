@@ -16,7 +16,6 @@ import { logout , add_theme_black } from '../../Store/Actions/index';
 
 const state = state => {
     return {
-        user            :   state.main.user,
         menuIconColor   :   state.themes.menuIconColor,
         menuIconColor_2   :   state.themes.menuIconColor_2,
         headerColor     :   state.themes.headerColor,

@@ -66,7 +66,7 @@ add_theme = (theme) => {
       <View style={[styles.container,  {backgroundColor: backgroundMain}]}>
         <Theme/>
 
-        <View style={[styles.container, style.paddingBackgroundTop, style.paddingBackgroundBottom]}>
+        <View style={[styles.container, style.paddingBackgroundTop, style.paddingBackgroundBottom_2]}>
         
           <View style={styles.header}>
                 <View style={[styles.themes, style.displayFlex]}>
@@ -97,9 +97,10 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     header : {
-      height : 150,
+      height : '100%',
       width:'100%',
-      flexDirection:'row'
+      flexDirection:'row',
+      // backgroundColor:'red',
     },
     themes : {
       height:'100%',

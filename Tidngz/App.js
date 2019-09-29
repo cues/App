@@ -17,7 +17,7 @@ import Calender from './Screens/Options/Calender';
 import OptionsArticles from './Screens/Options/OptionsArticles';
 import CalenderArticles from './Screens/Options/CalenderArticles';
 import Places from './Screens/Places';
-import PlacesTitle from './Screens/Places/Title';
+import Place from './Screens/Place/Place';
 import UsersTitle from './Screens/Users/Title';
 import TagsTitle from './Screens/Tags/Title';
 import Maps from './Screens/Places/Map';
@@ -134,6 +134,7 @@ const width = Dimensions.get('window').width;
 
 const HomeStack = createStackNavigator({
   Home                :   Home,
+  Article             :   Article,
   Comments            :   Comments,
   Replies             :   Replies,
   Options             :   Options,
@@ -166,7 +167,6 @@ const HomeStack = createStackNavigator({
   About               :   About,
   Contact             :   Contact,
   Ads                 :   Ads,
-  Article             :   Article,
   Notifications       :   Notifications
 },{          
   cardStyle:{
@@ -251,16 +251,18 @@ const SearchStack = createStackNavigator({
       header: <SearchHeader/>
     }),
   },
-  PlacesTitle : {
-    screen : PlacesTitle,
-    headerMode: 'none',
-    navigationOptions: () => ({
-      headerVisible: false,
-    }),
-  },
+  Place       : Place,
+  Article             :   Article,
+  Comments            :   Comments,
+  Replies             :   Replies,
+  Options             :   Options,
+  OptionsArticles     :   OptionsArticles,
+  Calender            :   Calender,
+  CalenderArticles    :   CalenderArticles,
   UsersTitle  : UsersTitle,
   TagsTitle   : TagsTitle,
 },{
+  initialRouteName:'SearchTop',    
   cardShadowEnabled : false,
 });
 
@@ -396,14 +398,14 @@ const PlacesStack = createStackNavigator({
 
 
 const ProfileStack = createStackNavigator({
-  Profile       :   Profile,
-  Comments      :   Comments,
-  Replies       :   Replies,
-  Options       :   Options,
-  OptionsArticles      :   OptionsArticles,
-  Calender      :   Calender,
+  Profile             :   Profile,
+  Comments            :   Comments,
+  Replies             :   Replies,
+  Options             :   Options,
+  OptionsArticles     :   OptionsArticles,
+  Calender            :   Calender,
   CalenderArticles    :   CalenderArticles,
-  Article       :   Article,
+  Article             :   Article,
   Account             :   Account,
 },{
   cardStyle:{

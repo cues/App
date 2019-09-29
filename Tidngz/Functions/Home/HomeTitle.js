@@ -22,6 +22,7 @@ const state = state => {
         api             :   state.main.api,
         user_id         :   state.main.user.user_id,
         apiKey          :   state.main.apiKey,
+        theme           :   state.themes.theme,
     }
 }
 
@@ -33,7 +34,7 @@ class HomeTitle extends Component {
  
 
     render (){
-        const {stylesProps, homeContainer, item, weatherDesc, getWeather, weatherLoader, homeWeather, isEmpty} = this.props;
+        const {theme, stylesProps, homeContainer, item, weatherDesc, getWeather, weatherLoader, homeWeather, isEmpty} = this.props;
 
         // const {weatherLoader, homeWeather, isEmpty} = this.state
 
@@ -72,6 +73,8 @@ class HomeTitle extends Component {
 
         const containerWeather = !isEmpty ? {marginTop:45} : null;
 
+        const shadow = theme == 'white' ? style.shadowLight : style.shadowDark
+
         return (
             <View style={stylesProps}>
                 <View style={[styles.container , containerWeather, style.paddingBackgroundTop]}>
@@ -83,7 +86,7 @@ class HomeTitle extends Component {
                     </View>
                     
                     <View style={[styles.homeContainer, {backgroundColor:homeContainer}]} >
-                        <Text style={[styles.homeTitle, style.mo]}>{welcolm}</Text>
+                        <Text style={[styles.homeTitle, style.mo, shadow]}>{welcolm}</Text>
                         {loader}
                         {weather}
                     </View>
@@ -143,7 +146,7 @@ const styles = StyleSheet.create({
         // height:200,
         textAlign: 'center', 
         fontSize:25,
-        letterSpacing:2,
+        letterSpacing:2.5,
         ...Platform.select({
             ios: {
                 color:'rgba(15, 101, 141, .8);',
@@ -157,6 +160,7 @@ const styles = StyleSheet.create({
         }),
  
     },
+    
     loader : {
         marginVertical : 20
     }

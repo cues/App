@@ -3,6 +3,7 @@ import mainReducer from './Reducers/main';
 import loginReducer from './Reducers/login';
 import articlesReducer from './Reducers/articles';
 import searchReducer from './Reducers/search';
+import placeReducer from './Reducers/place';
 import accountReducer from './Reducers/account';
 import commentsReducer from './Reducers/comments';
 import notificationsReducer from './Reducers/notifications';
@@ -13,18 +14,19 @@ import addVideosReducer from './Reducers/Add/videos';
 import addClassifiedReducer from './Reducers/Add/classified';
 
 const reducers = combineReducers({
-    main             : mainReducer,
-    login            : loginReducer,
-    articles         : articlesReducer,
-    search           : searchReducer,
-    account          : accountReducer,
-    comments         : commentsReducer,
-    notifications    : notificationsReducer,
-    themes           : themesReducer,
-    weather          : weatherReducer,
-    addArticles      : addArticlesReducer,
-    addVideos        : addVideosReducer,
-    addClassified    : addClassifiedReducer,
+    main             :  mainReducer,
+    login            :  loginReducer,
+    articles         :  articlesReducer,
+    search           :  searchReducer,
+    place            :  placeReducer,
+    account          :  accountReducer,
+    comments         :  commentsReducer,
+    notifications    :  notificationsReducer,
+    themes           :  themesReducer,
+    weather          :  weatherReducer,
+    addArticles      :  addArticlesReducer,
+    addVideos        :  addVideosReducer,
+    addClassified    :  addClassifiedReducer,
 });
 
 let composeEnhancers = compose;

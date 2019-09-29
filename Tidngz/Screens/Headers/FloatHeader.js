@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(23,23,23, 1)',
         // textShadowColor: 'rgba(102,102,102, 1)',
         // textShadowColor: 'rgba(0,0,0, .4)',
-        textShadowOffset: {width: 1, height: -0},
+        textShadowOffset: {width: 1, height: 0},
         textShadowRadius: 1,
         fontSize : 18,
         letterSpacing : 1.4
