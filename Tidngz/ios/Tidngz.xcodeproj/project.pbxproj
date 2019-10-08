@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* TidngzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TidngzTests.m */; };
 		0F713351CDB6472EA2DFB57B /* Sacramento-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 359B9AE4490B4208BCD84355 /* Sacramento-Regular.ttf */; };
@@ -29,17 +30,23 @@
 		7C6F3ED053414F79A55C9D09 /* CormorantUpright-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E06A483500C4B1B9AC99E74 /* CormorantUpright-Regular.ttf */; };
 		8069B179224F253B00F94B88 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8069B178224F253B00F94B88 /* icon.png */; };
 		80FAB7062214BCB400597400 /* DVEffects in Resources */ = {isa = PBXBuildFile; fileRef = 80FAB6D92214BCB400597400 /* DVEffects */; };
-		81F0B38BD039E9D6C8EABDB5 /* libPods-Tidngz-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7C629B07D616DFFEA858B8 /* libPods-Tidngz-tvOS.a */; };
 		82028F4F6E104FA696655180 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CC1F1F13DAD4774A68BC309 /* Nunito-Regular.ttf */; };
-		82174712B428D65BCD192A69 /* libPods-Tidngz-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA9CE29E9BD5495BA8142C4 /* libPods-Tidngz-tvOSTests.a */; };
-		A950A085AF26783863330457 /* libPods-TidngzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C0D330087DF8D1CA12EDEB /* libPods-TidngzTests.a */; };
+
+		
 		B88DE79D14734C2AB99D23C5 /* Mali-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8A2FB8E3C5E483DA5809960 /* Mali-Regular.ttf */; };
 		C15FE6B6413F4D67BB3EB87F /* CinzelDecorative-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 331D0155EF4E4ED796EDB572 /* CinzelDecorative-Bold.ttf */; };
 		C31663D0E9184A779EBD562C /* Merienda-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D41D8D3D9CE4F1081D6E9E6 /* Merienda-Regular.ttf */; };
 		CD96AD9E7606402FA198395E /* Cinzel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94E817F2240040D3B0561F64 /* Cinzel-Regular.ttf */; };
 		D3B51E392E134234BAF30EF0 /* Cormorant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDF56AE1823A4F21967D2076 /* Cormorant-Regular.ttf */; };
 		D7F06FC635084F8582A7EEF4 /* KumarOneOutline-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB32862784DC493DB28DDD9B /* KumarOneOutline-Regular.ttf */; };
-		E46D348414673E002E45A78A /* libPods-Tidngz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F63AC058D05717F3A5E725DC /* libPods-Tidngz.a */; };
+
+
+		1420AA6977713DBAD4657A59 /* libPods-Tidngz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB8CCFB59C0423A1CDDAC17 /* libPods-Tidngz.a */; };
+		298BC83A08C8588454B68F38 /* libPods-TidngzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCB1A39FA975D5578B1AA56 /* libPods-TidngzTests.a */; };
+		5A9BBBB1FF95A6C74BB29E24 /* libPods-Tidngz-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27055F9F74C64758647F2F35 /* libPods-Tidngz-tvOSTests.a */; };
+		8463E941096914ADFBDB3AC4 /* libPods-Tidngz-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B7317CFC6C199B600CFF07 /* libPods-Tidngz-tvOS.a */; };
+
+
 		E6EABCC9B55240EBB065A77F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FFEA111A63A4860AF0CAE90 /* Lato-Regular.ttf */; };
 		E93079455ADF43F8BB2F08A4 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 569E8E383C034EECB04C4E26 /* Lato-Italic.ttf */; };
 		E96EC322183A400FB9F0F9BA /* Bitter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE4A00450F1E4FE7A7899CF4 /* Bitter-Bold.ttf */; };
@@ -71,7 +78,10 @@
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* TidngzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TidngzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+
 		00E356F21AD99517003FC87E /* TidngzTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TidngzTests.m; sourceTree = "<group>"; };
+		0C240072BFD9E98A1E794B59 /* Pods-TidngzTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TidngzTests.release.xcconfig"; path = "Target Support Files/Pods-TidngzTests/Pods-TidngzTests.release.xcconfig"; sourceTree = "<group>"; };
+
 		05D754CB71DE4DCBA3030285 /* Cinzel-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cinzel-Black.ttf"; path = "../assets/fonts/Cinzel-Black.ttf"; sourceTree = "<group>"; };
 		0FC5FC151F64445A83A28AE1 /* Montez-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montez-Regular.ttf"; path = "../assets/fonts/Montez-Regular.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Tidngz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tidngz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,27 +92,40 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tidngz/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Tidngz/main.m; sourceTree = "<group>"; };
 		15848A431FAA42E19B5A6BB9 /* CaveatBrush-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "CaveatBrush-Regular.ttf"; path = "../assets/fonts/CaveatBrush-Regular.ttf"; sourceTree = "<group>"; };
-		15C0D330087DF8D1CA12EDEB /* libPods-TidngzTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TidngzTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1AD68E443BB399905B4CDB66 /* Pods-Tidngz-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Tidngz-tvOSTests/Pods-Tidngz-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		1B3DC5C8D85D4EBCAAF59399 /* icoFont.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icoFont.ttf; path = ../assets/fonts/icoFont.ttf; sourceTree = "<group>"; };
+		
+		196E527FC922BCAA8D8CAC9E /* Pods-Tidngz-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Tidngz-tvOS/Pods-Tidngz-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		27055F9F74C64758647F2F35 /* libPods-Tidngz-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tidngz-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CCB1A39FA975D5578B1AA56 /* libPods-TidngzTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TidngzTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+
+
 		2D02E47B1E0B4A5D006451C7 /* Tidngz-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tidngz-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Tidngz-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tidngz-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+	
+
+		379B51F9A8A365D165700FAB /* Pods-Tidngz-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Tidngz-tvOSTests/Pods-Tidngz-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		66642040260A3CF16256CC0C /* Pods-Tidngz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz.debug.xcconfig"; path = "Target Support Files/Pods-Tidngz/Pods-Tidngz.debug.xcconfig"; sourceTree = "<group>"; };
+		9AE59199F336FCE85982AEB8 /* Pods-TidngzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TidngzTests.debug.xcconfig"; path = "Target Support Files/Pods-TidngzTests/Pods-TidngzTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9CB8CCFB59C0423A1CDDAC17 /* libPods-Tidngz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tidngz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7B7317CFC6C199B600CFF07 /* libPods-Tidngz-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tidngz-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0F18319F1A6077D0F2221B6 /* Pods-Tidngz-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Tidngz-tvOSTests/Pods-Tidngz-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		C6299C6C802DEC24412F3C9F /* Pods-Tidngz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz.release.xcconfig"; path = "Target Support Files/Pods-Tidngz/Pods-Tidngz.release.xcconfig"; sourceTree = "<group>"; };
+		ED110D7E0D90B341E0C157D2 /* Pods-Tidngz-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Tidngz-tvOS/Pods-Tidngz-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+
+
+
+
+		1B3DC5C8D85D4EBCAAF59399 /* icoFont.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icoFont.ttf; path = ../assets/fonts/icoFont.ttf; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D7C629B07D616DFFEA858B8 /* libPods-Tidngz-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tidngz-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E06A483500C4B1B9AC99E74 /* CormorantUpright-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantUpright-Regular.ttf"; path = "../assets/fonts/CormorantUpright-Regular.ttf"; sourceTree = "<group>"; };
 		2FFEA111A63A4860AF0CAE90 /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		331D0155EF4E4ED796EDB572 /* CinzelDecorative-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "CinzelDecorative-Bold.ttf"; path = "../assets/fonts/CinzelDecorative-Bold.ttf"; sourceTree = "<group>"; };
 		359B9AE4490B4208BCD84355 /* Sacramento-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sacramento-Regular.ttf"; path = "../assets/fonts/Sacramento-Regular.ttf"; sourceTree = "<group>"; };
-		3AE4B9CA548F73FBDE047D8B /* Pods-Tidngz-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Tidngz-tvOS/Pods-Tidngz-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		3CC1F1F13DAD4774A68BC309 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
-		4ACC086BCBA8DC5A06729BFC /* Pods-Tidngz-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Tidngz-tvOS/Pods-Tidngz-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		569E8E383C034EECB04C4E26 /* Lato-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Italic.ttf"; path = "../assets/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; };
 		5B820813902645A7A69B3EDA /* Bitter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Regular.ttf"; path = "../assets/fonts/Bitter-Regular.ttf"; sourceTree = "<group>"; };
 		6CBC4F76B768497592259B12 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		6EEA0C805D5F41B6A7FC56F0 /* icomoon.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icomoon.ttf; path = ../assets/fonts/icomoon.ttf; sourceTree = "<group>"; };
-		707D88979A64673D62602714 /* Pods-Tidngz-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Tidngz-tvOSTests/Pods-Tidngz-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		73CC87AEE24F4AF7B6C099A3 /* Cinzel-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cinzel-Bold.ttf"; path = "../assets/fonts/Cinzel-Bold.ttf"; sourceTree = "<group>"; };
-		789CB4C35DC7A62826DDC2AC /* Pods-Tidngz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz.release.xcconfig"; path = "Target Support Files/Pods-Tidngz/Pods-Tidngz.release.xcconfig"; sourceTree = "<group>"; };
 		803C468A22085C02009D4246 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		8069B178224F253B00F94B88 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../assets/Images/icon.png; sourceTree = "<group>"; };
 		80FAB6D92214BCB400597400 /* DVEffects */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DVEffects; path = "../node_modules/react-native-effects-view/DVEffects"; sourceTree = "<group>"; };
@@ -111,15 +134,11 @@
 		94E817F2240040D3B0561F64 /* Cinzel-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cinzel-Regular.ttf"; path = "../assets/fonts/Cinzel-Regular.ttf"; sourceTree = "<group>"; };
 		9839507F0E5A427B8088640B /* CinzelDecorative-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "CinzelDecorative-Black.ttf"; path = "../assets/fonts/CinzelDecorative-Black.ttf"; sourceTree = "<group>"; };
 		9851C085D70D4AC48360D2A4 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		A473B4F657E2CB586F563CF8 /* Pods-TidngzTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TidngzTests.release.xcconfig"; path = "Target Support Files/Pods-TidngzTests/Pods-TidngzTests.release.xcconfig"; sourceTree = "<group>"; };
-		ACA9CE29E9BD5495BA8142C4 /* libPods-Tidngz-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tidngz-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B765D82F598340D1AB84F3A8 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		BAA09E5AAAC24CD6B6FEEF6B /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		C3C3A6F2BAECBE96EBF12A04 /* Pods-TidngzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TidngzTests.debug.xcconfig"; path = "Target Support Files/Pods-TidngzTests/Pods-TidngzTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C8A2FB8E3C5E483DA5809960 /* Mali-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Mali-Regular.ttf"; path = "../assets/fonts/Mali-Regular.ttf"; sourceTree = "<group>"; };
 		CE4A00450F1E4FE7A7899CF4 /* Bitter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Bold.ttf"; path = "../assets/fonts/Bitter-Bold.ttf"; sourceTree = "<group>"; };
 		DBE48AD727B045F6BCDECE48 /* Charmonman-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Charmonman-Regular.ttf"; path = "../assets/fonts/Charmonman-Regular.ttf"; sourceTree = "<group>"; };
-		DCD8FCE57D8170A7F44D2AAA /* Pods-Tidngz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tidngz.debug.xcconfig"; path = "Target Support Files/Pods-Tidngz/Pods-Tidngz.debug.xcconfig"; sourceTree = "<group>"; };
 		DDF56AE1823A4F21967D2076 /* Cormorant-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cormorant-Regular.ttf"; path = "../assets/fonts/Cormorant-Regular.ttf"; sourceTree = "<group>"; };
 		DFFFA1CC4D66449793D3EAC6 /* CinzelDecorative-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "CinzelDecorative-Regular.ttf"; path = "../assets/fonts/CinzelDecorative-Regular.ttf"; sourceTree = "<group>"; };
 		E4D8AC8C20EB48D2A57422FB /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
@@ -129,7 +148,6 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F10B3337E2DC4969B97F5509 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		F63AC058D05717F3A5E725DC /* libPods-Tidngz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tidngz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F55D8FD3A44AD9BFA2A89B /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		FB32862784DC493DB28DDD9B /* KumarOneOutline-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KumarOneOutline-Regular.ttf"; path = "../assets/fonts/KumarOneOutline-Regular.ttf"; sourceTree = "<group>"; };
 		FC60F73A8DEE40BC8F2A3D03 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
@@ -140,7 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A950A085AF26783863330457 /* libPods-TidngzTests.a in Frameworks */,
+				98BC83A08C8588454B68F38 /* libPods-TidngzTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
-				E46D348414673E002E45A78A /* libPods-Tidngz.a in Frameworks */,
+				1420AA6977713DBAD4657A59 /* libPods-Tidngz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +177,7 @@
 			files = (
 				ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */,
-				81F0B38BD039E9D6C8EABDB5 /* libPods-Tidngz-tvOS.a in Frameworks */,
+				5A9BBBB1FF95A6C74BB29E24 /* libPods-Tidngz-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,17 +209,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		11B03D903C221A771E1EA210 /* Pods */ = {
+		F09FD89C61110132D76896A8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DCD8FCE57D8170A7F44D2AAA /* Pods-Tidngz.debug.xcconfig */,
-				789CB4C35DC7A62826DDC2AC /* Pods-Tidngz.release.xcconfig */,
-				4ACC086BCBA8DC5A06729BFC /* Pods-Tidngz-tvOS.debug.xcconfig */,
-				3AE4B9CA548F73FBDE047D8B /* Pods-Tidngz-tvOS.release.xcconfig */,
-				707D88979A64673D62602714 /* Pods-Tidngz-tvOSTests.debug.xcconfig */,
-				1AD68E443BB399905B4CDB66 /* Pods-Tidngz-tvOSTests.release.xcconfig */,
-				C3C3A6F2BAECBE96EBF12A04 /* Pods-TidngzTests.debug.xcconfig */,
-				A473B4F657E2CB586F563CF8 /* Pods-TidngzTests.release.xcconfig */,
+				66642040260A3CF16256CC0C /* Pods-Tidngz.debug.xcconfig */,
+				C6299C6C802DEC24412F3C9F /* Pods-Tidngz.release.xcconfig */,
+				196E527FC922BCAA8D8CAC9E /* Pods-Tidngz-tvOS.debug.xcconfig */,
+				ED110D7E0D90B341E0C157D2 /* Pods-Tidngz-tvOS.release.xcconfig */,
+				379B51F9A8A365D165700FAB /* Pods-Tidngz-tvOSTests.debug.xcconfig */,
+				C0F18319F1A6077D0F2221B6 /* Pods-Tidngz-tvOSTests.release.xcconfig */,
+				9AE59199F336FCE85982AEB8 /* Pods-TidngzTests.debug.xcconfig */,
+				0C240072BFD9E98A1E794B59 /* Pods-TidngzTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -227,10 +245,10 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				F63AC058D05717F3A5E725DC /* libPods-Tidngz.a */,
-				2D7C629B07D616DFFEA858B8 /* libPods-Tidngz-tvOS.a */,
-				ACA9CE29E9BD5495BA8142C4 /* libPods-Tidngz-tvOSTests.a */,
-				15C0D330087DF8D1CA12EDEB /* libPods-TidngzTests.a */,
+				9CB8CCFB59C0423A1CDDAC17 /* libPods-Tidngz.a */,
+				B7B7317CFC6C199B600CFF07 /* libPods-Tidngz-tvOS.a */,
+				27055F9F74C64758647F2F35 /* libPods-Tidngz-tvOSTests.a */,
+				2CCB1A39FA975D5578B1AA56 /* libPods-TidngzTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				EA6B3292B7D94CD8AFF12FB0 /* libAirMaps.a */,
-				1CE73FA8B76640A4AAA5AD10 /* libRNCWebView.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -328,7 +345,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "TidngzTests" */;
 			buildPhases = (
-				3B540FB1F50248D4328A2C9E /* [CP] Check Pods Manifest.lock */,
+				78EC072665229A0E0C13E3CE /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -347,7 +364,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Tidngz" */;
 			buildPhases = (
-				645688AFE039970AF5379C48 /* [CP] Check Pods Manifest.lock */,
+				B7CD587E209EA9E094970881 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -367,7 +384,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Tidngz-tvOS" */;
 			buildPhases = (
-				094E85D81BDA54B67309F37B /* [CP] Check Pods Manifest.lock */,
+				B185F03C9B666D34CB21D45A /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
@@ -386,7 +403,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Tidngz-tvOSTests" */;
 			buildPhases = (
-				4BCF4186BC00C6F68BB3C22B /* [CP] Check Pods Manifest.lock */,
+				FB7E03D04AA4025D0F953305 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -407,7 +424,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 940;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -442,8 +459,6 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* Tidngz */,
@@ -453,9 +468,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -530,9 +542,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		094E85D81BDA54B67309F37B /* [CP] Check Pods Manifest.lock */ = {
+		78EC072665229A0E0C13E3CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -638,7 +650,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4BCF4186BC00C6F68BB3C22B /* [CP] Check Pods Manifest.lock */ = {
+		B185F03C9B666D34CB21D45A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -653,14 +665,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Tidngz-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Tidngz-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		645688AFE039970AF5379C48 /* [CP] Check Pods Manifest.lock */ = {
+		B7CD587E209EA9E094970881 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -749,7 +761,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3C3A6F2BAECBE96EBF12A04 /* Pods-TidngzTests.debug.xcconfig */;
+			baseConfigurationReference = 9AE59199F336FCE85982AEB8 /* Pods-TidngzTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = MJ932S7M5Q;
@@ -764,9 +776,7 @@
 				INFOPLIST_FILE = TidngzTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -779,7 +789,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A473B4F657E2CB586F563CF8 /* Pods-TidngzTests.release.xcconfig */;
+			baseConfigurationReference = 0C240072BFD9E98A1E794B59 /* Pods-TidngzTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -791,9 +801,7 @@
 				INFOPLIST_FILE = TidngzTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -806,7 +814,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCD8FCE57D8170A7F44D2AAA /* Pods-Tidngz.debug.xcconfig */;
+			baseConfigurationReference = 66642040260A3CF16256CC0C /* Pods-Tidngz.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -815,9 +823,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = MJ932S7M5Q;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-splash-screen/ios";
 				INFOPLIST_FILE = Tidngz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -836,7 +842,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 789CB4C35DC7A62826DDC2AC /* Pods-Tidngz.release.xcconfig */;
+			baseConfigurationReference = C6299C6C802DEC24412F3C9F /* Pods-Tidngz.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -844,9 +850,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MJ932S7M5Q;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-splash-screen/ios";
 				INFOPLIST_FILE = Tidngz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -865,7 +869,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4ACC086BCBA8DC5A06729BFC /* Pods-Tidngz-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 196E527FC922BCAA8D8CAC9E /* Pods-Tidngz-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -882,9 +886,7 @@
 				);
 				INFOPLIST_FILE = "Tidngz-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -899,7 +901,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3AE4B9CA548F73FBDE047D8B /* Pods-Tidngz-tvOS.release.xcconfig */;
+			baseConfigurationReference = ED110D7E0D90B341E0C157D2 /* Pods-Tidngz-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -916,9 +918,7 @@
 				);
 				INFOPLIST_FILE = "Tidngz-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -933,7 +933,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 707D88979A64673D62602714 /* Pods-Tidngz-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 379B51F9A8A365D165700FAB /* Pods-Tidngz-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -949,9 +949,7 @@
 				);
 				INFOPLIST_FILE = "Tidngz-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -966,7 +964,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AD68E443BB399905B4CDB66 /* Pods-Tidngz-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = C0F18319F1A6077D0F2221B6 /* Pods-Tidngz-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -982,9 +980,7 @@
 				);
 				INFOPLIST_FILE = "Tidngz-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1001,6 +997,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1043,7 +1040,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1054,6 +1051,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1089,7 +1087,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

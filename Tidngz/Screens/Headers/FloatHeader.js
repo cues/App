@@ -33,7 +33,7 @@ class Header extends Component {
         // const letterSpacing = type == 'options' ? 1.3 : 1.4
 
 
-        const HEADER_HEIGHT = models.includes(model) ? 88 : brand === 'Apple' ? 64 : 50 
+        const HEADER_HEIGHT =  models.includes(model) ? 96 : brand === 'Apple' ? 70 : 55 
 
 
         return (

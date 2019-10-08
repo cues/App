@@ -16,11 +16,11 @@ const state = state => {
 
 const FooterText = props => {
     
-        const { thatsAllView, thatsAllText, menuIconColor , text } = props
+        const { style , textStyle  , text ,  menuIconColor} = props
 
         return (
-            <View style={[styles.view, thatsAllView]}>
-                <Text style={[style.la, styles.text, thatsAllText, {color:menuIconColor}]}>{text}</Text> 
+            <View style={[styles.view, style]}>
+                <Text style={[style.la, styles.text, textStyle, {color:menuIconColor}]}>{text}</Text> 
             </View>
         )
             

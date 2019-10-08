@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Dimensions, Platform, ImageBackground, StatusBar , TextInput} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import {SafeAreaView,createSwitchNavigator, createDrawerNavigator, createStackNavigator, createAppContainer , createBottomTabNavigator, createMaterialTopTabNavigator} from "react-navigation";
+import {SafeAreaView, createSwitchNavigator, createDrawerNavigator, createStackNavigator, createAppContainer , createBottomTabNavigator, createMaterialTopTabNavigator} from "react-navigation";
+import { fromLeft , fromTop , fromRight , fromBottom , fadeIn , fadeOut , zoomIn , zoomOut , flipY , flipX } from 'react-navigation-transitions';
 import {timezone} from './Components/Timezone/Timezone';
 import SplashScreen from 'react-native-splash-screen'
 import Activate from './Screens/Login_SignUp/Activate';
@@ -129,6 +130,22 @@ const width = Dimensions.get('window').width;
   
 // })
 
+const handleCustomTransition = ({ scenes }) => {
+  const prevScene = scenes[scenes.length - 2];
+  const nextScene = scenes[scenes.length - 1];
+
+  // Custom transitions go there
+  if (prevScene
+    && prevScene.route.routeName === 'Home'
+    && nextScene.route.routeName === 'Article') {
+    return zoomIn();
+  } else if (prevScene
+    && prevScene.route.routeName === 'Article'
+    && nextScene.route.routeName === 'Comments') {
+    return zoomOut();
+  }
+  return fromRight();
+}
 
 
 
@@ -168,7 +185,9 @@ const HomeStack = createStackNavigator({
   Contact             :   Contact,
   Ads                 :   Ads,
   Notifications       :   Notifications
-},{          
+},{   
+  transitionConfig: (nav) => handleCustomTransition(nav),
+  // transitionConfig: () => fadeIn(),       
   cardStyle:{
     backgroundColor:'transparent'
   },
@@ -190,8 +209,6 @@ HomeStack.navigationOptions = ({ navigation }) => {
       } else {
         // tabBarVisible = true;
       }
-
-     
     });
   }
   return {
@@ -262,6 +279,7 @@ const SearchStack = createStackNavigator({
   UsersTitle  : UsersTitle,
   TagsTitle   : TagsTitle,
 },{
+  transitionConfig: () => fromRight(),       
   initialRouteName:'SearchTop',    
   cardShadowEnabled : false,
 });
@@ -325,6 +343,7 @@ const AddTop = createBottomTabNavigator({
   Video      : AddVideo ,   
   Classified : AddClassified,
 },{
+  transitionConfig: () => fromRight(),       
   tabBarComponent:props => <AddTabBar {...props}/>,
   initialRouteName:'Classified',            
   swipeEnabled:false,
@@ -389,6 +408,7 @@ const PlacesStack = createStackNavigator({
   Places   :   Places,
   Map : Maps
 },{
+  transitionConfig: () => fromRight(),       
   headerMode: 'none',
   navigationOptions: {
     headerVisible: false,
@@ -408,6 +428,7 @@ const ProfileStack = createStackNavigator({
   Article             :   Article,
   Account             :   Account,
 },{
+  transitionConfig: () => fromRight(),       
   cardStyle:{
     backgroundColor:'transparent'
   },
@@ -556,7 +577,7 @@ class App extends Component {
   }
 
 
-  componentWillMount() {
+  componentDidMount() {
 
     this.getToken();
 
@@ -621,15 +642,15 @@ class App extends Component {
 
       return (
         // <ImageBackground  style={styles.container} source={{uri:'http://www.wedngz.com/Tidngz/Images/tidngz-106.png'}} style={{flex: 1, width: '100%', height:'100%'}}>
-        <View style={styles.container} >
-          {/* <View style={styles.container_2} > */}
-            {newApp}
-          {/* </View>
-          <View style={styles.container_2} >
-            {newApp}
-          </View> */}
-        </View>
-        
+      
+            <View style={styles.container} >
+            {/* <View style={styles.container_2} > */}
+              {newApp}
+            {/* </View>
+            <View style={styles.container_2} >
+              {newApp}
+            </View> */}
+          </View>
         // </ImageBackground>
       );
   }

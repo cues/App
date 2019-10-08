@@ -93,7 +93,7 @@ class Article extends Component {
     //      articles_id   =  navigation.getParam('articles_id')
     // // }
 
-    article = selectedArticle
+    const article = selectedArticle
 
     // this_article = allArticles.filter(obj => {
     //     return obj.article.articles_id === selectedArticle

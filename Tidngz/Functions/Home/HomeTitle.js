@@ -9,6 +9,8 @@ import { withNavigation } from 'react-navigation';
 import Loader from '../../Components/UI/Loader/Loader';
 import ArticleOptions from '../Options/Article_Options/Article_Options';
 
+
+
 const width = Dimensions.get('window').width
 
 
@@ -91,6 +93,8 @@ class HomeTitle extends Component {
                         {weather}
                     </View>
                 </View>
+
+                
                 
                 <ArticleOptions routeName='home'/>
             </View>

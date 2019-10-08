@@ -35,7 +35,7 @@ class SearchPlaces extends Component {
 
     const { api, apiKey, user_id ,place, navigation, this_search_history} = this.props; 
 
-    navigation.navigate('Place',{id:place.id})
+    navigation.navigate('Place',{place_id:place.id})
 
     const url = `${api}/Search/search.php?key=${apiKey}&user_id=${user_id}&type=add&item_id=${place.id}&item_type=PLACE`;
       

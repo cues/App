@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import {Platform, View, Text, StyleSheet, TouchableWithoutFeedback, Animated} from 'react-native';
 import style from '../../Styles/Styles';
 import WeatherWind from './WeatherWind';

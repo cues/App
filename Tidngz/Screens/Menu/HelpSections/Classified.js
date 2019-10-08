@@ -41,7 +41,7 @@ class Classified extends Component {
                         How are classified ads displayed?
                     </Text>
                     <Text style={[style.itemsBody, {color:menuTextLight} ]}>
-                        Ads are diplayed for any province/state/county (basically the second administrative division after a country), for the country you chose. Ads are not displayed for a country. We offer a free of charge advertisment to meet your urgent requirement of placing a classified ad.
+                        Ads are diplayed for any province/state/county (basically the second administrative division after a country). Ads are not displayed for a country. We offer a free of charge advertisment to meet your urgent requirement of placing a classified ad.
                     </Text>
                    
                     <View style={style.line}/>

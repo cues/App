@@ -1,6 +1,6 @@
 export { refresh_articles, add_article, selected_article, image_selected_article, loader, all_articles, load_articles, update_article } from './articles';
 export { get_comments, post_comments, refresh_comments, load_comments, report_modal_comment, update_comment } from './comments';
-export { get_notifications, loader_notifications, count_notifications, refresh_notifications, load_notifications, update_notification } from './notifications';
+export { get_notifications, loader_notifications, count_notifications, refresh_notifications, load_notifications, update_notifications } from './notifications';
 export { add_theme_white, add_theme_black } from './themes';
 export { add_weather , home_weather_call} from './weather';
 export { login, logout , tabBarVisible , tabBarAnimation, tabBarType, error, error_2 , success, success_2, sideBar, sideBar_2 , deleteUserImage, home_refresh, profile_refresh} from './main';

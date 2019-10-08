@@ -5,6 +5,7 @@ import Article from './Article';
 import {brand, model, models} from '../../Components/DeviceInfo/DeviceInfo';
 import style from '../../Styles/Styles'; 
 import Loader from '../../Components/UI/Loader/Loader';
+import FooterText from '../../Components/UI/Loader/FooterText';
 import HomeTitle from '../Home/HomeTitle';
 import BookmarkTitle from '../Bookmark/BookmarkTitle';
 import ProfileTitle from '../Profile/ProfileTitle';
@@ -25,7 +26,7 @@ import { connect } from 'react-redux';
         menuIconColor       :   state.themes.menuIconColor,
         user                :   state.main.user,
         selectedUser        :   state.main.selectedUser,
-        selectedPlace       :   state.main.selectedPlace,
+        selectedPlace       :   state.place.place.id,
         selectedPlaceLocal  :   state.main.selectedPlaceLocal,
         selectedHashtag     :   state.main.selectedHashtag,
         selectedLinked      :   state.main.selectedLinked,
@@ -52,7 +53,6 @@ class Articles extends Component {
                 type : 'profile',
                 user: this.props.user,
             }],
-            refreshing : false,
 
             allArticles : [{
                 key : 1,
@@ -63,6 +63,7 @@ class Articles extends Component {
             }],
             selectedArticle : null,
             articleTablet:1,
+            refreshing : false,
             loader:false,
             article_ids:null,
             start : 0,
@@ -155,7 +156,7 @@ class Articles extends Component {
 
     source = () => {
         let {type, navigation} = this.props
-        // const routeName = navigation.getParam('routeName' , '')
+        const routeName = navigation.getParam('routeName' , '')
 
 
         const source    =   type == 'home'          ?   11 : 
@@ -200,8 +201,7 @@ class Articles extends Component {
 
         const {type, api, user_id, apiKey, navigation, selectedPlace, selectedPlaceLocal, selectedHashtag, selectedLinked} = this.props
         let { selectedUser } = this.props
-        const user_1 = navigation.getParam('user_1' , user_id)
-        const place_id = navigation.getParam('id' , '')
+        selectedUser = selectedUser == '' ? user_id : selectedUser
         const option = navigation.getParam('option', 1)
         const top = navigation.getParam('top', '')
         let date_1 = navigation.getParam('date_1', '')
@@ -212,16 +212,23 @@ class Articles extends Component {
         date_2 = date_2 == 'Invalid date' ? date_1 : date_2
 
         const source = this.source()
+
+        // console.warn(source)
+        // console.warn(selectedPlace)
+        // console.warn(date_1)
+        // console.warn(date_2)
         
-        const url = `${api}/Articles/articles.php?key=${apiKey}&user_id=${user_id}&user_1=${user_1}&place_id=${place_id}&type=1&article_source=${source}&options_id=${option}&top=${top}&date_1=${date_1}&date_2=${date_2}`;
+        const url = `${api}/Articles/articles.php?key=${apiKey}&user_id=${user_id}&user_1=${selectedUser}&place_id=${selectedPlace}&type=1&article_source=${source}&options_id=${option}&top=${top}&date_1=${date_1}&date_2=${date_2}`;
 
         await fetch(url)
         .then((response) => response.json())
         .then((response) => {
 
+            // console.warn(response)
+
                 total_records     =  response.data.total_records
                 last_articles_id  =  response.data.last_articles_id
-                number_of_pages   =  Math.ceil(total_records / this.props.records_per_page);
+                number_of_pages   =  Math.ceil(total_records / this.state.records_per_page);
                 article_ids       =  response.data.article_ids
 
 
@@ -312,8 +319,26 @@ class Articles extends Component {
  
 
     renderFooter = () => {
-      const loader =  !this.state.refreshing ? <Loader style={styles.loader}/> : null
-            return loader    
+        const { refreshing , loader , start, current_page, number_of_pages } = this.state
+    
+        // console.warn(current_page);
+        // console.warn(number_of_pages);
+
+        const footer = (
+            current_page <= number_of_pages ?  
+                !refreshing ? 
+                    <Loader style={styles.loader}/> 
+                :   null 
+            : 
+                start != 0 ?
+                    <FooterText style={styles.loader} text='Thats All!'/> 
+                :   null 
+
+        )
+
+        // const loader =  !this.state.refreshing ? <Loader style={styles.loader}/> : null
+     
+        return footer    
     };
 
 
@@ -355,7 +380,6 @@ class Articles extends Component {
             if(item.key != 1){
                 return <Article article ={item.article} fullDate={fullDate} container='home'/>
             }
-            
         }
       
     }

@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
 import style from '../../Styles/Styles';
 

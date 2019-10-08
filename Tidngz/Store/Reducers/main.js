@@ -114,7 +114,7 @@ const reducer = (state = initialState, action) => {
         case DELETE_USER_IMAGE :
             return {
                 ...state,
-                user : user
+                user : action.user
             }
         case HOME_REFRESH : {
             return {

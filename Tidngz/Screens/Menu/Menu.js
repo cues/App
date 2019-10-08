@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, Dimensions, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Platform, Dimensions, StyleSheet, Text, View, TouchableOpacity, Animated} from 'react-native';
 import float from '../Headers/Float';
 import style from '../../Styles/Styles'; 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -26,6 +26,11 @@ const width = Dimensions.get('window').width;
 
 class Menu extends Component {
 
+    state = {
+        scrollAnim: new Animated.Value(0),
+        offsetAnim: new Animated.Value(0),
+    }
+    
 
     static navigationOptions = float
 
@@ -156,7 +161,9 @@ class Menu extends Component {
 
             </View> 
 
-        <Header/>
+        <Header scrollAnim={this.state.scrollAnim} 
+         offsetAnim={this.state.offsetAnim}
+         />
 
        </View> 
     );

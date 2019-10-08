@@ -175,7 +175,7 @@ renderFooter = () => {
     const { start, current_page, number_of_pages } = this.props
     const { refreshing, loader } = this.state
 
-    const footer = current_page <= number_of_pages ? !refreshing && loader ? <Loader style={styles.loader}/> : null : start != 0 ? <FooterText text='Thats All!' thatsAllView={styles.loader}/> : null 
+    const footer = current_page <= number_of_pages ? !refreshing && loader ? <Loader style={styles.loader}/> : null : start != 0 ? <FooterText style={styles.loader} text='Thats All!' /> : null 
      
     return footer    
          

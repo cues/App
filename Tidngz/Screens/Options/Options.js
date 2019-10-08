@@ -54,7 +54,7 @@ class Options extends Component {
         const routeName = navigation.getParam('routeName' , '')
         const headerText = navigation.getParam('headerText' , '')
     
-    // alert(routeName)
+    // alert(place_id)
 
         return (
             <View style={[styles.container, {backgroundColor : backgroundMain}]}>

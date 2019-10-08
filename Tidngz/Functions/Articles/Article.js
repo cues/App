@@ -88,7 +88,7 @@ class Article extends Component {
 
     const {article , articleItem, container, fullDate} = this.props;
     const { viewWidth , ImagesActive} = this.state;
-    const { layout } = this;
+    const { layout , articleNavigate } = this;
 
     // const dis =  this.state.articleLoaded ? 'flex' : 'none'
 
@@ -135,7 +135,7 @@ class Article extends Component {
 
 
 
-                                    <TouchableWithoutFeedback onPress = {this.articleNavigate}>
+                                    <TouchableWithoutFeedback onPress = {articleNavigate}>
 
                                         <View>
                                             

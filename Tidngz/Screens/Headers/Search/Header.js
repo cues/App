@@ -80,12 +80,12 @@ class header extends Component{
       
 
 
-    suggestionHandler = () =>{
+    suggestionHandler = async() =>{
         const { api, apiKey, user_id , this_search_suggestions} = this.props;
 
         const url = `${api}/Search/search.php?key=${apiKey}&user_id=${user_id}&type=suggestions`;
           
-        rm rffetch(url)
+        await fetch(url)
         .then((response) => response.json())
         .then((response) => { 
             // console.warn(response.data.items)

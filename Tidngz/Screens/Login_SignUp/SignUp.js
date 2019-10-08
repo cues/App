@@ -16,7 +16,7 @@ import { withNavigation } from 'react-navigation';
 import {timezone} from '../../Components/Timezone/Timezone';
 
 import ReCaptcha from 'react-native-recaptcha-v3';
-
+import ReactNativeRecaptchaV3 from 'react-native-google-recaptcha-v3';
 
 import {connect} from 'react-redux'
 import { login ,  loginRoute, loginError } from '../../Store/Actions/index'
@@ -209,6 +209,14 @@ class SignUp extends Component {
           onExecute={this.captureResponseToken.bind(this)}
         />
 
+<View style={{height: 0, width: 0, display:'none'}}>
+<ReactNativeRecaptchaV3 
+            onCheck={(key) => console.log(key)} 
+            url={'https://www.tidngz.com/'}
+            siteKey={"6LdIbHoUAAAAAIxRboHzAh1OIH8wlp-a1V5c53JV"} 
+        />
+</View>
+        
 
             <Box theme='signUp'>
 

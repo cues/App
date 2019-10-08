@@ -116,7 +116,7 @@ export default StyleSheet.create({
 
 
     paddingBackgroundTop : {
-      paddingTop: Platform.select({android:50 , ios : models2.includes(model) ? 88 : 63}),
+      paddingTop: Platform.select({android:55 , ios : models2.includes(model) ? 88 : 63}),
     },
     paddingBackgroundTop_Search : {
         paddingTop: Platform.select({android:50 + 44 , ios : models2.includes(model) ? 88 + 44 : 63 + 44}),
@@ -231,19 +231,18 @@ export default StyleSheet.create({
 
 
     itemsHeader :{
-        fontSize:18,
+        fontSize:24,
         lineHeight:31,
-        letterSpacing:1.2,
-        marginBottom:5,
-        marginTop:0,
-        // fontWeight:'bold'
-        fontFamily:'Cinzel-Bold',
+        letterSpacing:1.3,
+        marginVertical:10,
+        // fontWeight:'bold',
+        fontFamily:'CormorantUpright-Bold',
       },
       itemsBody :{
         fontSize:15,
         lineHeight:26,
         letterSpacing:1,
-        marginVertical:5,
+        marginVertical:10,
         fontFamily:'Lato-Regular',
       },
       itemsList :{

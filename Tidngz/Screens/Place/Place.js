@@ -41,7 +41,7 @@ class Place extends Component {
 
         const { api , user_id , apiKey , navigation , this_get_place } = this.props
 
-        const place_id = navigation.getParam('id' , '')
+        const place_id = navigation.getParam('place_id' , '')
 
         const url = `${api}/Places/places.php?key=${apiKey}&user_id=${user_id}&place_id=${place_id}`;
 
