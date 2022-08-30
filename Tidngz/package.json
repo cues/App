@@ -17,7 +17,7 @@
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
     "faker": "^4.1.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "react": "16.9.0",
     "react-moment": "^0.8.4",
     "react-native": "0.61.1",
